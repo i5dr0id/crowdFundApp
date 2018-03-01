@@ -28,7 +28,7 @@
 				<!-- LOGGED IN USER NAV -->
 				<ul class="navbar-nav" v-if="username">
 					<li class="nav-item">
-						<a class="nav-link" href="/login" data-toggle="modal" data-target=".login-modal-lg">My Campaigns</a>
+						<a class="nav-link" href="/campaign" data-toggle="modal" data-target=".login-modal-lg">My Campaigns</a>
 					</li>
 					<!-- <li class="nav-item">
 						<a class="nav-link" href="/register" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>
@@ -79,13 +79,13 @@ export default {
   name: "App",
   data() {
     return {
-	username: "",
+      username: "",
       login: {
         username: "",
         password: ""
       },
-	  api: "https://onepercent-crowdfund.herokuapp.com/users/authenticate",
-	loggedIn: false
+      api: "https://onepercent-crowdfund.herokuapp.com/users/authenticate",
+      loggedIn: false
     };
   },
   methods: {
@@ -96,33 +96,29 @@ export default {
     }
   },
 
-  computed: {	  
-  },
+  computed: {},
 
   mounted() {
-	  console.log('mounted');
-	  this.username = localStorage.getItem("username");
+    console.log("mounted");
+    this.username = localStorage.getItem("username");
 
-	  Event.$on("loggedIn", () => {
+    Event.$on("loggedIn", () => {
       this.username = localStorage.getItem("username");
     });
-	
   },
   created() {
-	  console.log('Created itself');
-	 this.username = localStorage.getItem("username");
-	 if (this.username){
-		 console.log('user set from cretaed')
-	 }
-
+    console.log("Created itself");
+    this.username = localStorage.getItem("username");
+    if (this.username) {
+      console.log("user set from cretaed");
+    }
   },
-   beforeCreate() {
-	   console.log("BEFORE CREATED");
-		// this.username = localStorage.getItem("username");
-		// console.log(this.username);
+  beforeCreate() {
+    console.log("BEFORE CREATED");
+    // this.username = localStorage.getItem("username");
+    // console.log(this.username);
   }
 };
-
 </script>
 
 <style>

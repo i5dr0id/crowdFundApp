@@ -12,7 +12,7 @@
       <div class="section" v-for="(item, key) in items">
         <div>
           <h3 class="al">
-            <router-link class="al" :to="/campaigns/ + item._id">{{ item.alias }}</router-link>
+            <router-link class="al" :key="item.id" :to="/campaigns/ + item._id">{{ item.alias }}</router-link>
           </h3>
           <a class="float-right" href="#">Delete Campaign</a>
         </div>

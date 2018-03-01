@@ -9,19 +9,16 @@ import EditStory from '@/components/EditStory'
 import EditPerks from '@/components/EditPerks'
 import EditAbout from '@/components/EditAbout'
 import EditAccount from '@/components/EditAccount'
+import NewCampaign from '@/components/NewCampaign'
+import MyCampaign from '@/components/MyCampaign'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   component: HelloWorld
-    // },
     {
       path: '/',
-      name: 'Index',
+      name: 'Home',
       component: Index
     },
     {
@@ -63,7 +60,17 @@ export default new Router({
       path: '/editaccount',
       name: 'EditAccount',
       component: EditAccount
-    }
+    },
+	{
+		path: "/add",
+		name: NewCampaign,
+		component: NewCampaign
+	},
+	{
+		path: "/campaign",
+		name: MyCampaign,
+		component: MyCampaign
+	}
   ],
   mode: 'history'
 })

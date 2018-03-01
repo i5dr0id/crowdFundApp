@@ -18,26 +18,46 @@
 						<a class="nav-link" href="explore.html">Explore</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/edit">Start a project</a>
+						<a class="nav-link" href="/add">Start a project</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/about">About us</a>
 					</li>
 				</ul>
-				<ul class="navbar-nav">
 
+				<!-- LOGGED IN USER NAV -->
+				<ul class="navbar-nav" v-if="username">
+					<li class="nav-item">
+						<a class="nav-link" href="/login" data-toggle="modal" data-target=".login-modal-lg">My Campaigns</a>
+					</li>
+					<!-- <li class="nav-item">
+						<a class="nav-link" href="/register" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>
+					</li> -->
+					<li>
+						<div class="dropdown">
+							<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							{{ username }}
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#" @click.prevent="btnLogout">Log Out</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+				<!-- GUEST USER NAV -->
+				<ul class="navbar-nav" v-else>
 					<li class="nav-item">
 						<a class="nav-link" href="/login" data-toggle="modal" data-target=".login-modal-lg">Login</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/register" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>
 					</li>
-
 				</ul>
-
 			</div>
 		</div>
-
 	</nav>
 
     <!--  -->
@@ -47,177 +67,106 @@
     <!--  -->
     <!--  -->
     <!--  -->
-<div class="modal fade login-modal-lg" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content" style="background: transparent; border: none;">
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="row">
-							<div class="col-sm-12  pull-right">
-								<h4 style="color: #fff; font-weight: 100;">Login</h4>
-								<a href="#" data-dismiss="modal" style="position: absolute; top: 0; right: 0;">
-									<i class="icon-close icons" aria-hidden="true" style="color: #fff; font-size: 26px"></i>
-								</a>
-								<div class="card mt-3" style="background: #fff; padding: 10px">
-									<h6 style="color: #000;font-weight: 100;">Already have an account</h6>
-									<p>Please login to continue.</p>
-									<br />
-									<form>
-										<div class="form-group row">
-											<div class="col-sm-12">
-												<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                      </div>
-										</div>
-										<div class="form-group row">
-											<div class="col-sm-12">
-												<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                      </div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-2s"></label>
-											<div class="col-sm-10">
-												<div class="form-check">
-													<label class="form-check-label">
-														<input class="form-check-input" type="checkbox"> Remember me </label>
-												</div>
-											</div>
-										</div>
-										<br />
-										<br />
-										<div class="form-group row">
-											<div class="offset-sm-3 col-sm-6 text-center">
-												<a href="account-dashboard.html" class="btn btn-primary btn-block">Sign in</a>
-											</div>
-										</div>
-										<div class="form-group row">
-											<div class="offset-sm-2 col-sm-8 text-center">
-												<a href="#" class="mt-2">Forgotten your password</a>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
     <!--  -->
     <!--  -->
     <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-<div class="modal fade signup-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content" style="background: transparent; border: none;">
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="row">
-							<div class="col-md-11 col-sm-12">
-								<h4 style="color: #fff; font-weight: 100;">Register</h4>
-								<a href="#" data-dismiss="modal" style="position: absolute; top: 0; right: 0;">
-									<i class="icon-close icons" aria-hidden="true" style="color: #fff; font-size: 26px"></i>
-								</a>
-								<div class="card  mt-3" style="background: #fff; padding: 10px">
-									<h6 style="color: #000">New to CrowdFunding?</h6>
-									<p>A crowdfunding account is required to continue.</p>
-									<form role="form">
-										<div class="form-group">
-											<input type="email" class="form-control " placeholder="Enter email"> </div>
-										<div class="row">
-											<div class="col-6">
-												<div class="form-group">
-													<input type="text" class="form-control" placeholder="First name"> </div>
-											</div>
-											<div class="col-6">
-												<div class="form-group">
-													<input type="text" class="form-control" placeholder="Last name"> </div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-6">
-												<div class="form-group">
-													<input type="password" class="form-control" placeholder="Password"> </div>
-											</div>
-											<div class="col-6">
-												<div class="form-group">
-													<input type="password" class="form-control" placeholder="Confirm password"> </div>
-											</div>
-										</div>
-										<div class="text-center">
-											<br />
-											<br />
-											<p>By signing up you agree to our terms and conditions and privacy policy</p>
-											<a href="account-dashboard.html" class="btn btn-primary">Create account</a>
-											<br />
-											<br /> </div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
-      <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-   <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
-				<div class="modal-content">
-					<div class="modal-header" style="margin: 0 auto">
-						<h3 class="text-center" style="font-size: 24px;margin-top: 20px;margin-bottom: 10px;font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;">Sign In to
-							<span style="display: inline-block;">
-								<a href="index"> ALGOSTACKS </a>
-							</span>
-						</h3>
-					</div>
-					<div class="modal-body">
-						<form method="POST" action="/login" style="padding: 30px">
-							<div class="form-group">
-									<label>Email: </label>
-								<input type="text" name="email" class="form-control input-lg" placeholder="Email" autocomplete="off" style="border-radius:0;"> </div>
-							<div class="form-group">
-								<label>Password: </label>
-								<input type="password" name="password" class="form-control input-lg" placeholder="Password" autocomplete="off" style="border-radius:0;"> </div>
-							<br>
-							<div class="form-group checkbox checkbox-primary">
-								<input type="checkbox"> Remember Me </div>
-							<div class="form-group">
-								<button type="submit" value="register" name="register" class="btn btn-block btn-lg" style="color:#fff;background-color:#05296b;">Login</button>
-							</div>
-						</form>
-					</div>
-					<div>
-						<p class="form-footer text-center">Don't have an account?
-							<span>
-								<a href="/join">Register Here </a>
-							</span>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-      <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <!--  -->
     </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+	username: "",
+      login: {
+        username: "",
+        password: ""
+      },
+	  api: "https://onepercent-crowdfund.herokuapp.com/users/authenticate",
+	loggedIn: false
+    };
+  },
+  methods: {
+    btnLogout() {
+      localStorage.clear();
+      window.location.reload(true);
+      this.$router.push("/");
+    }
+  },
+
+  computed: {	  
+  },
+
+  mounted() {
+	  console.log('mounted');
+	  this.username = localStorage.getItem("username");
+
+	  Event.$on("loggedIn", () => {
+      this.username = localStorage.getItem("username");
+    });
+	
+  },
+  created() {
+	  console.log('Created itself');
+	 this.username = localStorage.getItem("username");
+	 if (this.username){
+		 console.log('user set from cretaed')
+	 }
+
+  },
+   beforeCreate() {
+	   console.log("BEFORE CREATED");
+		// this.username = localStorage.getItem("username");
+		// console.log(this.username);
+  }
+};
+
+</script>
+
+<style>
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+  pointer-events: none;
+}
+.btn-primary {
+  background-color: #4caf50;
+  color: white;
+  /* padding: 16px; */
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>

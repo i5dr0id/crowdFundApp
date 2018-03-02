@@ -3,18 +3,19 @@
     <div class="main container">
       <h1 class="page-header text-center"> Manage Campaigns </h1>
 
-      <h4 class="page-header text-center" v-show="items.length"> you have no active campaigns</h4>
+      <h4 class="page-header text-center" v-if="items.length<0"> you have no active campaigns</h4>
 
       <div class="text-center btn-cnc">
         <a href="/add" class="btn btn-primary">Create New Campaign</a>
-      </div>
+      </div><br><br>
 
       <div class="section" v-for="(item, key) in items">
         <div>
-          <h3 class="al">
+          <!--  <h3 class="al">
             <router-link class="al" :key="item.id" :to="/campaigns/ + item._id">{{ item.alias }}</router-link>
-          </h3>
-          <a class="float-right" href="#">Delete Campaign</a>
+         </h3> -->
+        
+          
         </div>
         <div>
           <table class="table">
@@ -24,6 +25,7 @@
                 <th scope="col">Number of Contributions</th>
                 <th scope="col">Number of Endorsements</th>
                 <th scope="col">Office</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -33,6 +35,8 @@
                 <!-- <td>{{ items[0].aspirant_endorsements.length }}</td> -->
                 <td>0</td>
                 <td>{{ item.position }}</td>
+                <td><button v-on:click="deleteCampaign('{{item._id}}')" class="btn btn-danger ">Delete Campaign</button></td>
+                <td><button v-on:click="editCampaign" class="btn btn-warning ">Edit Campaign</button></td>
               </tr>
             </tbody>
           </table>
@@ -86,13 +90,16 @@
         // this.alias = onCam[5].alias;
         // this.fund = onCam[5].fund;
       });
-    }
+    },
+    deleteCampaign: function(id){
+      console.log(id)
+    } 
   };
 
 </script>
 <style scoped>
   .main {
-    padding-top: 3%;
+    
   }
 
   a {
@@ -104,7 +111,7 @@
   }
 
   #campaigns {
-    padding-top: 15%;
+    padding-top: 5%;
     padding-bottom: 10%;
   }
 

@@ -30,6 +30,7 @@
 							<div class="form-group">
 								<button type="submit" value="register" name="register" class="btn btn-block btn-lg" @click.prevent="btnRegister">REGISTER</button>
 							</div>
+							<p style="text-align:center"><i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i></p>
 					</form>
 					</div>
 				</div>
@@ -51,6 +52,7 @@ export default {
   data () {
 	  return {
 		  api: 'https://onepercent-crowdfund.herokuapp.com/users/',
+			loading:false,
 		  register: {
 			  username: '',
 			  password: '',
@@ -65,6 +67,11 @@ export default {
 		  console.log(this.register.password);
 		  console.log(this.register.fullname);
 		  console.log(this.register.email);
+			if(this.register.username == "" || this.register.password == "" || this.register.fullname == "" || this.register.email == "" ){
+        swal("Please fill all fields","","error");
+				return;
+		  }
+		  this.loading = true;
 		  this.axios.post(this.api,this.register)
 		  .then(response => {
 			  console.log(response.data);
@@ -78,12 +85,17 @@ export default {
 					console.log(response.data);
 					if (response.data.responseCode === "00") {
 						console.log("LOGIN SUCESSESFULE");
+						swal("Registration Successful !!!","","success")
 						localStorage.setItem("id", response.data.user._id);
 						localStorage.setItem("token", response.data.token);
 						localStorage.setItem("username", response.data.user.username);
 						localStorage.setItem("email", response.data.user.email);
 
 						this.$router.push('/');
+					 }else if(response.data.responseCode == "02"){
+							swal("User already exists","","error")
+						}else{
+							swal("Error adding User","","error")
 					}
 				})
 			  }

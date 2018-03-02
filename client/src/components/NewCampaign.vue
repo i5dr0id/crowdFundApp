@@ -93,7 +93,7 @@
             <div class="form-row">
               <div class="input-group col-md-6">
                 <span class="input-group-addon">$</span>
-                <input type="text" v-model="goal" id="amount" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <input type="text" v-model="fund" id="amount" class="form-control" aria-label="Amount (to the nearest dollar)">
                 <span class="input-group-addon">.00</span>
               </div>
               <div class="col-md-6 mb-6">
@@ -118,12 +118,12 @@
             </div>
             <div class="form-group">
               <label for="exampleTextarea">Story</label>
-               <!-- <textarea class="form-control" v-model="story" id="exampleTextarea" rows="3"></textarea> -->
-                       <!-- <div> -->
-                <!-- <froala :tag="'textarea'" :config="config" v-model="model"></froala>  -->
+               <textarea class="form-control" v-model="story" id="exampleTextarea" rows="3"></textarea> 
+                       <div> 
+                <froala :tag="'textarea'" :config="config" v-model="model"></froala>  
 
-              <!-- <vue-html5-editor v-model="story" :content="content" :height="500"></vue-html5-editor> -->
-            <!-- </div> -->
+              <vue-html5-editor v-model="story" :content="content" :height="500"></vue-html5-editor> 
+             </div>
             </div>
 
           </div>
@@ -168,7 +168,7 @@
         city: '',
         polparty: '',
         office: '',
-        goal: '',
+        fund: '',
         video: '',
         story: '',
         image: '',
@@ -196,16 +196,17 @@
           'gender': this.gender,
           'state': this.state,
           'city': this.city,
-          'social': [this.facbook, this.twitter],
+          'social': [this.facebook, this.twitter],
           'vision': this.vision,
           'video': this.video,
           'alias': this.alias,
           'party': this.polparty,
           'fund': this.fund,
           'image': this.image,
-          'position': this.office
+          'position': this.office,
+          'story': this.story
         }
-        this.axios.post('https://onepercent-crowdfund.herokuapp.com/applicants', this.dataCam).then(response => {
+        this.axios.post('https://onepercent-crowdfund.herokuapp.com/aspirants', this.dataCam).then(response => {
           console.log(response.data)
           if (response.data.responseCode === "00") {
             alert(response.data.responseMessage);

@@ -191,9 +191,9 @@
     },
     methods: {
           addCampaign(e) {
-        console.log('CREATE CLICKED');
+        // console.log('CREATE CLICKED');
         this.id = localStorage.getItem("id");
-        console.log(localStorage.getItem("id"))
+        // console.log(localStorage.getItem("id"))
         this.dataCam = {
           'id': this.id,
           'story': this.story,
@@ -219,7 +219,7 @@
          }
         this.loading = true;
         this.axios.post('https://onepercent-crowdfund.herokuapp.com/aspirants', this.dataCam).then(response => {
-          console.log(response.data)
+        //   console.log(response.data)
           this.loading = false;
           if (response.data.responseCode == "00") {
              swal("Successfully added a new campaign","","success");
@@ -231,7 +231,7 @@
           }
         }).catch(error => {
           this.loading = false;
-          console.log(error)
+        //   console.log(error)
           swal("Adding new campaign failed. Please check your network","","error")
         });
         e.preventDefault();
@@ -250,8 +250,8 @@
           this.image = response.data.secure_url;
           this.$refs.camimg.src = response.data.secure_url;
         }, error => {
-          console.log("ERRORRORORORORO");
-          console.log(error);
+        //   console.log("ERRORRORORORORO");
+        //   console.log(error);
         });
       }
     },

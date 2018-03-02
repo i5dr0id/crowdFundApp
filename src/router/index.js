@@ -13,6 +13,7 @@ import NewCampaign from '@/components/NewCampaign'
 import MyCampaign from '@/components/MyCampaign'
 import AspirantDashboard from '@/components/AspirantDashboard'
 import cp from '@/components/cp'
+import Explore from '@/components/Explore'
 
 Vue.use(Router)
 
@@ -73,7 +74,7 @@ export default new Router({
 			component: MyCampaign
 		},
 		{
-			path: "/aspdb",
+			path: "/aspirant/:id",
 			name: AspirantDashboard,
 			component: AspirantDashboard
 		},
@@ -81,6 +82,11 @@ export default new Router({
 			path: "/cp",
 			name: cp,
 			component: cp
+		},
+		{
+			path: "/explore",
+			name: Explore,
+			component: Explore
 		}
 	],
 	mode: 'history'

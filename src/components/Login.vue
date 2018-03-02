@@ -53,16 +53,16 @@ export default {
   },
   methods: {
 	   btnLogin(e) {
-		  console.log(this.login.username);
-		  console.log(this.login.password);
-		  console.log(this.login);
+		//   console.log(this.login.username);
+		//   console.log(this.login.password);
+		//   console.log(this.login);
 		  if(this.login.username == "" || this.login.password == ""){
              swal("Please fill all fields","","error");
 			 return;
 		  }
 		  this.loading = true;
 		  this.axios.post(this.api,this.login).then(response => {
-			  console.log(response.data);
+			//   console.log(response.data);
 			  this.loading = false;
 			  if (response.data.responseCode == "00") {
 				    swal("Authentication Successful !!!","","success")
@@ -79,7 +79,7 @@ export default {
 			  }
 		  },function(err){
 			  this.loading = false;
-			  console.log(err)
+			//   console.log(err)
 			  swal("Authentication failed. Please check your network","","error")
 		  });
 		  e.preventDefault();

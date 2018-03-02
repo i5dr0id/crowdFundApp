@@ -14,12 +14,10 @@
 <script>
 import header from "./components/header.vue";
 import footer from "./components/footer.vue";
-import cp from "./components/cp.vue";
 export default {
   components: {
     "app-header": header,
-	"app-footer": footer,
-	"app-cp": cp,
+	"app-footer": footer
   },
   name: 'App'
 }

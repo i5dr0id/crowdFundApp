@@ -92,7 +92,7 @@
 							<!-- Tab panes -->
 							<div class="tab-content">
 								<div class="tab-pane active" id="home" role="tabpanel" aria-expanded="true">
-									<p>
+									<!-- <p>
 										<strong>I'm gonna build me an airport, put my name on it. Why, Michael? So you can fly away from your feelings? I don't
 											care if it takes from now till the end of Shrimpfest.</strong>
 									</p>
@@ -117,7 +117,9 @@
 									<p>Ohhh little guy. The tears aren't coming. The tears just aren't coming. Look, you are playing adults…with fully
 										formed libidos, not 2 young men playing grab-ass in the shower. Boy, I sure feel like a Mary without a Peter and
 										a Paul. And although the intervention didn't work, it turned into one of the Bluth family's better parties. I'm
-										tired of trying to find happiness through lies and self-medicating. If you need me, I'll be at the bar. </p>
+										tired of trying to find happiness through lies and self-medicating. If you need me, I'll be at the bar. </p> -->
+
+										<h3>{{story}}</h3>
 								</div>
 								<div class="tab-pane" id="updates" role="tabpanel" aria-expanded="false">
 									<div class="card mb-4">
@@ -196,7 +198,7 @@
 												<div class="row">
 												<div class="col-md-6 mb-6">
 													<label for="">Full name: </label>
-													<input type="text" v-model="fname" class="form-control" id="fn" placeholder="Full name"
+													<input type="text" v-model="fullname" class="form-control" id="fn" placeholder="Full name"
 													required> </div>
 												<div class="col-md-6 mb-6">
 													<label for="">Email: </label>
@@ -564,18 +566,20 @@
 				vision: '',
 				_id: '',
 				api: "https://onepercent-crowdfund.herokuapp.com/aspirants/5a932b6e875f590014c49814",
-				items: []
+				items: [],
+				candidate_ID: '',
+				fullname: ''
 			};
 		},
 		methods: {},
 		mounted() {
-			// this.api = "https://onepercent-crowdfund.herokuapp.com/aspirants/" + this.candidate_ID;
+			this.api = "https://onepercent-crowdfund.herokuapp.com/aspirants/" + this.candidate_ID;
 			this.axios.get(this.api).then(response => {
-				console.log("===================");
-				console.log(response.data);
-				console.log("===================");
+				// console.log("===================");
+				// console.log(response.data);
+				// console.log("===================");
 				this.item = response.data.aspirant;
-				console.log(this.item);
+				// console.log(this.item);
 				this.alias = this.item.alias;
 				this.city = this.item.city;
 				this.created = this.item.created;
@@ -598,17 +602,19 @@
 				this._id = this.item._id
 				// this.donation = this.item.donation;
 				// this.$refs.candidate_img2.src = this.image;
-				console.log("===================");
-				console.log(this.$refs);
-				console.log("===================");
+				// console.log("===================");
+				// console.log(this.$refs);
+				// console.log("===================");
 				// this.$refs.candidate_img.src = this.image;
 				// this.$refs.candidate_img2.src = this.image;
 				// console.log(this.$refs);
+				// console.log("sjkcnsjknbb");
+				// console.log(this.candidate_ID);
 			});
 		},
 		created() {
 			// console.log("Before Created");
-			// this.candidate_ID = window.location.pathname.split("/")[2];
+			this.candidate_ID = window.location.pathname.split("/")[2];
 		}
 	};
 </script>

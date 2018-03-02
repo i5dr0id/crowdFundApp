@@ -63,10 +63,10 @@ export default {
   },
   methods: {
     btnRegister(e) {
-      console.log(this.register.username);
-      console.log(this.register.password);
-      console.log(this.register.fullname);
-      console.log(this.register.email);
+    //   console.log(this.register.username);
+    //   console.log(this.register.password);
+    //   console.log(this.register.fullname);
+    //   console.log(this.register.email);
       if(this.register.username == "" || this.register.password == "" || this.register.fullname == "" || this.register.email == "" ){
         swal("Please fill all fields","","error");
         return;
@@ -74,7 +74,7 @@ export default {
       this.loading = true;
       this.axios.post(this.api,this.register)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.responseCode === "00") {
         this.axios.post("https://onepercent-crowdfund.herokuapp.com/users/authenticate",
         {
@@ -82,9 +82,9 @@ export default {
           password: this.register.password
         })
         .then(response => {
-          console.log(response.data);
+        //   console.log(response.data);
           if (response.data.responseCode === "00") {
-            console.log("LOGIN SUCESSESFULE");
+            // console.log("LOGIN SUCESSESFULE");
             swal("Registration Successful !!!","","success")
             localStorage.setItem("id", response.data.user._id);
             localStorage.setItem("token", response.data.token);

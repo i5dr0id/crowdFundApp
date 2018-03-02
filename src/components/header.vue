@@ -15,7 +15,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="explore.html">Explore</a>
+						<a class="nav-link" href="/explore">Explore</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/add">Start a project</a>
@@ -105,7 +105,6 @@ export default {
   computed: {},
 
   mounted() {
-    console.log("mounted");
     this.username = localStorage.getItem("username");
 
     Event.$on("loggedIn", () => {
@@ -113,16 +112,15 @@ export default {
     });
   },
   created() {
-    console.log("Created itself");
     this.username = localStorage.getItem("username");
     if (this.username) {
-      console.log("user set from cretaed");
+
     }
   },
   beforeCreate() {
-    console.log("BEFORE CREATED");
-    // this.username = localStorage.getItem("username");
-    // console.log(this.username);
+
+    this.username = localStorage.getItem("username");
+
   }
 };
 </script>

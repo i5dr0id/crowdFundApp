@@ -155,7 +155,7 @@
 						<h4>Upload Photo</h4>
 						<br>
 						<div class="form-group light-blue">
-						<div class="card-picture card-body">
+						<div class="card-picture card-body light-blue">
 							<div class="row">
 								<div class="card-picture thumbnail">
 									<img ref="camimg" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
@@ -345,7 +345,7 @@
 		font-size: 50px;
 	}
 
-	.card {
+.card {
 		position: relative;
 		display: flex;
 		flex-direction: column;

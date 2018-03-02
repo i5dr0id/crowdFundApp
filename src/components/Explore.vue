@@ -213,7 +213,11 @@
 <style>
 img {
     width: 100%; /* or any custom size */
-    height: 100%; 
+    min-height: 100%; 
     object-fit: contain;
 }
+
+/* .size-up > img {
+	min-height:500px;
+} */
 </style>

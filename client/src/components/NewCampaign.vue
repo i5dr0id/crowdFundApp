@@ -115,14 +115,18 @@
                 <textarea class="form-control" v-model="mission" id="mission" rows="3"></textarea>
                 <!-- <input type="text" v-model="mission" class="form-control" id="rf" placeholder="" required> -->
               </div>
+              <div class="col-md-6 mb-6">
+                <label for="">Story</label>
+                <textarea class="form-control" v-model="story" id="exampleTextarea" rows="3"></textarea>
+                <!-- <input type="text" v-model="mission" class="form-control" id="rf" placeholder="" required> -->
+              </div>
+
             </div>
             <div class="form-group">
-              <label for="exampleTextarea">Story</label>
-               <textarea class="form-control" v-model="story" id="exampleTextarea" rows="3"></textarea> 
-                       <div> 
-                <froala :tag="'textarea'" :config="config" v-model="model"></froala>  
-
-              <vue-html5-editor v-model="story" :content="content" :height="500"></vue-html5-editor> 
+              <label for="exampleTextarea"></label>
+               
+            <div> 
+              
              </div>
             </div>
 
@@ -142,6 +146,7 @@
             </div>
           </div>
           <button type="submit" v-on:click="addCampaign" class="btn btn-success ">CREATE</button>
+          	 <p style="text-align:center"><i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i></p>
         </form>
 
       </div>
@@ -178,7 +183,8 @@
         imgFile: "",
         customer: {},
         cloudinary_url: "https://api.cloudinary.com/v1_1/dmdvs9djh/upload/",
-        cloudinary_upload_preset: "kn1frgui"
+        cloudinary_upload_preset: "kn1frgui",
+        loading:false
         // fD: {}
       };
     },
@@ -203,16 +209,29 @@
           'party': this.polparty,
           'fund': this.fund,
           'image': this.image,
-          'position': this.office,
-          'story': this.story
+          'position': this.office
         }
+        
+         if(this.email == "" || this.story == "" || this.fname == "" || this.lname == "" || this.gender == "" || this.city == "" ||  this.state == "" || this.facebook == "" || this.twitter == "" || this.vision == "" || this.video == "" || this.alias == "" || this.polparty == "" || this.fund == "" || this.image == "" || this.position == ""){
+            swal("Please fill all fields","","error");
+			      return;
+         }
+        this.loading = true;
         this.axios.post('https://onepercent-crowdfund.herokuapp.com/aspirants', this.dataCam).then(response => {
           console.log(response.data)
-          if (response.data.responseCode === "00") {
-            alert(response.data.responseMessage);
+          this.loading = false;
+          if (response.data.responseCode == "00") {
+             swal("Successfully added a new campaign","","success");
+             this.$router.push('/campaign');
+          }else if(response.data.responseCode == "03"){
+            swal("Campaign exists already","","error");
+          }else{
+            swal("Error adding campaign","","error");
           }
         }).catch(error => {
-          alert(error);
+          this.loading = false;
+          console.log(error)
+          swal("Adding new campaign failed. Please check your network","","error")
         });
         e.preventDefault();
       },

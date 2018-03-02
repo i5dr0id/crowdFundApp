@@ -98,12 +98,11 @@
                   this.axios.delete(deleteurl).then(response => {
                      this.refresh();
                      console.log(response.data)
-                     this.created();
                       if(response.data.responseCode === "00") {
                           swal('Deleted!','Campaign deleted.','success')
                       }
                   }).catch(error => {
-                    alert(error);
+                     console.log(error);
                   });           
             }
         })

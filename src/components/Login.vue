@@ -22,6 +22,7 @@
 						<div class="form-group">
 							<button type="submit" value="login" name="login" class="btn btn-block btn-lg" @click.prevent="btnLogin">Login</button>
 						</div>
+							 <p style="text-align:center"><i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i></p>
 					</form>
 				</div>
 				<div>
@@ -47,23 +48,39 @@ export default {
 			  password: ''
 		  },
 		  api: "https://onepercent-crowdfund.herokuapp.com/users/authenticate",
+		   loading:false
 	  }
   },
   methods: {
-	  btnLogin(e) {
+	   btnLogin(e) {
 		  console.log(this.login.username);
 		  console.log(this.login.password);
-		  this.axios.post(this.api,this.login)
-		  .then(response => {
+		  console.log(this.login);
+		  if(this.login.username == "" || this.login.password == ""){
+             swal("Please fill all fields","","error");
+			 return;
+		  }
+		  this.loading = true;
+		  this.axios.post(this.api,this.login).then(response => {
 			  console.log(response.data);
-			  if (response.data.responseCode === "00") {
+			  this.loading = false;
+			  if (response.data.responseCode == "00") {
+				    swal("Authentication Successful !!!","","success")
 					localStorage.setItem("id", response.data.user._id);
 					localStorage.setItem("token", response.data.token);
 					localStorage.setItem("username", response.data.user.username);
 					localStorage.setItem("email", response.data.user.email);
 					Event.$emit('loggedIn', response.data.user.username);
 					this.$router.push('/');
+			  }else if(response.data.responseCode == "02"){
+				   swal("Authentication failed. User not found","","error")
+			  }else{
+				  swal("Authentication failed. Password not found","","error")
 			  }
+		  },function(err){
+			  this.loading = false;
+			  console.log(err)
+			  swal("Authentication failed. Please check your network","","error")
 		  });
 		  e.preventDefault();
 	  }

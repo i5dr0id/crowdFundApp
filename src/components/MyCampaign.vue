@@ -3,7 +3,7 @@
     <div class="main container">
       <h1 class="page-header text-center"> Manage Campaigns </h1>
 
-      <h4 class="page-header text-center" v-show="items.length"> you have no active campaigns</h4>
+      <h4 class="page-header text-center" v-if="!items"> you have no active campaigns</h4>
 
       <div class="text-center btn-cnc">
         <a href="/add" class="btn btn-primary">Create New Campaign</a>
@@ -12,7 +12,7 @@
       <div class="section" v-for="(item, key) in items">
         <div>
           <h3 class="al">
-            <router-link class="al" :key="item.id" :to="/campaigns/ + item._id">{{ item.alias }}</router-link>
+            <router-link class="al" :to="/campaigns/ + item._id">{{ item.alias }}</router-link>
           </h3>
           <a class="float-right" href="#">Delete Campaign</a>
         </div>
@@ -44,74 +44,79 @@
   </div>
 </template>
 <script>
-  // import axios from 'axios';
-  export default {
-    name: "Campaigns",
-    data() {
-      return {
-        id: '',
-        token: '',
-        alias: '',
-        fund: '',
-        items: [],
-        jokes: [],
-        api: 'https://onepercent-crowdfund.herokuapp.com/aspirants/all/',
-        // onCam: {},
-        loading: false
-      }
-    },
-    methods: {
-    },
-    created: function () {
-      this.id = localStorage.getItem("id")
-      this.token = localStorage.getItem("token");
-      console.log("TOKEN RE")
-      console.log({"TOKEN":this.token});
-      this.api = 'https://onepercent-crowdfund.herokuapp.com/aspirants/all/'+this.id;
-      let config = {
-        "x-access-token": this.token ,
-        "Content-Type": "application/json"
-      }
-      this.axios.get(this.api, {headers: {
-        "x-access-token" : this.token,
-        "Content-Type" : "application/json"
-      }}).then(response => {
+// import axios from 'axios';
+export default {
+  name: "Campaigns",
+  data() {
+    return {
+      id: "",
+      token: "",
+      alias: "",
+      fund: "",
+      items: [],
+      index: null,
+      jokes: [],
+      api: "https://onepercent-crowdfund.herokuapp.com/aspirants/all/",
+      // onCam: {},
+      loading: false
+    };
+  },
+  methods: {},
+  created: function() {
+    this.id = localStorage.getItem("id");
+    this.token = localStorage.getItem("token");
+    console.log("TOKEN RE");
+    console.log({ TOKEN: this.token });
+    this.api =
+      "https://onepercent-crowdfund.herokuapp.com/aspirants/all/" + this.id;
+    let config = {
+      "x-access-token": this.token,
+      "Content-Type": "application/json"
+    };
+    this.axios
+      .get(this.api, {
+        headers: {
+          "x-access-token": this.token,
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => {
         // let onCam = response.data.aspirants
         this.items = response.data.aspirant;
+        this.index = this.items.length;
         // console.log(response.data.aspirant);
         // console.log(onCam[1].aspirant_endorsements.length);
         // onCam.forEach(function(element){
-          // console.log(element);
+        // console.log(element);
         // });
         // this.alias = onCam[5].alias;
         // this.fund = onCam[5].fund;
       });
-    }
-  };
-
+  }
+};
 </script>
 <style scoped>
-  .main {
-    padding-top: 3%;
-  }
+.main {
+  padding-top: 3%;
+}
 
-  a {
-    color: #ff4814;
-  }
+a {
+  color: #ff4814;
+}
 
-  router-link {
-    color: #ff4814;
-  }
+router-link {
+  color: #ff4814;
+}
 
-  #campaigns {
-    padding-top: 15%;
-    padding-bottom: 10%;
-  }
+#campaigns {
+  padding-top: 15%;
+  padding-bottom: 10%;
+}
 
-  .al {
-    color: #787878;
-    /* border: ipx solid red; */
-  }
+.al {
+  color: #787878;
+  /* border: ipx solid red; */
+}
 
 .btn-cnc {
   padding-top: 3%;

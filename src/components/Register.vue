@@ -47,49 +47,51 @@
 
 <script>
 export default {
-  name: 'Register',
-  data () {
-	  return {
-		  api: 'https://onepercent-crowdfund.herokuapp.com/users/',
-		  register: {
-			  username: '',
-			  password: '',
-			  fullname: '',
-			  email: ''
-		  }
-	  }
+  name: "Register",
+  data() {
+    return {
+      api: "https://onepercent-crowdfund.herokuapp.com/users/",
+      register: {
+        username: "",
+        password: "",
+        fullname: "",
+        email: ""
+      }
+    };
   },
   methods: {
-	  btnRegister(e) {
-		  console.log(this.register.username);
-		  console.log(this.register.password);
-		  console.log(this.register.fullname);
-		  console.log(this.register.email);
-		  this.axios.post(this.api,this.register)
-		  .then(response => {
-			  console.log(response.data);
-			  if (response.data.responseCode === "00") {
-				this.axios.post("https://onepercent-crowdfund.herokuapp.com/users/authenticate",
-				{
-					username: this.register.username,
-					password: this.register.password
-				})
-				.then(response => {
-					console.log(response.data);
-					if (response.data.responseCode === "00") {
-						console.log("LOGIN SUCESSESFULE");
-						localStorage.setItem("id", response.data.user._id);
-						localStorage.setItem("token", response.data.token);
-						localStorage.setItem("username", response.data.user.username);
-						localStorage.setItem("email", response.data.user.email);
-
-						this.$router.push('/');
-					}
-				})
-			  }
-		  });
-		  e.preventDefault();
-	  }
+    btnRegister(e) {
+      console.log(this.register.username);
+      console.log(this.register.password);
+      console.log(this.register.fullname);
+      console.log(this.register.email);
+      this.axios.post(this.api, this.register).then(response => {
+        console.log(response.data);
+        if (response.data.responseCode === "00") {
+          this.axios
+            .post(
+              "https://onepercent-crowdfund.herokuapp.com/users/authenticate",
+              {
+                username: this.register.username,
+                password: this.register.password
+              }
+            )
+            .then(response => {
+              console.log(response.data);
+              if (response.data.responseCode === "00") {
+                console.log("LOGIN SUCESSESFULE");
+                localStorage.setItem("id", response.data.user._id);
+                localStorage.setItem("token", response.data.token);
+                localStorage.setItem("username", response.data.user.username);
+                localStorage.setItem("email", response.data.user.email);
+                Event.$emit("loggedIn", response.data.user.username);
+                this.$router.push("/");
+              }
+            });
+        }
+      });
+      e.preventDefault();
+    }
   }
 };
 </script>

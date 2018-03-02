@@ -35,7 +35,7 @@
                 <!-- <td>{{ items[0].aspirant_endorsements.length }}</td> -->
                 <td>0</td>
                 <td>{{ item.position }}</td>
-                <td><button v-on:click="deleteCampaign('{{item._id}}')" class="btn btn-danger ">Delete Campaign</button></td>
+                <td><button v-on:click="deleteCampaign(item._id)" class="btn btn-danger ">Delete Campaign</button></td>
                 <td><button v-on:click="editCampaign" class="btn btn-warning ">Edit Campaign</button></td>
               </tr>
             </tbody>
@@ -65,35 +65,54 @@
       }
     },
     methods: {
+      refresh(){
+        this.id = localStorage.getItem("id")
+        this.token = localStorage.getItem("token");
+        console.log("TOKEN RE")
+        console.log({"TOKEN":this.token});
+        this.api = 'https://onepercent-crowdfund.herokuapp.com/aspirants/all/'+this.id;
+        let config = {
+          "x-access-token": this.token ,
+          "Content-Type": "application/json"
+        }
+        this.axios.get(this.api, {headers: {
+          "x-access-token" : this.token,
+          "Content-Type" : "application/json"
+        }}).then(response => {
+          this.items = response.data.aspirant;
+        });
+      },
+      deleteCampaign(id){
+        console.log(id);
+        let deleteurl = 'https://onepercent-crowdfund.herokuapp.com/aspirants/'+id;
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result === true) {
+                  this.axios.delete(deleteurl).then(response => {
+                     this.refresh();
+                     console.log(response.data)
+                     this.created();
+                      if(response.data.responseCode === "00") {
+                          swal('Deleted!','Campaign deleted.','success')
+                      }
+                  }).catch(error => {
+                    alert(error);
+                  });           
+            }
+        })
+       
+      } 
     },
     created: function () {
-      this.id = localStorage.getItem("id")
-      this.token = localStorage.getItem("token");
-      console.log("TOKEN RE")
-      console.log({"TOKEN":this.token});
-      this.api = 'https://onepercent-crowdfund.herokuapp.com/aspirants/all/'+this.id;
-      let config = {
-        "x-access-token": this.token ,
-        "Content-Type": "application/json"
-      }
-      this.axios.get(this.api, {headers: {
-        "x-access-token" : this.token,
-        "Content-Type" : "application/json"
-      }}).then(response => {
-        // let onCam = response.data.aspirants
-        this.items = response.data.aspirant;
-        // console.log(response.data.aspirant);
-        // console.log(onCam[1].aspirant_endorsements.length);
-        // onCam.forEach(function(element){
-          // console.log(element);
-        // });
-        // this.alias = onCam[5].alias;
-        // this.fund = onCam[5].fund;
-      });
-    },
-    deleteCampaign: function(id){
-      console.log(id)
-    } 
+      this.refresh();
+    }
   };
 
 </script>

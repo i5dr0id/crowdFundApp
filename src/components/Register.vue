@@ -1,63 +1,65 @@
 <template>
   <div id="register">
-    	<div class="register-div">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header" style="margin: 0 auto">
-					<h3 class="text-center">Sign Up to
-						<span style="display: inline-block;">
-							<a href="index"> CrowdFunApp </a>
-						</span>
-					</h3>
-				</div>
-				<div class="modal-body">
-					<form v-on:submit="btnRegister">
-						<div class="form-group">
-							<input v-model="register.fullname" type="text" name="fullname" class="form-control input-lg" placeholder="FullName" autocomplete="off"> </div>
-						<div class="form-group">
-							<input v-model="register.username" type="text" name="username" class="form-control input-lg" placeholder="Username" autocomplete="off"> </div>
-						<div class="form-group">
-							<input v-model="register.email" type="text" name="email" class="form-control input-lg" placeholder="Email" autocomplete="off"> </div>
-						<div class="form-group">
-							<input v-model="register.password" type="password" name="password" class="form-control input-lg" placeholder="Password" autocomplete="off"> </div>
-							<br>
-							<div class="form-group checkbox checkbox-primary">
-								<input type="checkbox"> I accept
-								<span>
-									<a href="#"> Terms and Conditions </a>
-								</span>
-							</div>
-							<div class="form-group">
-								<button type="submit" value="register" name="register" class="btn btn-block btn-lg" @click.prevent="btnRegister">REGISTER</button>
-							</div>
-					</form>
-					</div>
-				</div>
-				<div>
-					<p class="form-footer">Already have an account?
-						<span>
-							<a href="/login">Sign In</a>
-						</span>
-					</p>
-				</div>
-			</div>
-		</div>
+      <div class="register-div">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="margin: 0 auto">
+          <h3 class="text-center">Sign Up to
+            <span style="display: inline-block;">
+              <a href="index"> CrowdFunApp </a>
+            </span>
+          </h3>
+        </div>
+        <div class="modal-body">
+          <form v-on:submit="btnRegister">
+            <div class="form-group">
+              <input v-model="register.fullname" type="text" name="fullname" class="form-control input-lg" placeholder="FullName" autocomplete="off"> </div>
+            <div class="form-group">
+              <input v-model="register.username" type="text" name="username" class="form-control input-lg" placeholder="Username" autocomplete="off"> </div>
+            <div class="form-group">
+              <input v-model="register.email" type="text" name="email" class="form-control input-lg" placeholder="Email" autocomplete="off"> </div>
+            <div class="form-group">
+              <input v-model="register.password" type="password" name="password" class="form-control input-lg" placeholder="Password" autocomplete="off"> </div>
+              <br>
+              <div class="form-group checkbox checkbox-primary">
+                <input type="checkbox"> I accept
+                <span>
+                  <a href="#"> Terms and Conditions </a>
+                </span>
+              </div>
+              <div class="form-group">
+                <button type="submit" value="register" name="register" class="btn btn-block btn-lg" @click.prevent="btnRegister">REGISTER</button>
+              </div>
+              <p style="text-align:center"><i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i></p>
+          </form>
+          </div>
+        </div>
+        <div>
+          <p class="form-footer">Already have an account?
+            <span>
+              <a href="/login">Sign In</a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Register",
-  data() {
+  name: 'Register',
+  data () {
     return {
-      api: "https://onepercent-crowdfund.herokuapp.com/users/",
+      api: 'https://onepercent-crowdfund.herokuapp.com/users/',
+      loading:false,
       register: {
-        username: "",
-        password: "",
-        fullname: "",
-        email: ""
+        username: '',
+        password: '',
+        fullname: '',
+        email: ''
       }
-    };
+    }
   },
   methods: {
     btnRegister(e) {
@@ -65,29 +67,37 @@ export default {
       console.log(this.register.password);
       console.log(this.register.fullname);
       console.log(this.register.email);
-      this.axios.post(this.api, this.register).then(response => {
+      if(this.register.username == "" || this.register.password == "" || this.register.fullname == "" || this.register.email == "" ){
+        swal("Please fill all fields","","error");
+        return;
+      }
+      this.loading = true;
+      this.axios.post(this.api,this.register)
+      .then(response => {
         console.log(response.data);
         if (response.data.responseCode === "00") {
-          this.axios
-            .post(
-              "https://onepercent-crowdfund.herokuapp.com/users/authenticate",
-              {
-                username: this.register.username,
-                password: this.register.password
-              }
-            )
-            .then(response => {
-              console.log(response.data);
-              if (response.data.responseCode === "00") {
-                console.log("LOGIN SUCESSESFULE");
-                localStorage.setItem("id", response.data.user._id);
-                localStorage.setItem("token", response.data.token);
-                localStorage.setItem("username", response.data.user.username);
-                localStorage.setItem("email", response.data.user.email);
-                Event.$emit("loggedIn", response.data.user.username);
-                this.$router.push("/");
-              }
-            });
+        this.axios.post("https://onepercent-crowdfund.herokuapp.com/users/authenticate",
+        {
+          username: this.register.username,
+          password: this.register.password
+        })
+        .then(response => {
+          console.log(response.data);
+          if (response.data.responseCode === "00") {
+            console.log("LOGIN SUCESSESFULE");
+            swal("Registration Successful !!!","","success")
+            localStorage.setItem("id", response.data.user._id);
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("username", response.data.user.username);
+            localStorage.setItem("email", response.data.user.email);
+
+            this.$router.push('/');
+           }else if(response.data.responseCode == "02"){
+              swal("User already exists","","error")
+            }else{
+              swal("Error adding User","","error")
+          }
+        })
         }
       });
       e.preventDefault();

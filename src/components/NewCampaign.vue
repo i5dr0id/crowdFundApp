@@ -93,7 +93,7 @@
             <div class="form-row">
               <div class="input-group col-md-6">
                 <span class="input-group-addon">$</span>
-                <input type="text" v-model="goal" id="amount" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <input type="text" v-model="fund" id="amount" class="form-control" aria-label="Amount (to the nearest dollar)">
                 <span class="input-group-addon">.00</span>
               </div>
               <div class="col-md-6 mb-6">
@@ -113,6 +113,11 @@
               <div class="col-md-6 mb-6">
                 <label for="">Mission</label>
                 <textarea class="form-control" v-model="mission" id="mission" rows="3"></textarea>
+                <!-- <input type="text" v-model="mission" class="form-control" id="rf" placeholder="" required> -->
+              </div>
+              <div class="col-md-6 mb-6">
+                <label for="">Story</label>
+                <textarea class="form-control" v-model="story" id="story" rows="3"></textarea>
                 <!-- <input type="text" v-model="mission" class="form-control" id="rf" placeholder="" required> -->
               </div>
             </div>
@@ -142,6 +147,7 @@
             </div>
           </div>
           <button type="submit" v-on:click="addCampaign" class="btn btn-success ">CREATE</button>
+             <p style="text-align:center"><i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i></p>
         </form>
 
       </div>
@@ -168,7 +174,7 @@
         city: '',
         polparty: '',
         office: '',
-        goal: '',
+        fund: '',
         video: '',
         story: '',
         image: '',
@@ -178,12 +184,13 @@
         imgFile: "",
         customer: {},
         cloudinary_url: "https://api.cloudinary.com/v1_1/dmdvs9djh/upload/",
-        cloudinary_upload_preset: "kn1frgui"
+        cloudinary_upload_preset: "kn1frgui",
+         loading:false
         // fD: {}
       };
     },
     methods: {
-      addCampaign(e) {
+          addCampaign(e) {
         console.log('CREATE CLICKED');
         this.id = localStorage.getItem("id");
         console.log(localStorage.getItem("id"))
@@ -196,7 +203,7 @@
           'gender': this.gender,
           'state': this.state,
           'city': this.city,
-          'social': [this.facbook, this.twitter],
+          'social': [this.facebook, this.twitter],
           'vision': this.vision,
           'video': this.video,
           'alias': this.alias,
@@ -205,13 +212,27 @@
           'image': this.image,
           'position': this.office
         }
-        this.axios.post('https://onepercent-crowdfund.herokuapp.com/applicants', this.dataCam).then(response => {
+        
+         if(this.email == "" || this.story == "" || this.fname == "" || this.lname == "" || this.gender == "" || this.city == "" ||  this.state == "" || this.facebook == "" || this.twitter == "" || this.vision == "" || this.video == "" || this.alias == "" || this.polparty == "" || this.fund == "" || this.image == "" || this.position == ""){
+            swal("Please fill all fields","","error");
+            return;
+         }
+        this.loading = true;
+        this.axios.post('https://onepercent-crowdfund.herokuapp.com/aspirants', this.dataCam).then(response => {
           console.log(response.data)
-          if (response.data.responseCode === "00") {
-            alert(response.data.responseMessage);
+          this.loading = false;
+          if (response.data.responseCode == "00") {
+             swal("Successfully added a new campaign","","success");
+             this.$router.push('/campaign');
+          }else if(response.data.responseCode == "03"){
+            swal("Campaign exists already","","error");
+          }else{
+            swal("Error adding campaign","","error");
           }
         }).catch(error => {
-          alert(error);
+          this.loading = false;
+          console.log(error)
+          swal("Adding new campaign failed. Please check your network","","error")
         });
         e.preventDefault();
       },

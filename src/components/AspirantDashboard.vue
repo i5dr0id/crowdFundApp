@@ -36,8 +36,10 @@
 									<iframe v-if="video" width="100%" height="350" src="https://www.youtube.com/embed/Pwq89K6RBTI" frameborder="0"
 									allowfullscreen></iframe>
 									<div v-else class="campImg">
-										<img ref="candidate_img" src="https://res.cloudinary.com/crowdpac/image/upload/c_fill,f_auto,g_face,h_370,q_auto,w_620/v1/assets/campaign-image-empty"
-										class="img-fluid rounded img-thumbnail" alt="Responsive image"> </div>
+										<img v-if="image" ref="imgg" :src="image" class="img-fluid rounded img-thumbnail">
+										<img v-else ref="candidate_img" src="https://res.cloudinary.com/crowdpac/image/upload/c_fill,f_auto,g_face,h_370,q_auto,w_620/v1/assets/campaign-image-empty"
+										class="img-fluid rounded img-thumbnail" alt="Responsive image">
+										 </div>
 								</div>
 							</div>
 							<br />
@@ -623,5 +625,10 @@
 		height: 350px;
 		width: 100%;
 		background-color: powderblue;
+	}
+
+	.campImg > img {
+		width:100%;
+		height:100%;
 	}
 </style>

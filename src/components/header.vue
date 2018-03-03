@@ -15,13 +15,14 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="explore.html">Explore</a>
+						<a class="nav-link" href="/explore">Explore</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/add">Start a project</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/about">About us</a>
+						<a class="nav-link" href="/about"><router-link>
+            </router-link> About us</a>
 					</li>
 				</ul>
 

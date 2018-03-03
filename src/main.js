@@ -7,6 +7,7 @@ import {store} from './store'
 import router from './router'
 import Element from 'element-ui'
 import VueAxios from 'vue-axios'
+import VueCkeditor from 'vueckeditor'
 import VeeValidate from 'vee-validate'
 
 // import Editable from './Editable.vue'
@@ -31,9 +32,12 @@ window.Event = new Vue;
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  store: store,
-  router,
-  components: { App },
-  template: '<App/>'
+	el: '#app',
+	store: store,
+	router,
+	components: {
+		App,
+		VueCkeditor
+	},
+	template: '<App/>'
 })

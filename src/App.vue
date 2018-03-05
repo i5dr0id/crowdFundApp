@@ -1,7 +1,11 @@
 <template>
   <div id="app">
+
+	
+
     <app-header></app-header>
     <!-- <img src="./assets/logo.png"> -->
+	<!-- <app-cp> </app-cp> -->
     <router-view/>
     <app-footer> </app-footer>
   </div>
@@ -13,7 +17,7 @@ import footer from "./components/footer.vue";
 export default {
   components: {
     "app-header": header,
-    "app-footer": footer
+	"app-footer": footer
   },
   name: 'App'
 }

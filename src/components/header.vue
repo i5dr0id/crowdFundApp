@@ -29,7 +29,7 @@
 				<!-- LOGGED IN USER NAV -->
 				<ul class="navbar-nav" v-if="username">
 					<li class="nav-item">
-						<a class="nav-link" href="/campaign" data-toggle="modal" data-target=".login-modal-lg">My Campaigns</a>
+						<a class="nav-link" href="/campaign">My Campaigns</a>
 					</li>
 					<!-- <li class="nav-item">
 						<a class="nav-link" href="/register" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>
@@ -50,11 +50,17 @@
 
 				<!-- GUEST USER NAV -->
 				<ul class="navbar-nav" v-else>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a class="nav-link" href="/login" data-toggle="modal" data-target=".login-modal-lg">Login</a>
+					</li> -->
+					<!-- <li class="nav-item">
+						<a class="nav-link" href="/register" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>
+					</li> -->
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Login</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/register" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>
+						<a class="nav-link" href="/register">Sign up</a>
 					</li>
 				</ul>
 			</div>
@@ -100,7 +106,6 @@ export default {
   computed: {},
 
   mounted() {
-    console.log("mounted");
     this.username = localStorage.getItem("username");
 
     Event.$on("loggedIn", () => {
@@ -108,16 +113,15 @@ export default {
     });
   },
   created() {
-    console.log("Created itself");
     this.username = localStorage.getItem("username");
     if (this.username) {
-      console.log("user set from cretaed");
+
     }
   },
   beforeCreate() {
-    console.log("BEFORE CREATED");
-    // this.username = localStorage.getItem("username");
-    // console.log(this.username);
+
+    this.username = localStorage.getItem("username");
+
   }
 };
 </script>

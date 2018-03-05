@@ -12,10 +12,14 @@ import About from '@/components/About'
 import EditAccount from '@/components/EditAccount'
 import NewCampaign from '@/components/NewCampaign'
 import MyCampaign from '@/components/MyCampaign'
+import AspirantDashboard from '@/components/AspirantDashboard'
+import cp from '@/components/cp'
+import Explore from '@/components/Explore'
 
 Vue.use(Router)
 
 export default new Router({
+<<<<<<< HEAD
     routes: [{
             path: '/',
             name: 'Home',
@@ -78,4 +82,78 @@ export default new Router({
         }
     ],
     mode: 'history'
+=======
+	routes: [{
+			path: '/',
+			name: 'Home',
+			component: Index
+		},
+		{
+			path: '/index',
+			name: 'Index',
+			component: Index
+		},
+		{
+			path: '/login',
+			name: 'Login',
+			component: Login
+		},
+		{
+			path: '/register',
+			name: 'Register',
+			component: Register
+		},
+		{
+			path: '/edit',
+			name: 'Edit',
+			component: Edit
+		},
+		{
+			path: '/editstory',
+			name: 'EditStory',
+			component: EditStory
+		},
+		{
+			path: '/editperks',
+			name: 'EditPerks',
+			component: EditPerks
+		},
+		{
+			path: '/editabout',
+			name: 'EditAbout',
+			component: EditAbout
+		},
+		{
+			path: '/editaccount',
+			name: 'EditAccount',
+			component: EditAccount
+		},
+		{
+			path: "/add",
+			name: NewCampaign,
+			component: NewCampaign
+		},
+		{
+			path: "/campaign",
+			name: MyCampaign,
+			component: MyCampaign
+		},
+		{
+			path: "/aspirant/:id",
+			name: AspirantDashboard,
+			component: AspirantDashboard
+		},
+		{
+			path: "/cp",
+			name: cp,
+			component: cp
+		},
+		{
+			path: "/explore",
+			name: Explore,
+			component: Explore
+		}
+	],
+	mode: 'history'
+>>>>>>> 9f57dd7291e92224e8524689dfb11cef33e463ea
 })

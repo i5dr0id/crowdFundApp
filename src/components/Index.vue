@@ -7,7 +7,7 @@
 		<!--  -->
 		<!--  -->
 		<!--  -->
-		<div class="container-fluid inner hidden-xs-down" style="height: 560px;">
+		<!-- <div class="container-fluid inner hidden-xs-down" style="height: 560px;"> -->
 			<!-- <br />
 			<br /> -->
 			<div class="row mt-5">
@@ -25,58 +25,9 @@
 										<!-- <span class="text-primary">Art</span> -->
 									</h2>
 									<br />
-									<div class="cardd ">
-										<div class="card-blocks">
-											<div class="row ">
-												<div class="col-sm-6">
-													<!-- <a href="" class="thumbnail"><img class="img-fluid img-thumbnail" src="images/eat-1892990_1920.jpg" /></a> -->
-													<a href="#" class="thumbnaidl">
-														<img class="img-fluid" src="https://unsplash.it/310/210?image=1081" /> </a>
-												</div>
-												<div class="col-sm-6">
-													<h4 class="display-8">
-														<a href="project.html">I'm making a Potato salad</a>
-													</h4>
-													<p class="text-muted">By
-														<strong>
-															<a href="http://templates.expresspixel.com/project" class="text-muted">Otto Payne</a>
-														</strong> in
-														<strong>London, UK</strong>
-													</p>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vulputate et odio eu tempus. Donec turpis
-														justo.Suspendisse vulputate et odio eu tempus. Suspendisse vulputate et odio eu tempus. </p>
-													<br />
-													<div class="progress">
-														<div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-													</div>
-													<p>20% funded</p>
-												</div>
-											</div>
-										</div>
-										<div class="card-footer text-muted mt-4" style="background: #f7f8fa">
-											<div class="row ">
-												<div class="col-sm-12">
-													<div class="row ">
-														<div class="col">
-															<p class="mt-0 mb-0">Pledged</p>
-															<h5 class="mt-0 mb-0">&dollar;50,000</h5>
-														</div>
-														<div class="col">
-															<p class="mt-0 mb-0">Backers</p>
-															<h5 class="mt-0 mb-0">250</h5>
-														</div>
-														<div class="col">
-															<p class="mt-0 mb-0">Days Left</p>
-															<h5 class="mt-0 mb-0">27</h5>
-														</div>
-														<div class="col">
-															<p class="mt-0 mb-0">Funding goal</p>
-															<h5 class="mt-0 mb-0">&dollar;175,000</h5>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+									<div class="card ">
+										<iframe  width="100%" height="500" src="https://www.youtube.com/embed/Pwq89K6RBTI" frameborder="0"
+									allowfullscreen></iframe>
 									</div>
 								</div>
 							</div>
@@ -89,7 +40,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		<!-- </div> -->
 		<!--  -->
 		<!--  -->
 		<!--  -->
@@ -97,7 +48,7 @@
 		<!--  -->
 		<!--  -->
 		<!--  -->
-		<div class=" light-blue  mt-3 pt-5 pb-5">
+		<div class=" light-green  mt-3 pt-5 pb-5">
 			<div class="container-fluid inner">
 				<div class="row">
 					<div class="col-8">
@@ -110,7 +61,7 @@
 				<div class="row">
 					<div class="boxes swiper-container">
 						<div class="row mt-2 swiper-wrapper">
-							<div class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
+							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
 									<a href="project.html">
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down" />
@@ -193,7 +144,7 @@
 				<div class="row">
 					<div class="boxes swiper-container">
 						<div class="row mt-2 swiper-wrapper">
-							<div class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
+							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
 									<a href="project.html">
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=51" class="img-fluid hidden-xs-down" />
@@ -263,11 +214,11 @@
 		<!--  -->
 		<!--  -->
 		<!--  -->
-		<div class=" light-blue  mt-5 pt-5 pb-5">
+		<div class=" light-green  mt-5 pt-5 pb-5">
 			<div class="container-fluid inner">
 				<div class="row">
 					<div class="col-8">
-						<h3 class="explore.html">Explore</h3>
+						<h3 class="explore">Explore</h3>
 					</div>
 					<div class="col-4">
 						<a href="/explore" class="btn btn-secondary pull-right">View more</a>
@@ -276,7 +227,7 @@
 				<div class="row">
 					<div class="boxes swiper-container">
 						<div class="row mt-2 swiper-wrapper">
-							<div class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
+							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
 									<a href="project.html">
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=91" class="img-fluid hidden-xs-down" />
@@ -435,7 +386,7 @@
 		<!--  -->
 		<!--  -->
 		<!--  -->
-		<div class=" light-blue  mt-5 pt-5 pb-5">
+		<div class=" light-green  mt-5 pt-5 pb-5">
 			<div class="container-fluid">
 				<div class="row mt-3">
 					<div class="col-12 col-md-10 offset-md-1">
@@ -633,11 +584,71 @@
 		name: "Index",
 		data() {
 			return {
-				msg: "Welcome to Your Vue.js App"
+				alias: '',
+				city: '',
+				created: '',
+				email: '',
+				firstname: '',
+				fund: '',
+				gender: '',
+				image: '',
+				lastname: '',
+				party: '',
+				position: '',
+				facebook: '',
+				twitter: '',
+				state: '',
+				story: '',
+				updated: '',
+				user_id: '',
+				video: '',
+				vision: '',
+				_id: '',
+				items: [],
+				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
 			};
-		}
+		},
+		mounted() {
+			this.axios.get(this.api).then(response => {
+				// console.log("===================");
+				// console.log(response.data);
+				// console.log("===================");
+				this.items = response.data.aspirants;
+				console.log(this.items);
+				this.alias = this.items.alias;
+				this.city = this.items.city;
+				this.created = this.items.created;
+				this.email = this.items.email;
+				this.firstname = this.items.firstname;
+				this.fund = this.items.fund;
+				this.gender = this.items.gender;
+				this.image = this.items.image;
+				this.lastname = this.items.lastname;
+				this.party = this.items.party;
+				this.position = this.items.position;
+				this.state = this.items.state;
+				this.story = this.items.story;
+				this.updated = this.items.updated;
+				this.user_id = this.items.user_id;
+				this.vision = this.items.vision;
+				this._id = this.items._id
+				console.log("===================");
+				console.log(this.$refs);
+				console.log("===================");
+				// console.log(this.image)
+				// this.$refs.imgg.src = this.image;
+				// this.$refs.candidate_img2.src = this.image;
+				// console.log(this.$refs);
+
+				// this.$refs.candidate_img2.src = this.image;
+			});
+			}
 	};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.light-green{
+	background-color: #e6fde6;
+}
 </style>

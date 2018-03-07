@@ -6,7 +6,7 @@
 			    aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand white" href="/index" ><h3>CrowdFundApp</h3></a>
+			<a class="navbar-brand white" href="/index" ><h3 class="nvb-brand">CrowdFundApp</h3></a>
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
@@ -114,13 +114,10 @@ export default {
   created() {
     this.username = localStorage.getItem("username");
     if (this.username) {
-
     }
   },
   beforeCreate() {
-
     this.username = localStorage.getItem("username");
-
   }
 };
 </script>
@@ -171,11 +168,23 @@ export default {
 }
 
 .green {
-	background-color: #006600 !important;
-
+  background-color: #006600 !important;
 }
 
 .white {
-		color: #ffff !important	;
+  color: #ffff !important;
+}
+
+.navbar-brand {
+ 
+  font-size: 15px;
+  font-weight: 400 !important;
+  font-style: normal;
+  line-height: 21px;
+}
+
+.navbar-brand > h3{
+	    font-weight: bold;
+		 font-family: "Playfair Display SC", serif;
 }
 </style>

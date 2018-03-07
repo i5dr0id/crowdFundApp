@@ -280,7 +280,8 @@
 				const config = {
 					headers: {
 						"X-Requested-With": "XMLHttpRequest"
-					}
+					},
+					onUploadProgress: 
 				};
 				this.axios.post(this.cloudinary_url, fD, config).then(response => {
 					this.image = response.data.secure_url;

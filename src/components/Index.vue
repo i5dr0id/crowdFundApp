@@ -329,7 +329,7 @@
 						<div class="swiper-wrapper">
 							<div class="swiper-slide" data-hash="art">
 								<div>
-									<h2 class="text-center">Crowdfunding for politics
+									<h2 class="text-center">Fund This Campaign 
 										<!-- <span class="text-primary">Art</span> -->
 									</h2>
 									<br />
@@ -343,13 +343,13 @@
 												</div>
 												<div class="col-sm-6">
 													<h4 class="display-8">
-														<a href="#">I'm making a Potato salad</a>
+														<a href="#">Goverment for the people</a>
 													</h4>
-													<p class="text-muted">By
+													<p class="text-muted">
 														<strong>
-															<a href="http://templates.expresspixel.com/project" class="text-muted">Otto Payne</a>
-														</strong> in
-														<strong>London, UK</strong>
+															<a href="http://templates.expresspixel.com/project" class="text-muted">Israel Benoni</a>
+														</strong> for 
+														<strong>Chairman, Yaba</strong>
 													</p>
 													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vulputate et odio eu tempus. Donec turpis
 														justo.Suspendisse vulputate et odio eu tempus. Suspendisse vulputate et odio eu tempus. </p>

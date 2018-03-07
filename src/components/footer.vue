@@ -88,3 +88,10 @@
 		</div>
 	</footer>
 </template>
+
+
+<style>
+.footer {
+	background-color: #006600 !important;
+}
+</style>

@@ -14,6 +14,7 @@ import MyCampaign from '@/components/MyCampaign'
 import AspirantDashboard from '@/components/AspirantDashboard'
 import cp from '@/components/cp'
 import Explore from '@/components/Explore'
+import NotFound from '@/components/NotFound'
 
 Vue.use(Router)
 
@@ -87,7 +88,12 @@ export default new Router({
 			path: "/explore",
 			name: Explore,
 			component: Explore
-		}
+		},
+		{
+			path: "*",
+			name: NotFound,
+			component: NotFound
+		},
 	],
 	mode: 'history'
 })

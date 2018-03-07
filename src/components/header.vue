@@ -6,7 +6,7 @@
 			    aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand white" href="/index" >CrowdFundApp</a>
+			<a class="navbar-brand white" href="/index" ><h3>CrowdFundApp</h3></a>
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">

@@ -27,15 +27,16 @@
 										<router-link :to="/aspirant/ + item._id">
 									<div class="size-up">
 										<img v-if="item.image" ref="imgg" :src="item.image" class="img-thumbnail">
-										<img v-else ref="imgg" src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down img-thumbnail" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up img-thumbnail" /></div></router-link>  </a>
+										<div v-else>
+										<img ref="imgg" src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down img-thumbnail" />
+										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up img-thumbnail" /></div></div></router-link>  </a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
 											<a href="#"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
 										</h6>
 										<p class="text-muted">
 											<strong>
-												<a href="/aspdb" class="text-muted">{{ item.vision }}</a>
+												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
 											</strong>
 										</p>
 										<p class="desc">MTS ASL Curriculum Workbook is a reproducible study book to build Early Literacy and Academic skills for primary

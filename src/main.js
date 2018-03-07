@@ -9,6 +9,9 @@ import VueAxios from 'vue-axios'
 import VueCkeditor from 'vueckeditor'
 import VeeValidate from 'vee-validate'
 
+import moment from 'moment'
+Vue.prototype.moment = moment
+
 import { Button, Select, Loading } from 'element-ui';
 
 // import Element from 'element-ui';

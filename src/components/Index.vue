@@ -63,20 +63,25 @@
 						<div class="row mt-2 swiper-wrapper">
 							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
-									<a href="project.html">
+									<a href="#">
+										<router-link :to="/aspirant/ + item._id">
+										<img v-if="item.image" ref="imgg" :src="item.image" class="img-thumbnail">
+										<div v-else>
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up" /> </a>
+										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up" />
+										</div>
+										</router-link> 
+										</a> 
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="project.html">architect frictionless supply-chains</a>
+											<a href="#"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
 										</h6>
 										<p class="text-muted">By
 											<strong>
-												<a href="project.html" class="text-muted">Jonathan Howell</a>
+												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
 											</strong>
 										</p>
-										<p class="desc">MTS ASL Curriculum Workbook is a reproducible study book to build Early Literacy and Academic skills for primary
-											school age children.</p>
+										<p class="desc">{{ item.story }}</p>
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
@@ -144,22 +149,27 @@
 				<div class="row">
 					<div class="boxes swiper-container">
 						<div class="row mt-2 swiper-wrapper">
-							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
+							<div v-for="cand,index in latest" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
-									<a href="project.html">
+									<a href="#">
+										<router-link :to="/aspirant/ + cand._id">
+										<img v-if="cand.image" ref="imgg" :src="cand.image" class="img-thumbnail img-fluid hidden-xs-down">
+										<div v-else>
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=51" class="img-fluid hidden-xs-down" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=51" class="img-fluid hidden-sm-up" /> </a>
+										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=51" class="img-fluid hidden-sm-up" /> 
+										</div>
+										</router-link>
+									</a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="project.html">envisioneer viral functionalities</a>
+											<a href="#"><router-link :to="/aspirant/ + cand._id">{{ cand.vision }}</router-link></a>
 										</h6>
 										<p class="text-muted">By
 											<strong>
-												<a href="project.html" class="text-muted">Alice Long</a>
+												<a href="#" class="text-muted"><router-link :to="/aspirant/ + cand._id">{{ cand.firstname +' '+ cand.lastname }}</router-link></a>
 											</strong>
 										</p>
-										<p class="desc">Zu den Artikeln der DSGVO sind die korrespondierenden Erwägungsgründe und die vergleichbaren Regelungen aus dem
-											BDSG gegenüber gestellt</p>
+										<p class="desc">{{ cand.story }}</p>
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
@@ -229,19 +239,23 @@
 						<div class="row mt-2 swiper-wrapper">
 							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
-									<a href="project.html">
+									<a href=""><router-link :to="/aspirant/ + item._id">
+										<img v-if="item.image" ref="imgg" :src="item.image" class="img-thumbnail">
+										<div v-else>
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=91" class="img-fluid hidden-xs-down" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=91" class="img-fluid hidden-sm-up" /> </a>
+										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=91" class="img-fluid hidden-sm-up" /> 
+										</div>
+										</router-link></a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="project.html">recontextualize 24/7 portals</a>
+											<a href="#"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
 										</h6>
 										<p class="text-muted">By
 											<strong>
-												<a href="project.html" class="text-muted">Roy Jackson</a>
+												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
 											</strong>
 										</p>
-										<p class="desc">V.I.P.-Architecture shows the most iconic, the most famous and most important buildings of our planet in one book.</p>
+										<p class="desc">{{ item.vison}}</p>
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 51%" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100"></div>
@@ -324,7 +338,7 @@
 												</div>
 												<div class="col-sm-6">
 													<h4 class="display-8">
-														<a href="project.html">I'm making a Potato salad</a>
+														<a href="#">I'm making a Potato salad</a>
 													</h4>
 													<p class="text-muted">By
 														<strong>
@@ -606,13 +620,21 @@
 				_id: '',
 				items: [],
 				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
+				revs: [],
 			};
+		},
+		computed: {
+			latest: function() {
+				return this.revs.sort(function(left, right){
+					return moment.utc(right.created).diff(moment.utc(left.created))
+				});
+			}
 		},
 		mounted() {
 			this.axios.get(this.api).then(response => {
-				// console.log("===================");
-				// console.log(response.data);
-				// console.log("===================");
+				console.log("===================");
+				console.log(response.data);
+				console.log("===================");
 				this.items = response.data.aspirants;
 				console.log(this.items);
 				this.alias = this.items.alias;
@@ -631,16 +653,13 @@
 				this.updated = this.items.updated;
 				this.user_id = this.items.user_id;
 				this.vision = this.items.vision;
-				this._id = this.items._id
-				console.log("===================");
-				console.log(this.$refs);
-				console.log("===================");
-				// console.log(this.image)
-				// this.$refs.imgg.src = this.image;
-				// this.$refs.candidate_img2.src = this.image;
+				this._id = this.items._id;
+				// this.revs = response.data.aspirants;
+				this.revs = JSON.parse(JSON.stringify(this.items));
+				// console.log("===================");
 				// console.log(this.$refs);
+				// console.log("===================");
 
-				// this.$refs.candidate_img2.src = this.image;
 			});
 			}
 	};

@@ -79,14 +79,14 @@
 										</a> 
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="#"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
+											<a href="#" class="limited-text-vision"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
 										</h6>
 										<p class="text-muted">By
 											<strong>
 												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
 											</strong>
 										</p>
-										<p class="desc">{{ item.story }}</p>
+										<p class="desc limited-text-story">{{ item.story }}</p>
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
@@ -167,14 +167,15 @@
 									</a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="#"><router-link :to="/aspirant/ + cand._id">{{ cand.vision }}</router-link></a>
+											<a href="#" class="limited-text-vision"><router-link :to="/aspirant/ + cand._id"> {{ cand.firstname +' '+ cand.lastname }}</router-link></a>
 										</h6>
-										<p class="text-muted">By
+										<p class="text-muted limited-text-vision">
 											<strong>
-												<a href="#" class="text-muted"><router-link :to="/aspirant/ + cand._id">{{ cand.firstname +' '+ cand.lastname }}</router-link></a>
+												<a href="#" class="text-muted"><router-link :to="/aspirant/ + cand._id">{{ cand.vision }}</router-link></a>
 											</strong>
 										</p>
-										<p class="desc">{{ cand.story }}</p>
+										<p class="desc limited-text-story">{{ cand.story }}</p>
+										<a href="#"><router-link :to="/aspirant/ + cand._id"><span>read more</span></router-link></a>
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
@@ -676,4 +677,27 @@
 	background-color:#006600 !important;
 }
 
+
+.card {
+    border: 1px solid rgb(254,205,11);
+}
+.limited-text-vision{
+	  display: block;
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.limited-text-story{
+  word-break: break-all; 
+}
+
+.btn {
+    border: 2px solid rgb(254,205,11);
+    border-radius: 0.25rem;
+    background-color: #006600;
+    color: #ddd;
+}
 </style>

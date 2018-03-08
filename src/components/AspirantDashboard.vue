@@ -2,6 +2,8 @@
 	<div id="asdb">
 		<br/>
 		<br/>
+		<br/>
+		<br/>
 		<div class="container inner">
 			<div class="row">
 				<div class="col-sm-8">
@@ -135,26 +137,7 @@
 											<a href="#" class="card-link">Read more</a>
 										</div>
 									</div>
-									<!-- <div class="card mb-4">
-										<div class="card-block">
-											<h5 class="card-title">The Mid-Campaign March + 300 Backers!</h5>
-											<h6 class="card-subtitle mb-2 text-muted">March 7</h6>
-											<p class="card-text">Within the last 24 hours, our campaign has surpassed
-												<b>300 backers and $35,000</b>! THANK YOU to everyone who has graciously donated to our campaign over the past two
-												weeks....</p>
-											<a href="#" class="card-link">Read more</a>
-										</div>
-									</div> -->
-									<!-- <div class="card">
-										<div class="card-block">
-											<h5 class="card-title">Wow! 50% funded... in the first 9 hours???</h5>
-											<h6 class="card-subtitle mb-2 text-muted">March 7</h6>
-											<p class="card-text">Within the last 9 hours, our campaign has made 50% of what we set out to reach. Thanks so much guys!!! Nunc id
-												hendrerit eros. In porta, urna sed condimentum aliquam, felis orci vestibulum odio, et dictum risus libero at
-												nisi.</p>
-											<a href="#" class="card-link">Read more</a>
-										</div>
-									</div> -->
+	
 								</div>
 								<div class="tab-pane" id="comments" role="tabpanel" aria-expanded="false">
 									<ul class="comment-section mt-0">
@@ -168,33 +151,7 @@
 												</a>
 											<p class="float-right">Suspendisse gravida sem? Suspendisse gravida sem? </p>
 										</li>
-										<!-- <li class="comment author-comment">
-											<div class="info">
-												<a href="#">Jack Smith</a>
-												<span>3 hours ago</span>
-											</div>
-											<a class="avatar" href="#">
-												<img src="images/team/commadelimited.jpg" width="35" alt="Profile Avatar" title="Jack Smith"> </a>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida sem sit amet molestie portitor.</p>
-										</li> -->
-										<!-- <li class="comment user-comment">
-											<div class="info">
-												<a href="#">Bradley Jones</a>
-												<span>1 hour ago</span>
-											</div>
-											<a class="avatar" href="#">
-												<img src="images/team/pixeliris.jpg" width="35" alt="Profile Avatar" title="Bradley Jones"> </a>
-											<p>Suspendisse gravida sem sit amet molestie portitor?</p>
-										</li> -->
-										<!-- <li class="comment author-comment">
-											<div class="info">
-												<a href="#">Jack Smith</a>
-												<span>1 hour ago</span>
-											</div>
-											<a class="avatar" href="#">
-												<img src="images/team/commadelimited.jpg" width="35" alt="Profile Avatar" title="Jack Smith"> </a>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisee gravida sem sit amet molestie porttitor.</p>
-										</li> -->
+
 										<li class="write-new">
 											<form action="#" method="post">
 												<div class="row">
@@ -213,7 +170,7 @@
 												<!-- </div> -->
 												<div>
 													<!-- <img src="images/team/commadelimited.jpg" width="35" alt="Profile of Bradley Jones" title="Bradley Jones"> -->
-													<button type="submit" class="btn btn-primary">ENDORSE</button>
+													<button type="submit" class="btn btn-pri">ENDORSE</button>
 												</div>
 											</form>
 										</li>
@@ -251,7 +208,7 @@
 													<br />
 													<br /> </div>
 											</div>
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Support this campaign</a>
+											<a href="# " class="btn btn-lg btn-pri btn-block ">Support this campaign</a>
 											<br />
 											<!-- <p>This project will only be funded if at least $15,000 is pledged by Wednesday May 8, 3:00pm</p> -->
 										</div>
@@ -264,193 +221,76 @@
 							<hr />
 							<div id="accordion " role="tablist " aria-multiselectable="true ">
 								<div class="card ">
-									<div class="card-header " role="tab " id="heading2 ">
+									<div class="card-header text-center" role="tab " id="heading2 ">
 										<h6 class="mb-0 ">
 											<a data-toggle="collapse " data-parent="#accordion " href="#collapse2 " aria-expanded="true " aria-controls="collapse2 ">
-											Donante &#8358;5000 or more </a>
+											Donante &#8358;5000  </a>
 										</h6>
 									</div>
-									<div id="collapse2 " class="collapse " role="tabpanel " aria-labelledby="heading2 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
-									</div>
+	
 								</div>
 								<div class="card ">
-									<div class="card-header " role="tab " id="heading3 ">
+									<div class="card-header text-center" role="tab " id="heading3 ">
 										<h6 class="mb-0 ">
 											<a data-toggle="collapse " data-parent="#accordion " href="#collapse3 " aria-expanded="true " aria-controls="collapse3 ">
-											Donate &#8358;10,000 or more </a>
+											Donate &#8358;10,000 </a>
 										</h6>
 									</div>
-									<div id="collapse3 " class="collapse " role="tabpanel " aria-labelledby="heading3 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
-									</div>
+					
 								</div>
 								<div class="card ">
-									<div class="card-header " role="tab " id="heading4 ">
+									<div class="card-header text-center " role="tab " id="heading4 ">
 										<h6 class="mb-0 ">
 											<a data-toggle="collapse " data-parent="#accordion " href="#collapse4 " aria-expanded="true " aria-controls="collapse4 ">
-											Donate &#8358;20,000 or more </a>
+											Donate &#8358;20,000	 </a>
 										</h6>
 									</div>
-									<div id="collapse4 " class="collapse " role="tabpanel " aria-labelledby="heading4 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
-									</div>
+						
 								</div>
 								<div class="card ">
-									<div class="card-header " role="tab " id="heading5 ">
+									<div class="card-header text-center " role="tab " id="heading5 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse5 " aria-expanded="true " aria-controls="collapse5 ">
-											Pledge &#8358;50,000 or more </a>
+											<a data-toggle="collapse text-center " data-parent="#accordion " href="#collapse5 " aria-expanded="true " aria-controls="collapse5 ">
+											Donate &#8358;50,000  </a>
 										</h6>
 									</div>
-									<div id="collapse5 " class="collapse " role="tabpanel " aria-labelledby="heading5 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
-									</div>
+						
 								</div>
 								<div class="card ">
-									<div class="card-header " role="tab " id="heading6 ">
+									<div class="card-header text-center " role="tab " id="heading6 ">
 										<h6 class="mb-0 ">
 											<a data-toggle="collapse " data-parent="#accordion " href="#collapse6 " aria-expanded="true " aria-controls="collapse6 ">
-											Donate &#8358;100,000 or more </a>
+											Donate &#8358;100,000  </a>
 										</h6>
 									</div>
-									<div id="collapse6 " class="collapse " role="tabpanel " aria-labelledby="heading6 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
-									</div>
+
 								</div>
 								<div class="card ">
-									<div class="card-header " role="tab " id="heading7 ">
+									<div class="card-header  text-center" role="tab " id="heading7 ">
 										<h6 class="mb-0 ">
 											<a data-toggle="collapse " data-parent="#accordion " href="#collapse7 " aria-expanded="true " aria-controls="collapse7 ">
-											Donate &#8358;100,000 or more </a>
+											Donate &#8358;200,000  </a>
 										</h6>
 									</div>
-									<div id="collapse7 " class="collapse " role="tabpanel " aria-labelledby="heading7 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
-									</div>
+
 								</div>
 								<div class="card ">
-									<div class="card-header " role="tab " id="heading8 ">
+									<div class="card-header  text-center" role="tab " id="heading7 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse8 " aria-expanded="true " aria-controls="collapse8 ">
-											Donate &#8358;1,000,000 or more </a>
+											<a data-toggle="collapse " data-parent="#accordion " href="#collapse7 " aria-expanded="true " aria-controls="collapse7 ">
+											Donate &#8358;500,000  </a>
 										</h6>
 									</div>
-									<div id="collapse8 " class="collapse " role="tabpanel " aria-labelledby="heading8 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
+
+								</div>
+								<div class="card ">
+									<div class="card-header text-center" role="tab " id="heading8 ">
+										<h6 class="mb-0 ">
+											<a data-toggle="collapse " data-parent="#accordion " href="#collapse8 " aria-expanded="true " aria-controls="collapse8 ">
+											Donate &#8358;1,000,000  </a>
+										</h6>
 									</div>
+				
 								</div>
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading9 ">
@@ -459,53 +299,9 @@
 											Others </a>
 										</h6>
 									</div>
-									<div id="collapse9 " class="collapse " role="tabpanel " aria-labelledby="heading9 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
-									</div>
+				
 								</div>
-								<!-- <div class="card ">
-									<div class="card-header " role="tab " id="heading10 ">
-										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse10 " aria-expanded="true " aria-controls="collapse10 ">
-											Pledge $10 or more </a>
-										</h6>
-									</div>
-									<div id="collapse10 " class="collapse " role="tabpanel " aria-labelledby="heading10 ">
-										<div class="card-block ">
-											<h5>
-												<strong>SuperBox Receiver</strong>
-											</h5>
-											<p>Have more than one device? Get another Android or iOS receiver for your smartphone! Free shipping!</p>
-											<p>Items included:</p>
-											<ul>
-												<li>Receiver</li>
-												<li>Receiver</li>
-											</ul>
-											<small class="text-muted ">172 claimed</small>
-											<br />
-											<small class="text-muted ">Ships Worldwide</small>
-											<br />
-											<br />
-											<a href="# " class="btn btn-lg btn-primary btn-block ">Select this reward</a>
-										</div>
-									</div>
-								</div> -->
+
 								<br>
 								<br>
 								<div class="card ">
@@ -631,4 +427,75 @@
 		width:100%;
 		height:100%;
 	}
+
+	.card {
+		    border: 1px solid rgb(254,205,11);
+	}
+
+	.card-header {
+
+ background-color: #ffffff; 
+ border-bottom: none; 
+ color: green
+}
+	.card-header:hover {
+
+ background-color: #006600;
+ border-bottom: none; 
+ color :rgb(254,205,11);
+}
+
+a:focus, a:hover {
+    color: rgb(254,205,11);
+    text-decoration: underline;
+}
+
+hr {
+    border-color: rgb(254,205,11);
+}
+
+.btn-pri{
+	color : rgb(254,205,11);
+	background-color:  #006600;
+		border-color:  rgb(254,205,11)!important;
+}
+
+.btn-pri:hover{
+	background-color: rgb(254,205,11);
+	color : #006600;
+		border-color:  #006600!important;
+}
+
+.progress {
+    background-color: #ffe795;
+}
+
+.progress-bar {
+    background-color: #006600;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #ffe795;
+}
+
+.img-thumbnail{
+	border-color: #ffe795;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #006600;
+    background-color: #fff;
+    border-color: #ffe795 #ffe795 #fff;
+}
+
+.nav-tabs > li > a {
+	color: #818a91;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-color: #ffe795 #ffe795 #ffe795;
+	/* color: #006600;
+    background-color: #fff;
+    border-color: #ffe795 #ffe795 #fff; */
+}
 </style>

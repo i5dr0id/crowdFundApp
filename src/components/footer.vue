@@ -95,8 +95,7 @@
 	background-color: #006600 !important;
 	border: 1px solid;
     padding: 10px;
-    /* box-shadow: 0px 0px 0px 7px rgb(254,205,11); */
-	    box-shadow: 0px 0px 0px 7px red;
+    box-shadow: 0px 0px 0px 7px rgb(254,205,11);
 }
 
 </style>

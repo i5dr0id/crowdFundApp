@@ -191,16 +191,13 @@ export default {
 .navbar {
 	border: 1px solid;
     padding: 10px;
-    /* box-shadow: 0px 7px rgb(254,205,11); */
-	box-shadow: 0px 7px red;
+    box-shadow: 0px 7px rgb(254,205,11);
 }
 
 .btn {
-	    /* border: 2px solid rgb(254,205,11); */
-		border: 2px solid red;
+	    border: 2px solid rgb(254,205,11);
 		border-radius: 0.25rem;
-		/* background-color:#006600; */
-		background-color:red;
+		background-color:#006600;
 		color:#ddd;
 }
 .nav-link {

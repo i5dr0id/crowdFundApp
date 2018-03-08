@@ -187,4 +187,10 @@ export default {
 	    font-weight: bold;
 		 font-family: "Playfair Display SC", serif;
 }
+
+.navbar {
+	border: 1px solid;
+    padding: 10px;
+    box-shadow: 0px 7px rgb(254,205,11);
+}
 </style>

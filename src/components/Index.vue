@@ -603,26 +603,6 @@
 		name: "Index",
 		data() {
 			return {
-				// alias: '',
-				// city: '',
-				// created: '',
-				// email: '',
-				// firstname: '',
-				// fund: '',
-				// gender: '',
-				// image: '',
-				// lastname: '',
-				// party: '',
-				// position: '',
-				// facebook: '',
-				// twitter: '',
-				// state: '',
-				// story: '',
-				// updated: '',
-				// user_id: '',
-				// video: '',
-				// vision: '',
-				// _id: '',
 				items: [],
 				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
 				org_link : 'https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/',
@@ -690,6 +670,10 @@
     width: 100%;
     height: 13vw;
     object-fit: cover;
+}
+
+.btn-primary {
+	background-color:#006600 !important;
 }
 
 </style>

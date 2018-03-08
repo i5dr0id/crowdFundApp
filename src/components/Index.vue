@@ -70,7 +70,7 @@
 								<div class="card box">
 									<a href="#">
 										<router-link :to="/aspirant/ + item._id">
-										<img v-if="item.image" ref="imgg" :src="item.image" class="img-thumbnail">
+										<img v-if="item.image" ref="imgg" :src="imageUri(item.image)" class="card-img-top img-fluid">
 										<div v-else>
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down" />
 										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up" />
@@ -158,7 +158,7 @@
 								<div class="card box">
 									<a href="#">
 										<router-link :to="/aspirant/ + cand._id">
-										<img v-if="cand.image" ref="imgg" :src="cand.image" class="img-thumbnail img-fluid hidden-xs-down">
+										<img v-if="cand.image" ref="imgg" :src="cand.image" class="card-img-top img-fluid">
 										<div v-else>
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=51" class="img-fluid hidden-xs-down" />
 										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=51" class="img-fluid hidden-sm-up" /> 
@@ -245,7 +245,7 @@
 							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
 									<a href=""><router-link :to="/aspirant/ + item._id">
-										<img v-if="item.image" ref="imgg" :src="item.image" class="img-thumbnail">
+										<img v-if="item.image" ref="imgg" :src="item.image" class="card-img-top img-fluid">
 										<div v-else>
 										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=91" class="img-fluid hidden-xs-down" />
 										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=91" class="img-fluid hidden-sm-up" /> 
@@ -339,7 +339,7 @@
 												<div class="col-sm-6">
 													<!-- <a href="" class="thumbnail"><img class="img-fluid img-thumbnail" src="images/eat-1892990_1920.jpg" /></a> -->
 													<a href="#" class="thumbnaidl">
-														<img class="img-fluid" src="https://unsplash.it/310/210?image=1081" /> </a>
+														<img class="card-img-top img-fluid" src="https://unsplash.it/310/210?image=1081" /> </a>
 												</div>
 												<div class="col-sm-6">
 													<h4 class="display-8">
@@ -603,28 +603,29 @@
 		name: "Index",
 		data() {
 			return {
-				alias: '',
-				city: '',
-				created: '',
-				email: '',
-				firstname: '',
-				fund: '',
-				gender: '',
-				image: '',
-				lastname: '',
-				party: '',
-				position: '',
-				facebook: '',
-				twitter: '',
-				state: '',
-				story: '',
-				updated: '',
-				user_id: '',
-				video: '',
-				vision: '',
-				_id: '',
+				// alias: '',
+				// city: '',
+				// created: '',
+				// email: '',
+				// firstname: '',
+				// fund: '',
+				// gender: '',
+				// image: '',
+				// lastname: '',
+				// party: '',
+				// position: '',
+				// facebook: '',
+				// twitter: '',
+				// state: '',
+				// story: '',
+				// updated: '',
+				// user_id: '',
+				// video: '',
+				// vision: '',
+				// _id: '',
 				items: [],
 				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
+				org_link : 'https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/',
 				revs: [],
 			};
 		},
@@ -635,30 +636,39 @@
 				});
 			}
 		},
+
+		methods: {
+			imageUri: function(imgUri){
+				var splitted = imgUri.split("/");
+				// console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
+				return this.org_link+splitted[splitted.length-1].split('.')[0]+'.png';
+				return imgUri
+			}
+		},
 		mounted() {
 			this.axios.get(this.api).then(response => {
 				console.log("===================");
 				console.log(response.data);
 				console.log("===================");
 				this.items = response.data.aspirants;
-				console.log(this.items);
-				this.alias = this.items.alias;
-				this.city = this.items.city;
-				this.created = this.items.created;
-				this.email = this.items.email;
-				this.firstname = this.items.firstname;
-				this.fund = this.items.fund;
-				this.gender = this.items.gender;
-				this.image = this.items.image;
-				this.lastname = this.items.lastname;
-				this.party = this.items.party;
-				this.position = this.items.position;
-				this.state = this.items.state;
-				this.story = this.items.story;
-				this.updated = this.items.updated;
-				this.user_id = this.items.user_id;
-				this.vision = this.items.vision;
-				this._id = this.items._id;
+				// console.log(this.items);
+				// this.alias = this.items.alias;
+				// this.city = this.items.city;
+				// this.created = this.items.created;
+				// this.email = this.items.email;
+				// this.firstname = this.items.firstname;
+				// this.fund = this.items.fund;
+				// this.gender = this.items.gender;
+				// this.image = this.items.image;
+				// this.lastname = this.items.lastname;
+				// this.party = this.items.party;
+				// this.position = this.items.position;
+				// this.state = this.items.state;
+				// this.story = this.items.story;
+				// this.updated = this.items.updated;
+				// this.user_id = this.items.user_id;
+				// this.vision = this.items.vision;
+				// this._id = this.items._id;
 				// this.revs = response.data.aspirants;
 				this.revs = JSON.parse(JSON.stringify(this.items));
 				// console.log("===================");
@@ -675,4 +685,11 @@
 .light-green{
 	background-color: #e6fde6;
 }
+
+.card-img-top {
+    width: 100%;
+    height: 13vw;
+    object-fit: cover;
+}
+
 </style>

@@ -9,6 +9,7 @@ import EditStory from '@/components/EditStory'
 import EditPerks from '@/components/EditPerks'
 import EditAbout from '@/components/EditAbout'
 import About from '@/components/About'
+import Contact from '@/components/Contact'
 import EditAccount from '@/components/EditAccount'
 import NewCampaign from '@/components/NewCampaign'
 import MyCampaign from '@/components/MyCampaign'
@@ -19,7 +20,7 @@ import Explore from '@/components/Explore'
 Vue.use(Router)
 
 export default new Router({
-<<<<<<< HEAD
+
     routes: [{
             path: '/',
             name: 'Home',
@@ -61,11 +62,6 @@ export default new Router({
             component: EditAbout
         },
         {
-            path: '/about',
-            name: 'About',
-            component: About
-        },
-        {
             path: '/editaccount',
             name: 'EditAccount',
             component: EditAccount
@@ -79,81 +75,33 @@ export default new Router({
             path: "/campaign",
             name: MyCampaign,
             component: MyCampaign
+        },
+        {
+            path: "/aspirant/:id",
+            name: AspirantDashboard,
+            component: AspirantDashboard
+        },
+        {
+            path: "/cp",
+            name: cp,
+            component: cp
+        },
+        {
+            path: "/contact",
+            name: Contact,
+            component: Contact
+        },
+        {
+            path: "/explore",
+            name: Explore,
+            component: Explore
+        },
+        {
+            path: '/about',
+            name: 'About',
+            component: About
         }
     ],
     mode: 'history'
-=======
-	routes: [{
-			path: '/',
-			name: 'Home',
-			component: Index
-		},
-		{
-			path: '/index',
-			name: 'Index',
-			component: Index
-		},
-		{
-			path: '/login',
-			name: 'Login',
-			component: Login
-		},
-		{
-			path: '/register',
-			name: 'Register',
-			component: Register
-		},
-		{
-			path: '/edit',
-			name: 'Edit',
-			component: Edit
-		},
-		{
-			path: '/editstory',
-			name: 'EditStory',
-			component: EditStory
-		},
-		{
-			path: '/editperks',
-			name: 'EditPerks',
-			component: EditPerks
-		},
-		{
-			path: '/editabout',
-			name: 'EditAbout',
-			component: EditAbout
-		},
-		{
-			path: '/editaccount',
-			name: 'EditAccount',
-			component: EditAccount
-		},
-		{
-			path: "/add",
-			name: NewCampaign,
-			component: NewCampaign
-		},
-		{
-			path: "/campaign",
-			name: MyCampaign,
-			component: MyCampaign
-		},
-		{
-			path: "/aspirant/:id",
-			name: AspirantDashboard,
-			component: AspirantDashboard
-		},
-		{
-			path: "/cp",
-			name: cp,
-			component: cp
-		},
-		{
-			path: "/explore",
-			name: Explore,
-			component: Explore
-		}
-	],
-	mode: 'history'
->>>>>>> 9f57dd7291e92224e8524689dfb11cef33e463ea
+
 })

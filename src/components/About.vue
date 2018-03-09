@@ -1,8 +1,8 @@
 <template>
   <div>
-  <div class="jumbotron text-center">
+    <div class="jumbotron text-center">
        <h2>About Us</h2>
-     <h4>We Are Your Campaign Financial Assistant<br>We Help You Achieve Your Dream.</h4> 
+        <h4>We Are Your Campaign Financial Assistant<br>We Help You Achieve Your Dream.</h4> 
      </div>
 
      <!-- Container (About Section) -->

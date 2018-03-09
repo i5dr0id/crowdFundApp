@@ -26,20 +26,23 @@
 										<!-- <router-link :to="/campaigns/ + item._id">{{ item.alias }}</router-link> -->
 										<router-link :to="/aspirant/ + item._id">
 									<div class="size-up">
-										<img v-if="item.image" ref="imgg" :src="item.image" class="img-thumbnail">
-										<img v-else ref="imgg" src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down img-thumbnail" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up img-thumbnail" /></div></router-link>  </a>
+										<img v-if="item.image" ref="imgg" :src="item.image" class="card-img-top img-fluid">
+										<div v-else>
+										<img ref="imgg" src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down img-thumbnail" />
+										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up img-thumbnail" /></div></div></router-link>  </a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
 											<a href="#"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
 										</h6>
 										<p class="text-muted">
 											<strong>
-												<a href="/aspdb" class="text-muted">{{ item.vision }}</a>
+												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id"><p class="limited-text-vision">{{ item.vision }}</p></router-link></a>
 											</strong>
 										</p>
-										<p class="desc">MTS ASL Curriculum Workbook is a reproducible study book to build Early Literacy and Academic skills for primary
+										<p v-if="item.story" class="desc limited-text-story">{{ item.story }}</p>
+										<p v-else class="desc">MTS ASL Curriculum Workbook is a reproducible study book to build Early Literacy and Academic skills for primary
 											school age children.</p>
+										<a href="#"><router-link :to="/aspirant/ + item._id"><span>read more</span></router-link></a>
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
@@ -217,6 +220,24 @@ img {
     object-fit: contain;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 13vw;
+    object-fit: cover;
+}
+
+.limited-text-vision{
+	  display: block;
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+.limited-text-story{
+  word-break: break-all; 
+}
 /* .size-up > img {
 	min-height:500px;
 } */

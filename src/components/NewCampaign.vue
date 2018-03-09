@@ -46,7 +46,6 @@
 								<div class="form-group col-md-6">
 									<label for="inputGender">Gender</label>
 									<select id="inputGender" v-model="gender" class="form-control">
-										<option selected>Choose...</option>
 										<option>Male</option>
 										<option>Female</option>
 									</select>
@@ -126,47 +125,53 @@
 						<h4> More Info</h4>
 						<br>
 						<div class="form-group light-blue">
-						<div class="row">
-							<div class="col-md-6 mb-6">
-								<label for="">Vision</label>
-								<textarea class="form-control" v-model="vision" id="vision" rows="3"></textarea>
-								<!-- <input type="text" v-model="vision" class="form-control" id="pp" placeholder=""  required> -->
+							<div class="row">
+								<div class="col-md-6 mb-6">
+									<label for="">Vision</label>
+									<textarea class="form-control" v-model="vision" id="vision" rows="3"></textarea>
+									<!-- <input type="text" v-model="vision" class="form-control" id="pp" placeholder=""  required> -->
+								</div>
+								<div class="col-md-6 mb-6">
+									<label for="">Mission</label>
+									<textarea class="form-control" v-model="mission" id="mission" rows="3"></textarea>
+									<!-- <input type="text" v-model="mission" class="form-control" id="rf" placeholder="" required> -->
+								</div>
 							</div>
-							<div class="col-md-6 mb-6">
-								<label for="">Mission</label>
-								<textarea class="form-control" v-model="mission" id="mission" rows="3"></textarea>
-								<!-- <input type="text" v-model="mission" class="form-control" id="rf" placeholder="" required> -->
+							<br>
+							<div class="row">
+								<div class="col-md-12 mb-12">
+									<label for="">Story</label>
+									<!-- <textarea class="ckeditor" v-model="story" @input="onInput()" id="story" rows="10"></textarea> -->
+									<textarea class="form-control" v-model="story" id="story" rows="10"></textarea>
+									<!-- <h1>WHO IS THIS</h1>
+								<div v-html="story"> {{ story }} </div> -->
+								</div>
 							</div>
-							
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-md-12 mb-12">
-								<label for="">Story</label>
-								<textarea  class="form-control" v-model="story" id="story" rows="10"></textarea>
-
-							</div>
-						</div>
-						
 						</div>
 					</div>
-					<!--  -->
 					<div class="card card-body bg-light">
 						<h4>Upload Photo</h4>
 						<br>
 						<div class="form-group light-blue">
-						<div class="card-picture card-body light-blue">
-							<div class="row">
-								<div class="card-picture thumbnail">
-									<img ref="camimg" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-									id="img-preview" class="img-thumbnail" />
-									<label class="file-upload-container" for="file-upload">
-										<input v-on:change="uploadFile" id="file-upload" type="file" style="display:none;"> Select an Image </label>
+							<div class="card-picture card-body ">
+								<div class="row">
+									<div class="card-picture thumbnail">
+										<img ref="camimg" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+										id="img-preview" class="img-thumbnail" />
+										<label class="file-upload-container" for="file-upload">
+											<input v-on:change="uploadFile" id="file-upload" type="file" style="display:none;" accept=".png, .jpg, .jpeg"> Select an Image </label>
+									</div>
 								</div>
 							</div>
+							<!--  -->
 						</div>
-						<!--  --></div>
 					</div>
+					<!--  -->
+					<!--  -->
+					<!-- <el-button :plain="true" @click="open">Show message</el-button>
+					 <el-button type="primary">Primary</el-button> -->
+					<!--  -->
+					<!--  -->
 					<button type="submit" v-on:click="addCampaign" class="btn btn-success ">CREATE</button>
 					<p style="text-align:center">
 						<i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i>
@@ -212,6 +217,13 @@
 			};
 		},
 		methods: {
+			open() {
+				this.$message('This is a message.');
+			},
+			// console.log(),
+			onInput(e) {
+				console.log(this.story);
+			},
 			addCampaign(e) {
 				// console.log('CREATE CLICKED');
 				this.id = localStorage.getItem("id");
@@ -267,19 +279,21 @@
 				const config = {
 					headers: {
 						"X-Requested-With": "XMLHttpRequest"
-					}
+					},
+					// onUploadProgress
 				};
 				this.axios.post(this.cloudinary_url, fD, config).then(response => {
 					this.image = response.data.secure_url;
 					this.$refs.camimg.src = response.data.secure_url;
 				}, error => {
-					//   console.log("ERRORRORORORORO");
-					//   console.log(error);
+					  console.log("ERRORRORORORORO");
+					  console.log(error);
 				});
 			}
 		},
 		mounted() {
-			console.log(localStorage.getItem("id"))
+			// console.log(localStorage.getItem("id"))
+			// console.log(this.story);
 		}
 	};
 </script>
@@ -345,12 +359,88 @@
 		font-size: 50px;
 	}
 
-.card {
+	.card {
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		background-color: #fff;
 		border: none;
 		border-radius: 0.25rem;
+	}
+
+	img {
+		min-height: auto;
+	}
+
+	.img-thumbnail {
+		background-color: transparent;
+		border: none;
+	}
+
+	/*  */
+
+	/*  */
+
+	/*  */
+
+	/*  */
+
+	.avatar-upload {
+		position: relative;
+		max-width: 205px;
+		margin: 50px auto;
+		.avatar-edit {
+			position: absolute;
+			right: 12px;
+			z-index: 1;
+			top: 10px;
+			input {
+				display: none;
+				+label {
+					display: inline-block;
+					width: 34px;
+					height: 34px;
+					margin-bottom: 0;
+					border-radius: 100%;
+					background: #FFFFFF;
+					border: 1px solid transparent;
+					box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+					cursor: pointer;
+					font-weight: normal;
+					transition: all .2s ease-in-out;
+					&:hover {
+						background: #f1f1f1;
+						border-color: #d6d6d6;
+					}
+					&:after {
+						content: "\f040";
+						font-family: 'FontAwesome';
+						color: #757575;
+						position: absolute;
+						top: 10px;
+						left: 0;
+						right: 0;
+						text-align: center;
+						margin: auto;
+					}
+				}
+			}
+		}
+		.avatar-preview {
+			width: 192px;
+			height: 192px;
+			position: relative;
+			border-radius: 100%;
+			border: 6px solid #F8F8F8;
+			box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+		}
+		.avatar-preview>div {
+			width: 100%;
+			height: 100%;
+			border-radius: 100%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
 	}
 </style>

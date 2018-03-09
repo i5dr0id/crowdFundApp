@@ -1,35 +1,34 @@
 <template>
 <div>
-  <nav class="navbar navbar-toggleable-sm navbar-light bg-primary fixed-top" id="navbar" v-cloak>
+  <nav class="navbar navbar-toggleable-sm navbar-light bg-primary green fixed-top" id="navbar" v-cloak>
 		<div class="container top-nav">
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+			<button class="navbar-toggler navbar-toggler-right white" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
 			    aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="/index">CrowdFundApp</a>
+			<a class="navbar-brand white" href="/index" ><h3 class="nvb-brand">CrowdFundApp</h3></a>
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="/index">Home
+						<a class="nav-link white" href="/index">Home
 							<span class="sr-only">(current)</span>
 						</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/explore">Explore</a>
+					<li class="nav-item ">
+						<a class="nav-link white" href="/explore">Explore</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/add">Start a project</a>
+					<li class="nav-item ">
+						<a class="nav-link white" href="/add">Start a project</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/about"><router-link>
-            </router-link> About us</a>
+					<li class="nav-item ">
+						<a class="nav-link white" href="/about">About us</a>
 					</li>
 				</ul>
 
 				<!-- LOGGED IN USER NAV -->
 				<ul class="navbar-nav" v-if="username">
 					<li class="nav-item">
-						<a class="nav-link" href="/campaign">My Campaigns</a>
+						<a class="nav-link white" href="/campaign">My Campaigns</a>
 					</li>
 					<!-- <li class="nav-item">
 						<a class="nav-link" href="/register" data-toggle="modal" data-target=".signup-modal-lg">Sign up</a>
@@ -115,18 +114,15 @@ export default {
   created() {
     this.username = localStorage.getItem("username");
     if (this.username) {
-
     }
   },
   beforeCreate() {
-
     this.username = localStorage.getItem("username");
-
   }
 };
 </script>
 
-<style>
+<style scoped>
 .dropdown:hover > .dropdown-menu {
   display: block;
 }
@@ -169,5 +165,42 @@ export default {
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+.green {
+  background-color: #006600 !important;
+}
+
+.white {
+  color: #ffff !important;
+}
+
+.navbar-brand {
+ 
+  font-size: 15px;
+  font-weight: 400 !important;
+  font-style: normal;
+  line-height: 21px;
+}
+
+.navbar-brand > h3{
+	    font-weight: bold;
+		 font-family: "Playfair Display SC", serif;
+}
+
+.navbar {
+	border: 1px solid;
+    padding: 10px;
+    box-shadow: 0px 7px rgb(254,205,11);
+}
+
+.btn {
+	    border: 2px solid rgb(254,205,11);
+		border-radius: 0.25rem;
+		background-color:#006600;
+		color:#ddd;
+}
+.nav-link {
+	color: #ddd !important;	
 }
 </style>

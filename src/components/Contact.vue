@@ -16,7 +16,7 @@
 			<div class="row">
 				
 				<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 contact">
-					<h3>Contact Form</h3>
+					<h4> Send Email </h4>
 					<form id="contact-form" class="form" action="#" method="POST" role="form">
 						<div class="form-group">
 							<label class="form-label" for="name">Your Name</label>
@@ -129,7 +129,7 @@ h3{
 	padding: 30px;
 }
 .info h4{
-	color:green;
+	color: green;
 }
 
 </style>

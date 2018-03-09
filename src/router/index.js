@@ -21,8 +21,6 @@ import NotFound from '@/components/NotFound'
 Vue.use(Router)
 
 export default new Router({
-<<<<<<< HEAD
-
     routes: [{
             path: '/',
             name: 'Home',
@@ -64,12 +62,23 @@ export default new Router({
             component: EditAbout
         },
         {
+            path: '/about',
+            name: 'About',
+            component: About
+        },
+        {
+            path: '/contact',
+            name: 'Contact',
+            component: Contact
+        },
+        {
             path: '/editaccount',
             name: 'EditAccount',
             component: EditAccount
         },
         {
             path: "/add",
+            secure: true,
             name: NewCampaign,
             component: NewCampaign
         },
@@ -89,103 +98,29 @@ export default new Router({
             component: cp
         },
         {
-            path: "/contact",
-            name: Contact,
-            component: Contact
-        },
-        {
             path: "/explore",
             name: Explore,
             component: Explore
         },
         {
-            path: '/about',
-            name: 'About',
-            component: About
-        }
+            path: "*",
+            name: NotFound,
+            component: NotFound
+        },
     ],
-    mode: 'history'
-
-=======
-	routes: [{
-			path: '/',
-			name: 'Home',
-			component: Index
-		},
-		{
-			path: '/index',
-			name: 'Index',
-			component: Index
-		},
-		{
-			path: '/login',
-			name: 'Login',
-			component: Login
-		},
-		{
-			path: '/register',
-			name: 'Register',
-			component: Register
-		},
-		{
-			path: '/edit',
-			name: 'Edit',
-			component: Edit
-		},
-		{
-			path: '/editstory',
-			name: 'EditStory',
-			component: EditStory
-		},
-		{
-			path: '/editperks',
-			name: 'EditPerks',
-			component: EditPerks
-		},
-		{
-			path: '/editabout',
-			name: 'EditAbout',
-			component: EditAbout
-		},
-		{
-			path: '/editaccount',
-			name: 'EditAccount',
-			component: EditAccount
-		},
-		{
-			path: "/add",
-			name: NewCampaign,
-			component: NewCampaign
-		},
-		{
-			path: "/campaign",
-			name: MyCampaign,
-			component: MyCampaign
-		},
-		{
-			path: "/aspirant/:id",
-			name: AspirantDashboard,
-			component: AspirantDashboard
-		},
-		{
-			path: "/cp",
-			name: cp,
-			component: cp
-		},
-		{
-			path: "/explore",
-			name: Explore,
-			component: Explore
-		},
-		{
-			path: "*",
-			name: NotFound,
-			component: NotFound
-		},
-	],
-	mode: 'history',
-	scrollBehavior (to, from, savedPosition) {
-		return { x: 0, y: 0 }
-	  }
->>>>>>> 03d1c148080011b5872d83e915e4ba4fa550f6d0
+    mode: 'history',
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 })
+
+// router.beforeEach((to, from, next) => {
+//     router.options.routes.forEach((routes) => {
+//         if (to.matched[0].path === route.path && route.secure) {
+//             router.app.$http.post('/login').catch((response) => {
+//                 router.app.$session.destroy();
+//                 return next('/');
+//             });
+//         }
+//     });
+// });

@@ -20,7 +20,7 @@
 						<div class="form-group checkbox checkbox-primary">
 							<input type="checkbox"> Remember Me </div>
 						<div class="form-group">
-							<button type="submit" value="login" name="login" class="btn btn-block btn-lg" @click.prevent="btnLogin">Login</button>
+							<button type="submit" value="login" name="login" class="btn btn-block btn-lg btn-pri" @click.prevent="btnLogin">Login</button>
 						</div>
 							 <p style="text-align:center"><i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i></p>
 					</form>
@@ -62,7 +62,7 @@ export default {
 		  }
 		  this.loading = true;
 		  this.axios.post(this.api,this.login).then(response => {
-			//   console.log(response.data);
+			  console.log(response.data);
 			  this.loading = false;
 			  if (response.data.responseCode == "00") {
 				    swal("Authentication Successful !!!","","success")
@@ -70,6 +70,7 @@ export default {
 					localStorage.setItem("token", response.data.token);
 					localStorage.setItem("username", response.data.user.username);
 					localStorage.setItem("email", response.data.user.email);
+					localStorage.setItem("fullname", response.data.user.fullname);
 					Event.$emit('loggedIn', response.data.user.username);
 					this.$router.push('/');
 			  }else if(response.data.responseCode == "02"){
@@ -143,4 +144,16 @@ export default {
 		font-size: 16px;
 		height: 3.5rem;
 	}
+
+	.btn-pri{
+	color : rgb(254,205,11);
+	background-color:  #006600;
+		border-color:  rgb(254,205,11)!important;
+}
+
+.btn-pri:hover{
+	background-color: rgb(254,205,11);
+	color : #006600;
+		border-color:  #006600!important;
+}
 </style>

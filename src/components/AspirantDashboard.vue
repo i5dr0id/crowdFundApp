@@ -84,7 +84,7 @@
 									<a class="nav-link" data-toggle="tab" href="#updates" role="tab">UPDATES ({{"1"}})</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#comments" role="tab">ENDORSEMENTS {{'1'}}</a>
+									<a class="nav-link" data-toggle="tab" href="#comments" role="tab">ENDORSEMENTS ({{ endorLenght }})</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link disabled" href="#backers" role="tab">DONATORS ({{"1"}})</a>
@@ -125,7 +125,9 @@
 
 										<h3>{{story}}</h3>
 								</div>
-								<div class="tab-pane" id="updates" role="tabpanel" aria-expanded="false">
+								<!-- UPDATE CORNER -->
+
+								<!-- <div class="tab-pane" id="updates" role="tabpanel" aria-expanded="false">
 									<div class="card mb-4">
 										<div class="card-block">
 											<h5 class="card-title">We made it!!!</h5>
@@ -138,23 +140,23 @@
 										</div>
 									</div>
 	
-								</div>
+								</div> -->
 								<div class="tab-pane" id="comments" role="tabpanel" aria-expanded="false">
 									<ul class="comment-section mt-0">
-										<li class="comment user-comment">
+										<li v-for="user in users " class="comment user-comment">
 											<!-- <div class="info"> -->
-												<h6 href="#" class="float-left"><strong>Anie Silverston</strong></h6>
+												<h6 href="#" class="float-left"><strong>{{ user.username }}</strong></h6>
 												<!-- <span>4 hours ago</span> -->
 											<!-- </div> -->
 											<a class="avatar" href="#">
 												<!-- <img src="images/team/pixeliris.jpg" width="35" alt="Profile Avatar" title="Anie Silverston">  -->
 												</a>
-											<p class="float-right">Suspendisse gravida sem? Suspendisse gravida sem? </p>
+											<p class="float-right">{{ user.endorsement}}</p>
 										</li>
 
 										<li class="write-new">
-											<form action="#" method="post">
-												<div class="row">
+											<form v-on:submit="post_endorsme">
+												<!-- <div class="row">
 												<div class="col-md-6 mb-6">
 													<label for="">Full name: </label>
 													<input type="text" v-model="fullname" class="form-control" id="fn" placeholder="Full name"
@@ -162,15 +164,21 @@
 												<div class="col-md-6 mb-6">
 													<label for="">Email: </label>
 													<input type="text" v-model="email" class="form-control" id="emailEnd" placeholder="email" required> </div>
-											</div>
+											</div> -->
 											<br>
 											<!-- <br> -->
 												<!-- <div class="row"> -->
-													<textarea placeholder="Write your comment here" name="comment"></textarea>
+													<textarea v-model="message" placeholder="Write your comment here" name="comment"></textarea>
 												<!-- </div> -->
 												<div>
 													<!-- <img src="images/team/commadelimited.jpg" width="35" alt="Profile of Bradley Jones" title="Bradley Jones"> -->
-													<button type="submit" class="btn btn-pri">ENDORSE</button>
+													
+													<button v-if="tokken" type="submit" @click.prevent="post_endorsme" class="btn btn-pri">ENDORSE</button>
+
+											
+													<a v-else class="btn btn-pri" href="/login">Login to Endorse</a>
+													<!-- <button  class="btn btn-pri"><router-link >Login to Endorse</button> -->
+													
 												</div>
 											</form>
 										</li>
@@ -192,7 +200,7 @@
 											<div class="row ">
 												<div class="col-sm-4 ">
 													<a href="# ">
-														<img ref="candidate_img2" src="https://randomuser.me/api/portraits/men/51.jpg" class="img-fluid rounded-circle "
+														<img ref="candidate_img2" :src="image" class="img-fluid rounded-circle "
 														/> </a>
 													<br />
 													<br /> </div>
@@ -366,10 +374,78 @@
 				api: "https://onepercent-crowdfund.herokuapp.com/aspirants/5a932b6e875f590014c49814",
 				items: [],
 				candidate_ID: '',
-				fullname: ''
+				fullname: '',
+				message: '',
+				api_endrosment: 'https://onepercent-crowdfund.herokuapp.com/endorsements',
+				endorse_data: {},
+				users: [],
+				endorLenght: '',
+				tokken: ''
+				// users:[
+				// 	{name:"Taylor Swift",
+				// 	message:"You're the man"},
+				// 	{name:"Taylor Swift",
+				// 	message:"You're the man"},
+				// 	{name:"Taylor Swift",
+				// 	message:"You're the man"},
+
+				// ]
 			};
 		},
-		methods: {},
+		methods: {
+			post_endorsme() {
+				// console.log(localStorage.getItem("id"));
+
+				this.endorse_data = {
+					"voter_id": localStorage.getItem("id"),
+					"id": this.candidate_ID,
+					"message": this.message,
+					"username": localStorage.getItem("fullname")
+				}
+				console.log(this.endorse_data);
+				this.axios.post(this.api_endrosment,this.endorse_data).then(response => {
+					console.log(response.data);
+					this.get_endorsme();
+				},function(err){
+					console.log('ERROR!');
+					console.log(err);
+				});
+
+			},
+
+			get_endorsme() {
+				this.get_endorsme_api = 'https://onepercent-crowdfund.herokuapp.com/endorsements/all/' + this.candidate_ID;
+				this.axios.get(this.get_endorsme_api).then(response => {
+
+					console.log('From the get_endorsme function');
+					console.log(response.data.endorsement);
+					this.users = response.data.endorsement.slice().reverse();
+					this.endorLenght = this.users.length
+					console.log('our this.user');
+					console.log(this.users)
+				})
+			}
+
+		},
+		computed: {
+			// users: function() {
+			// 	return [
+			// 		{name:"Taylor Swift",
+			// 		message:"You're the man"},
+			// 		{name:"Taylor Swift",
+			// 		message:"You're the man"},
+			// 		{name:"Taylor Swift",
+			// 		message:"You're the man"}
+
+			// 	]
+			// }
+			reverseItems() {
+        return this.items.slice().reverse();
+  }   
+
+		},
+		watch: {
+		},
 		mounted() {
 			this.api = "https://onepercent-crowdfund.herokuapp.com/aspirants/" + this.candidate_ID;
 			this.axios.get(this.api).then(response => {
@@ -409,10 +485,14 @@
 				// console.log("sjkcnsjknbb");
 				// console.log(this.candidate_ID);
 			});
+
+
+			this.get_endorsme();
 		},
 		created() {
 			// console.log("Before Created");
 			this.candidate_ID = window.location.pathname.split("/")[2];
+			this.tokken = localStorage.getItem('token');
 		}
 	};
 </script>

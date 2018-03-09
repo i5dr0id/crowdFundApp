@@ -28,7 +28,7 @@
                 </span>
               </div>
               <div class="form-group">
-                <button type="submit" value="register" name="register" class="btn btn-block btn-lg" @click.prevent="btnRegister">REGISTER</button>
+                <button type="submit" value="register" name="register" class="btn btn-block btn-lg btn-pri" @click.prevent="btnRegister">REGISTER</button>
               </div>
               <p style="text-align:center"><i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i></p>
           </form>
@@ -155,5 +155,17 @@ input[type="password"] {
   outline: none;
   font-size: 16px;
   height: 3.5rem;
+}
+
+	.btn-pri{
+	color : rgb(254,205,11);
+	background-color:  #006600;
+		border-color:  rgb(254,205,11)!important;
+}
+
+.btn-pri:hover{
+	background-color: rgb(254,205,11);
+	color : #006600;
+		border-color:  #006600!important;
 }
 </style>

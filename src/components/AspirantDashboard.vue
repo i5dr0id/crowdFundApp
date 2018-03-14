@@ -40,8 +40,7 @@
 									<div v-else class="campImg">
 										<img v-if="image" ref="imgg" :src="image" class="img-fluid rounded img-thumbnail">
 										<img v-else ref="candidate_img" src="https://res.cloudinary.com/crowdpac/image/upload/c_fill,f_auto,g_face,h_370,q_auto,w_620/v1/assets/campaign-image-empty"
-										class="img-fluid rounded img-thumbnail" alt="Responsive image">
-										 </div>
+										class="img-fluid rounded img-thumbnail" alt="Responsive image"> </div>
 								</div>
 							</div>
 							<br />
@@ -122,11 +121,9 @@
 										formed libidos, not 2 young men playing grab-ass in the shower. Boy, I sure feel like a Mary without a Peter and
 										a Paul. And although the intervention didn't work, it turned into one of the Bluth family's better parties. I'm
 										tired of trying to find happiness through lies and self-medicating. If you need me, I'll be at the bar. </p> -->
-
-										<h3>{{story}}</h3>
+									<h3>{{story}}</h3>
 								</div>
 								<!-- UPDATE CORNER -->
-
 								<!-- <div class="tab-pane" id="updates" role="tabpanel" aria-expanded="false">
 									<div class="card mb-4">
 										<div class="card-block">
@@ -145,15 +142,16 @@
 									<ul class="comment-section mt-0">
 										<li v-for="user in users " class="comment user-comment">
 											<!-- <div class="info"> -->
-												<h6 href="#" class="float-left"><strong>{{ user.username }}</strong></h6>
-												<!-- <span>4 hours ago</span> -->
+											<h6 href="#" class="float-left">
+												<strong>{{ user.username }}</strong>
+											</h6>
+											<!-- <span>4 hours ago</span> -->
 											<!-- </div> -->
 											<a class="avatar" href="#">
 												<!-- <img src="images/team/pixeliris.jpg" width="35" alt="Profile Avatar" title="Anie Silverston">  -->
-												</a>
+											</a>
 											<p class="float-right">{{ user.endorsement}}</p>
 										</li>
-
 										<li class="write-new">
 											<form v-on:submit="post_endorsme">
 												<!-- <div class="row">
@@ -165,20 +163,18 @@
 													<label for="">Email: </label>
 													<input type="text" v-model="email" class="form-control" id="emailEnd" placeholder="email" required> </div>
 											</div> -->
-											<br>
-											<!-- <br> -->
+												<br>
+												<!-- <br> -->
 												<!-- <div class="row"> -->
-													<textarea v-model="message" placeholder="Write your comment here" name="comment"></textarea>
+												<h4>Show your support for this campaign by endorsing it and sharing why!</h4>
+												<textarea v-model="message" placeholder="Write your comment here"
+												name="comment"></textarea>
 												<!-- </div> -->
 												<div>
 													<!-- <img src="images/team/commadelimited.jpg" width="35" alt="Profile of Bradley Jones" title="Bradley Jones"> -->
-													
 													<button v-if="tokken" type="submit" @click.prevent="post_endorsme" class="btn btn-pri">ENDORSE</button>
-
-											
 													<a v-else class="btn btn-pri" href="/login">Login to Endorse</a>
 													<!-- <button  class="btn btn-pri"><router-link >Login to Endorse</button> -->
-													
 												</div>
 											</form>
 										</li>
@@ -200,8 +196,7 @@
 											<div class="row ">
 												<div class="col-sm-4 ">
 													<a href="# ">
-														<img ref="candidate_img2" :src="image" class="img-fluid rounded-circle "
-														/> </a>
+														<img ref="candidate_img2" :src="image" class="img-fluid rounded-circle " /> </a>
 													<br />
 													<br /> </div>
 												<div class="col-sm-7 ">
@@ -216,7 +211,7 @@
 													<br />
 													<br /> </div>
 											</div>
-											<a href="# " class="btn btn-lg btn-pri btn-block ">Support this campaign</a>
+											<a href="#" data-toggle="modal" data-target="#donationbox" class="btn btn-lg btn-pri btn-block ">Support this campaign</a>
 											<br />
 											<!-- <p>This project will only be funded if at least $15,000 is pledged by Wednesday May 8, 3:00pm</p> -->
 										</div>
@@ -231,85 +226,66 @@
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading2 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse2 " aria-expanded="true " aria-controls="collapse2 ">
-											Donante &#8358;5000  </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donante &#8358;5000 </a>
 										</h6>
 									</div>
-	
 								</div>
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading3 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse3 " aria-expanded="true " aria-controls="collapse3 ">
-											Donate &#8358;10,000 </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;10,000 </a>
 										</h6>
 									</div>
-					
 								</div>
 								<div class="card ">
 									<div class="card-header text-center " role="tab " id="heading4 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse4 " aria-expanded="true " aria-controls="collapse4 ">
-											Donate &#8358;20,000	 </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;20,000 </a>
 										</h6>
 									</div>
-						
 								</div>
 								<div class="card ">
 									<div class="card-header text-center " role="tab " id="heading5 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse text-center " data-parent="#accordion " href="#collapse5 " aria-expanded="true " aria-controls="collapse5 ">
-											Donate &#8358;50,000  </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;50,000 </a>
 										</h6>
 									</div>
-						
 								</div>
 								<div class="card ">
 									<div class="card-header text-center " role="tab " id="heading6 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse6 " aria-expanded="true " aria-controls="collapse6 ">
-											Donate &#8358;100,000  </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;100,000 </a>
 										</h6>
 									</div>
-
 								</div>
 								<div class="card ">
 									<div class="card-header  text-center" role="tab " id="heading7 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse7 " aria-expanded="true " aria-controls="collapse7 ">
-											Donate &#8358;200,000  </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;200,000 </a>
 										</h6>
 									</div>
-
 								</div>
 								<div class="card ">
 									<div class="card-header  text-center" role="tab " id="heading7 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse7 " aria-expanded="true " aria-controls="collapse7 ">
-											Donate &#8358;500,000  </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;500,000 </a>
 										</h6>
 									</div>
-
 								</div>
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading8 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse8 " aria-expanded="true " aria-controls="collapse8 ">
-											Donate &#8358;1,000,000  </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;1,000,000 </a>
 										</h6>
 									</div>
-				
 								</div>
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading9 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="collapse " data-parent="#accordion " href="#collapse9 " aria-expanded="true " aria-controls="collapse9 ">
-											Others </a>
+											<a data-toggle="modal" data-target="#donationbox" href="#"> Others </a>
 										</h6>
 									</div>
-				
 								</div>
-
 								<br>
 								<br>
 								<div class="card ">
@@ -324,7 +300,8 @@
 											<!-- <h5>
 												<strong>SuperBox Receiver</strong>
 											</h5> -->
-											 <div>  <!-- LOOP FROM HERE -->
+											<div>
+												<!-- LOOP FROM HERE -->
 												<div class="clearfix">
 													<div class="pull-left donation-list-left">
 														<h4 class="header-label m-none"> Erika Esau </h4>
@@ -335,7 +312,7 @@
 													</div>
 												</div>
 												<hr class="simple-rule"> </div>
-											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -344,238 +321,375 @@
 				</div>
 			</div>
 		</div>
+		<!-- DONATION MODAL -->
+		<div class="modal fade centered-modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+		aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" style="max-width: 50%;">
+				<div class="modal-content">
+					<div class="modal-header" style="margin: 0 auto">
+						<h3 class="text-center" style="margin-top: 20px;margin-bottom: 10px;font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;">Donate to
+							<span style="display: inline-block;">
+								<a href="index"> {{ alias }} </a>
+							</span>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<form method="POST" action="/login" style="padding: 30px">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<!-- Alias Frist and last name row -->
+										<label for="">Full name</label>
+										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="Full Name">
+										<div class="form-element span12 ">
+											<label class="checkbox-public label-extrasmall m-medium m-top-tiny">
+												<input type="checkbox" checked="checked" name="public" value="1"> Show my name in "Donators box" </label>
+										</div>
+									</div>
+									<div class="col-6">
+										<label for="">Email</label>
+										<input type="email" v-model="email" class="form-control form-control-lg" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="Enter email"> </div>
+									<!--  -->
+									<!--  -->
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-12">
+										<label for="">Street Address</label>
+										<input type="text" v-model="address" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="Address"> </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-6">
+										<label for="">City</label>
+										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="City"> </div>
+									<div class="col-3">
+										<label for="">State</label>
+										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="State"> </div>
+									<div class="col-3">
+										<label for="">Zip Code</label>
+										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="Zip Code"> </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-12">
+										<label for="">Occupation</label>
+										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="Occupation"> </div>
+								</div>
+							</div>
+							<br>
+							<!-- <div class="form-group checkbox checkbox-primary">
+								<input type="checkbox"> Remember Me </div> -->
+							<div class="form-group mx-auto">
+								<div class="row">
+									<div class="col-12 d-flex justify-content-center">
+										<button type="submit" value="donate" name="donate" class="btn btn-block btn-lg btn-donate" style="">Donate</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- <div>
+						<p class="form-footer text-center">Don't have an account?
+							<span>
+								<a href="/join">Register Here </a>
+							</span>
+						</p>
+					</div> --></div>
+			</div>
+		</div>
+		<!-- DONATION MODAL ENDS-->
+		<!--  -->
+		<!-- SELECT AMOUNT MODAL -->
+		<div class="modal fade centered-modal" id="donationbox" tabindex="-1" role="dialog" aria-labelledby="donationbox" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" style="max-width: 50%;">
+				<div class="modal-content">
+					<div class="modal-header modal-header2" style="margin: 0 auto">
+						<!-- <div class="row"> -->
+						<h3 class="text-center" style="margin-top: 20px;margin-bottom: 10px;font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;">Donate to
+							<span style="display: inline-block;">
+								<a href="index"> {{ alias }} </a>
+							</span>
+						</h3>
+						<!-- <br> -->
+						
+						<!-- </div> -->
+			
+					
+					</div>
+					<div class="text-center">Choose an amount to donate<hr style="width:50%; border-color:#000;"></div>
+
+					<div class="modal-body">
+						<div class="row justify-content-center">
+							<div class="col-3">
+								<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+							</div>
+							<div class="col-3">
+								<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+							</div>
+							<div class="col-3">
+								<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+							</div>
+						</div>
+						<br>
+						<br>
+					<div class="row justify-content-center">
+						<div class="col-3">
+							<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+						</div>
+						<div class="col-3">
+							<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+						</div>
+						<div class="col-3">
+							<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- SELECT AMOUNT MODAL ENDS-->
+	<!--  -->
 	</div>
 </template>
 <script>
-	export default {
-		name: "Login",
-		data() {
-			return {
-				alias: '',
-				city: '',
-				created: '',
-				email: '',
-				firstname: '',
-				fund: '',
-				gender: '',
-				image: '',
-				lastname: '',
-				party: '',
-				position: '',
-				facebook: '',
-				twitter: '',
-				state: '',
-				story: '',
-				updated: '',
-				user_id: '',
-				video: '',
-				vision: '',
-				_id: '',
-				api: "https://onepercent-crowdfund.herokuapp.com/aspirants/5a932b6e875f590014c49814",
-				items: [],
-				candidate_ID: '',
-				fullname: '',
-				message: '',
-				api_endrosment: 'https://onepercent-crowdfund.herokuapp.com/endorsements',
-				endorse_data: {},
-				users: [],
-				endorLenght: '',
-				tokken: ''
-				// users:[
-				// 	{name:"Taylor Swift",
-				// 	message:"You're the man"},
-				// 	{name:"Taylor Swift",
-				// 	message:"You're the man"},
-				// 	{name:"Taylor Swift",
-				// 	message:"You're the man"},
-
-				// ]
-			};
-		},
-		methods: {
-			post_endorsme() {
-				// console.log(localStorage.getItem("id"));
-
-				this.endorse_data = {
-					"voter_id": localStorage.getItem("id"),
-					"id": this.candidate_ID,
-					"message": this.message,
-					"username": localStorage.getItem("fullname")
-				}
-				console.log(this.endorse_data);
-				this.axios.post(this.api_endrosment,this.endorse_data).then(response => {
-					console.log(response.data);
-					this.get_endorsme();
-				},function(err){
-					console.log('ERROR!');
-					console.log(err);
-				});
-
-			},
-
-			get_endorsme() {
-				this.get_endorsme_api = 'https://onepercent-crowdfund.herokuapp.com/endorsements/all/' + this.candidate_ID;
-				this.axios.get(this.get_endorsme_api).then(response => {
-
-					console.log('From the get_endorsme function');
-					console.log(response.data.endorsement);
-					this.users = response.data.endorsement.slice().reverse();
-					this.endorLenght = this.users.length
-					console.log('our this.user');
-					console.log(this.users)
-				})
-			}
-
-		},
-		computed: {
-			// users: function() {
-			// 	return [
-			// 		{name:"Taylor Swift",
-			// 		message:"You're the man"},
-			// 		{name:"Taylor Swift",
-			// 		message:"You're the man"},
-			// 		{name:"Taylor Swift",
-			// 		message:"You're the man"}
-
-			// 	]
-			// }
-			reverseItems() {
-        return this.items.slice().reverse();
-  }   
-
-		},
-		watch: {
-		},
-		mounted() {
-			this.api = "https://onepercent-crowdfund.herokuapp.com/aspirants/" + this.candidate_ID;
-			this.axios.get(this.api).then(response => {
-				// console.log("===================");
-				// console.log(response.data);
-				// console.log("===================");
-				this.item = response.data.aspirant;
-				// console.log(this.item);
-				this.alias = this.item.alias;
-				this.city = this.item.city;
-				this.created = this.item.created;
-				this.email = this.item.email;
-				this.firstname = this.item.firstname;
-				this.fund = this.item.fund;
-				this.gender = this.item.gender;
-				this.image = this.item.image;
-				this.lastname = this.item.lastname;
-				this.party = this.item.party;
-				this.position = this.item.position;
-				//  this.facebook = this.item.social[0];
-				//  this.twitter = this.item.socail[0];
-				this.state = this.item.state;
-				this.story = this.item.story;
-				this.updated = this.item.updated;
-				this.user_id = this.item.user_id;
-				// this.video = this.item.video;
-				this.vision = this.item.vision;
-				this._id = this.item._id
-				// this.donation = this.item.donation;
-				// this.$refs.candidate_img2.src = this.image;
-				// console.log("===================");
-				// console.log(this.$refs);
-				// console.log("===================");
-				// this.$refs.candidate_img.src = this.image;
-				// this.$refs.candidate_img2.src = this.image;
-				// console.log(this.$refs);
-				// console.log("sjkcnsjknbb");
-				// console.log(this.candidate_ID);
-			});
-
-
-			this.get_endorsme();
-		},
-		created() {
-			// console.log("Before Created");
-			this.candidate_ID = window.location.pathname.split("/")[2];
-			this.tokken = localStorage.getItem('token');
-		}
-	};
+export default {
+  name: "Login",
+  data() {
+    return {
+      alias: "",
+      city: "",
+      created: "",
+      email: "",
+      firstname: "",
+      fund: "",
+      gender: "",
+      image: "",
+      lastname: "",
+      party: "",
+      position: "",
+      facebook: "",
+      twitter: "",
+      state: "",
+      story: "",
+      updated: "",
+      user_id: "",
+      video: "",
+      vision: "",
+      _id: "",
+      api:
+        "https://onepercent-crowdfund.herokuapp.com/aspirants/5a932b6e875f590014c49814",
+      items: [],
+      candidate_ID: "",
+      fullname: "",
+      message: "",
+      api_endrosment: "https://onepercent-crowdfund.herokuapp.com/endorsements",
+      endorse_data: {},
+      users: [],
+      endorLenght: "",
+      tokken: ""
+    };
+  },
+  methods: {
+    post_endorsme() {
+      this.endorse_data = {
+        voter_id: localStorage.getItem("id"),
+        id: this.candidate_ID,
+        message: this.message,
+        username: localStorage.getItem("fullname")
+      };
+      console.log(this.endorse_data);
+      this.axios.post(this.api_endrosment, this.endorse_data).then(
+        response => {
+          console.log(response.data);
+          this.get_endorsme();
+        },
+        function(err) {
+          console.log("ERROR!");
+          console.log(err);
+        }
+      );
+    },
+    get_endorsme() {
+      this.get_endorsme_api =
+        "https://onepercent-crowdfund.herokuapp.com/endorsements/all/" +
+        this.candidate_ID;
+      this.axios.get(this.get_endorsme_api).then(response => {
+        console.log("From the get_endorsme function");
+        console.log(response.data.endorsement);
+        this.users = response.data.endorsement.slice().reverse();
+        this.endorLenght = this.users.length;
+        console.log("our this.user");
+        console.log(this.users);
+      });
+    }
+  },
+  computed: {
+    reverseItems() {
+      return this.items.slice().reverse();
+    }
+  },
+  watch: {},
+  mounted() {
+    this.api =
+      "https://onepercent-crowdfund.herokuapp.com/aspirants/" +
+      this.candidate_ID;
+    this.axios.get(this.api).then(response => {
+      this.item = response.data.aspirant;
+      this.alias = this.item.alias;
+      this.city = this.item.city;
+      this.created = this.item.created;
+      this.email = this.item.email;
+      this.firstname = this.item.firstname;
+      this.fund = this.item.fund;
+      this.gender = this.item.gender;
+      this.image = this.item.image;
+      this.lastname = this.item.lastname;
+      this.party = this.item.party;
+      this.position = this.item.position;
+      this.state = this.item.state;
+      this.story = this.item.story;
+      this.updated = this.item.updated;
+      this.user_id = this.item.user_id;
+      this.vision = this.item.vision;
+      this._id = this.item._id;
+    });
+    this.get_endorsme();
+  },
+  created() {
+    this.candidate_ID = window.location.pathname.split("/")[2];
+    this.tokken = localStorage.getItem("token");
+  }
+};
 </script>
 <style>
-	.campImg {
-		height: 350px;
-		width: 100%;
-		background-color: powderblue;
-	}
-
-	.campImg > img {
-		width:100%;
-		height:100%;
-	}
-
-	.card {
-		    border: 1px solid rgb(254,205,11);
-	}
-
-	.card-header {
-
- background-color: #ffffff; 
- border-bottom: none; 
- color: green
-}
-	.card-header:hover {
-
- background-color: #006600;
- border-bottom: none; 
- color :rgb(254,205,11);
+.campImg {
+  height: 350px;
+  width: 100%;
+  background-color: powderblue;
 }
 
-a:focus, a:hover {
-    color: rgb(254,205,11);
-    text-decoration: underline;
+.campImg > img {
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  border: 1px solid rgb(254, 205, 11);
+}
+
+.card-header {
+  background-color: #ffffff;
+  border-bottom: none;
+  color: green;
+}
+
+
+.card-header:hover {
+  background-color: #006600;
+  border-bottom: none;
+  color: rgb(254, 205, 11);
+}
+
+a:focus,
+a:hover {
+  color: rgb(254, 205, 11);
+  text-decoration: underline;
 }
 
 hr {
-    border-color: rgb(254,205,11);
+  border-color: rgb(254, 205, 11);
 }
 
-.btn-pri{
-	color : rgb(254,205,11);
-	background-color:  #006600;
-		border-color:  rgb(254,205,11)!important;
+.btn-pri {
+  color: rgb(254, 205, 11);
+  background-color: #006600;
+  border-color: rgb(254, 205, 11) !important;
 }
 
-.btn-pri:hover{
-	background-color: rgb(254,205,11);
-	color : #006600;
-		border-color:  #006600!important;
+.btn-pri:hover {
+  background-color: rgb(254, 205, 11);
+  color: #006600;
+  border-color: #006600 !important;
 }
 
 .progress {
-    background-color: #ffe795;
+  background-color: #ffe795;
 }
 
 .progress-bar {
-    background-color: #006600;
+  background-color: #006600;
 }
 
 .nav-tabs {
-    border-bottom: 1px solid #ffe795;
+  border-bottom: 1px solid #ffe795;
 }
 
-.img-thumbnail{
-	border-color: #ffe795;
+.img-thumbnail {
+  border-color: #ffe795;
 }
 
-.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-    color: #006600;
-    background-color: #fff;
-    border-color: #ffe795 #ffe795 #fff;
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #006600;
+  background-color: #fff;
+  border-color: #ffe795 #ffe795 #fff;
 }
 
 .nav-tabs > li > a {
-	color: #818a91;
+  color: #818a91;
 }
 
-.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
-    border-color: #ffe795 #ffe795 #ffe795;
-	/* color: #006600;
-    background-color: #fff;
-    border-color: #ffe795 #ffe795 #fff; */
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border-color: #ffe795 #ffe795 #ffe795;
+}
+
+.btn-donate {
+  width: 50%;
+  color: rgb(254, 205, 11);
+  background-color: #006600;
+}
+
+.btn-donate:hover {
+  color: #006600;
+  background-color: rgb(254, 205, 11);
+}
+
+.centered-modal .modal-dialog {
+  top: 30%;
+  margin: 0 auto;
+}
+
+.donate-amount-3 {
+  border-color: #ff4814;
+  border-radius: 0;
+  width: 70%;
+  padding: 1.5rem;
+
+  background-color: #ffffff;
+  color: green;
+}
+.donate-amount-3:hover {
+  border-radius: 0;
+  width: 70%;
+  padding: 1.5rem;
+
+  background-color: #006600;
+  color: rgb(254, 205, 11);
+}
+
+.modal-header2 {
+	border-bottom: none;
 }
 </style>

@@ -122,7 +122,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div>>
 						</div>
 						<div class="swiper-button-next hidden-lg-up">
 							<i class="fa fa-chevron-right" aria-hidden="true"></i>

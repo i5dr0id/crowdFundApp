@@ -381,6 +381,22 @@
 							</div>
 							<div class="form-group">
 								<div class="row">
+									<div class="col-6">
+										<label for="">Credit card number</label>
+										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="City"> </div>
+									<div class="col-3">
+										<label for="">CSC</label>
+										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="State"> </div>
+									<div class="col-3">
+										<label for="">Expiration</label>
+										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="Zip Code"> </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
 									<div class="col-12">
 										<label for="">Occupation</label>
 										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
@@ -594,7 +610,6 @@ export default {
   color: green;
 }
 
-
 .card-header:hover {
   background-color: #006600;
   border-bottom: none;
@@ -667,8 +682,8 @@ hr {
 }
 
 .centered-modal .modal-dialog {
-  top: 30%;
-  margin: 0 auto;
+  /* top: 30%;
+  margin: 0 auto; */
 }
 
 .donate-amount-3 {
@@ -690,6 +705,6 @@ hr {
 }
 
 .modal-header2 {
-	border-bottom: none;
+  border-bottom: none;
 }
 </style>

@@ -627,6 +627,7 @@
 			}
 		},
 		mounted() {
+			console.time('Fetching Data');
 			this.axios.get(this.api).then(response => {
 				console.log("===================");
 				console.log(response.data);
@@ -657,6 +658,7 @@
 				// console.log("===================");
 
 			});
+			console.timeEnd('Fetching Data');
 			}
 	};
 </script>

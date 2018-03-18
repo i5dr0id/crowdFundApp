@@ -18,14 +18,15 @@
 									<!-- <h3>{{alias}}</h3> -->
 									<h3> Vote for {{alias}} to get the change you deserved </h3>
 									<br />
-									<p class="mb-1">24% funded</p>
+									<p class="mb-1">{{perNum}}% funded</p>
 									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 29%" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100"></div>
+										<div class="progress-bar" ref="perpro" v-bind:class="{percentage:true}" role="progressbar" aria-valuenow="29" aria-valuemin="0"
+										aria-valuemax="100"></div>
 									</div>
 									<div class="row">
 										<div class="col-sm-6">
-											<h3>&#8358;0</h3>
-											<p class="mb-1">Donation from 132 people</p>
+											<h3>&#8358;{{ tAmount }}</h3>
+											<p class="mb-1">Donation from {{ numDonator }} people</p>
 										</div>
 										<div class="col-sm-6 text-right">
 											<!-- <h3>$2,947</h3> -->
@@ -80,13 +81,13 @@
 									<a class="nav-link active" data-toggle="tab" active="" href="#home" role="tab">STORY</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#updates" role="tab">UPDATES ({{"1"}})</a>
+									<a class="nav-link" data-toggle="tab" href="#updates" role="tab">UPDATES ({{"0"}})</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" data-toggle="tab" href="#comments" role="tab">ENDORSEMENTS ({{ endorLenght }})</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link disabled" href="#backers" role="tab">DONATORS ({{"1"}})</a>
+									<a class="nav-link disabled" href="#backers" role="tab">DONATORS ({{ numDonator }})</a>
 								</li>
 							</ul>
 							<br />
@@ -226,14 +227,14 @@
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading2 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donante &#8358;5000 </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#" value="5000"> Donante &#8358;5000 </a>
 										</h6>
 									</div>
 								</div>
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading3 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;10,000 </a>
+											<a data-toggle="modal" data-target="#exampleModalLong" href="#" value="10000"> Donate &#8358;10,000 </a>
 										</h6>
 									</div>
 								</div>
@@ -292,7 +293,7 @@
 									<div class="card-header text-center" role="tab " id="heading1 ">
 										<h6 class="mb-0 ">
 											<a data-toggle="collapse " data-parent="#accordion " href="#collapse1 " aria-expanded="true " aria-controls="collapse1 ">
-											Donators ({{ '1' }}) </a>
+											Donators ({{ numDonator }}) </a>
 										</h6>
 									</div>
 									<div id="collapse1 " class="collapse show " role="tabpanel " aria-labelledby="heading1 ">
@@ -300,15 +301,15 @@
 											<!-- <h5>
 												<strong>SuperBox Receiver</strong>
 											</h5> -->
-											<div>
+											<div v-for="donator in donators">
 												<!-- LOOP FROM HERE -->
 												<div class="clearfix">
 													<div class="pull-left donation-list-left">
-														<h4 class="header-label m-none"> Erika Esau </h4>
+														<h4 class="header-label m-none"> {{ donator.donator }} </h4>
 														<!-- <p class="label-small m-none">1 day ago</p> -->
 													</div>
 													<div class="pull-right align-right">
-														<h4 class="header-label no-margin recent-donate-amount">&#8358;10,000</h4>
+														<h4 class="header-label no-margin recent-donate-amount">&#8358;{{ donator.fund }}</h4>
 													</div>
 												</div>
 												<hr class="simple-rule"> </div>
@@ -334,23 +335,23 @@
 						</h3>
 					</div>
 					<div class="modal-body">
-						<form method="POST" action="/login" style="padding: 30px">
+						<form v-on:submit="addDonation" style="padding: 30px">
 							<div class="form-group">
 								<div class="row">
 									<div class="col-6">
 										<!-- Alias Frist and last name row -->
 										<label for="">Full name</label>
-										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
-										placeholder="Full Name">
+										<input type="text" v-model="userFullname" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="Full Name" readonly>
 										<div class="form-element span12 ">
 											<label class="checkbox-public label-extrasmall m-medium m-top-tiny">
-												<input type="checkbox" checked="checked" name="public" value="1"> Show my name in "Donators box" </label>
+												<input type="checkbox" v-model="toggle" @click="check($event)" true-value="yes" false-value="no"name="public" value="1"> Show my name in "Donators box" </label>
 										</div>
 									</div>
 									<div class="col-6">
 										<label for="">Email</label>
-										<input type="email" v-model="email" class="form-control form-control-lg" id="exampleInputEmail1"
-										aria-describedby="emailHelp" placeholder="Enter email"> </div>
+										<input type="email" v-model="userEmail" class="form-control form-control-lg" id="exampleInputEmail1"
+										aria-describedby="emailHelp" placeholder="Enter email" readonly> </div>
 									<!--  -->
 									<!--  -->
 								</div>
@@ -359,7 +360,7 @@
 								<div class="row">
 									<div class="col-12">
 										<label for="">Street Address</label>
-										<input type="text" v-model="address" class="form-control form-control-lg" id="exampleInputFirstname"
+										<input type="text" v-model="userAddress" class="form-control form-control-lg" id="exampleInputFirstname"
 										placeholder="Address"> </div>
 								</div>
 							</div>
@@ -367,39 +368,39 @@
 								<div class="row">
 									<div class="col-6">
 										<label for="">City</label>
-										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										<input type="text" v-model="userCity" class="form-control form-control-lg" id="exampleInputFirstname"
 										placeholder="City"> </div>
 									<div class="col-3">
 										<label for="">State</label>
-										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										<input type="text" v-model="userState" class="form-control form-control-lg" id="exampleInputFirstname"
 										placeholder="State"> </div>
 									<div class="col-3">
-										<label for="">Zip Code</label>
-										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
-										placeholder="Zip Code"> </div>
+										<label for="">Donation Amount</label>
+										<input type="text" v-model="userFund" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="Amount"> </div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
 									<div class="col-6">
 										<label for="">Credit card number</label>
-										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
-										placeholder="City"> </div>
+										<input type="text" v-model="userCCN" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="CCN"> </div>
 									<div class="col-3">
 										<label for="">CSC</label>
-										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
-										placeholder="State"> </div>
+										<input type="text" v-model="userCSC" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="CSC"> </div>
 									<div class="col-3">
 										<label for="">Expiration</label>
-										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
-										placeholder="Zip Code"> </div>
+										<input type="text" v-model="userExpir" class="form-control form-control-lg" id="exampleInputFirstname"
+										placeholder="EXP"> </div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
 									<div class="col-12">
 										<label for="">Occupation</label>
-										<input type="text" v-model="fname" class="form-control form-control-lg" id="exampleInputFirstname"
+										<input type="text" v-model="userOccupation" class="form-control form-control-lg" id="exampleInputFirstname"
 										placeholder="Occupation"> </div>
 								</div>
 							</div>
@@ -409,7 +410,8 @@
 							<div class="form-group mx-auto">
 								<div class="row">
 									<div class="col-12 d-flex justify-content-center">
-										<button type="submit" value="donate" name="donate" class="btn btn-block btn-lg btn-donate" style="">Donate</button>
+										<button type="submit" v-on:click="addDonation" value="donate" name="donate" class="btn btn-block btn-lg btn-donate"
+										style="">Donate</button>
 									</div>
 								</div>
 							</div>
@@ -438,44 +440,44 @@
 							</span>
 						</h3>
 						<!-- <br> -->
-						
 						<!-- </div> -->
-			
-					
 					</div>
-					<div class="text-center">Choose an amount to donate<hr style="width:50%; border-color:#000;"></div>
-
+					<div class="text-center">Choose an amount to donate
+						<hr style="width:50%; border-color:#000;"> </div>
 					<div class="modal-body">
 						<div class="row justify-content-center">
 							<div class="col-3">
-								<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#donationbox,#exampleModalLong"
+								class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦5000</a>
 							</div>
 							<div class="col-3">
-								<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦10,000</a>
 							</div>
 							<div class="col-3">
-								<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦50,000</a>
 							</div>
 						</div>
 						<br>
 						<br>
-					<div class="row justify-content-center">
-						<div class="col-3">
-							<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
+						<div class="row justify-content-center">
+							<div class="col-3">
+								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦100,000</a>
+							</div>
+							<div class="col-3">
+								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦500,000</a>
+							</div>
+							<div class="col-3">
+								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦1,000,000</a>
+							</div>
 						</div>
-						<div class="col-3">
-							<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
-						</div>
-						<div class="col-3">
-							<a data-amount="$3" href="#" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">$3</a>
-						</div>
-					</div>
+						<br>
+						<br>
+						<br> </div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- SELECT AMOUNT MODAL ENDS-->
-	<!--  -->
+		<!-- SELECT AMOUNT MODAL ENDS-->
+		<!--  -->
 	</div>
 </template>
 <script>
@@ -513,7 +515,22 @@ export default {
       endorse_data: {},
       users: [],
       endorLenght: "",
-      tokken: ""
+      tokken: "",
+      userAddress: "",
+      userFund: "",
+      userOccupation: "",
+      userExpir: "",
+      userCSC: "",
+      userCCN: "",
+      userState: "",
+      userCity: "",
+      donators: [],
+      numDonator: 0,
+      perNum: 0,
+      tAmount: "",
+      toggle: false,
+      userFullname: ""
+      // percentAmount: ''
     };
   },
   methods: {
@@ -535,19 +552,94 @@ export default {
           console.log(err);
         }
       );
+      this.message = "";
     },
     get_endorsme() {
       this.get_endorsme_api =
         "https://onepercent-crowdfund.herokuapp.com/endorsements/all/" +
         this.candidate_ID;
       this.axios.get(this.get_endorsme_api).then(response => {
-        console.log("From the get_endorsme function");
-        console.log(response.data.endorsement);
         this.users = response.data.endorsement.slice().reverse();
         this.endorLenght = this.users.length;
-        console.log("our this.user");
-        console.log(this.users);
       });
+    },
+    addDonation(e) {
+      this.candidate_ID = window.location.pathname.split("/")[2];
+      this.tokken = localStorage.getItem("token");
+    //   this.userFullname = localStorage.getItem("fullname");
+    //   this.userEmail = localStorage.getItem("email");
+      this.userID = localStorage.getItem("id");
+      this.dataDonate = {
+        donator: this.userFullname,
+        id: this.candidate_ID,
+        address: this.userAddress,
+        aspirant: this.alias,
+        fund: this.userFund,
+        expected_fund: this.fund,
+        ocupation: this.userOccupation,
+        email: this.userEmail,
+        card_details: [
+          {
+            card_type: "VERVE"
+          }
+        ]
+      };
+      // console.log(this.dataDonate);
+      this.axios
+        .post(
+          "https://onepercent-crowdfund.herokuapp.com/donations",
+          this.dataDonate
+        )
+        .then(response => {
+          //   console.log(response.data)
+          if (response.data.responseCode == "00") {
+            // swal("Successfully added a new campaign", "", "success");
+			console.log(response);
+			window.location = '/aspirant/'+this.candidate_ID;
+          } else if (response.data.responseCode == "03") {
+            // swal("Campaign exists already", "", "error");
+            console.log(response);
+          } else {
+            // swal("Error adding campaign", "", "error");
+            console.log(response);
+          }
+        })
+        .catch(error => {
+          // this.loading = false;
+          //   console.log(error)
+          // swal("Adding new campaign failed. Please check your network", "", "error")
+          console.log(response);
+		});
+		
+	  e.preventDefault();
+	//   this.$router.push('/aspirant/'+this.userID);
+	//    window.location = '/aspirant/'+this.candidate_ID;
+    },
+    comPer() {
+      // console.log('COMPARADC');
+      // 	console.log(this.tAmount);
+      console.log(this.$refs.perpro.style.width);
+      // this.$refs.perpro.style.width = String(this.per) + '%'
+      this.perNum = parseInt(
+        parseInt(this.tAmount) / parseInt(this.fund) * 100
+      );
+      console.log("This PER: " + this.perNum);
+      this.$refs.perpro.style.width =
+        String(parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100)) +
+        "%";
+    },
+    somefunction() {
+      console.log("chehck box xhekx");
+    },
+    check(e) {
+      if (e.target.checked) {
+        console.log(e.target.value);
+        this.userFullname = "Anonymous";
+        this.userEmail = "Anonymous";
+      } else {
+        this.userFullname = localStorage.getItem("fullname");
+        this.userEmail = localStorage.getItem("email");
+      }
     }
   },
   computed: {
@@ -560,7 +652,7 @@ export default {
     this.api =
       "https://onepercent-crowdfund.herokuapp.com/aspirants/" +
       this.candidate_ID;
-    this.axios.get(this.api).then(response => {
+       this.axios.get(this.api).then(response => {
       this.item = response.data.aspirant;
       this.alias = this.item.alias;
       this.city = this.item.city;
@@ -581,10 +673,30 @@ export default {
       this._id = this.item._id;
     });
     this.get_endorsme();
+    this.axios
+      .get(
+        "https://onepercent-crowdfund.herokuapp.com/donations/all/" +
+          this.candidate_ID
+      )
+      .then(response => {
+        // this.item = response.data.aspirant;
+        // this.alias = this.item.alias
+        // console.log(response.data.total);
+        // console.log(response.data.donation);
+        this.donators = response.data.donation;
+        // this.tAmount = response.data.total;
+        this.tAmount = response.data.total;
+        console.log(this.fund);
+        this.numDonator = response.data.donation.length;
+        this.comPer();
+      });
   },
   created() {
     this.candidate_ID = window.location.pathname.split("/")[2];
     this.tokken = localStorage.getItem("token");
+    this.userFullname = localStorage.getItem("fullname");
+    this.userEmail = localStorage.getItem("email");
+    this.userID = localStorage.getItem("id");
   }
 };
 </script>
@@ -644,6 +756,7 @@ hr {
 
 .progress-bar {
   background-color: #006600;
+  /* width: 10%; */
 }
 
 .nav-tabs {
@@ -691,15 +804,14 @@ hr {
   border-radius: 0;
   width: 70%;
   padding: 1.5rem;
-
   background-color: #ffffff;
   color: green;
 }
+
 .donate-amount-3:hover {
   border-radius: 0;
   width: 70%;
   padding: 1.5rem;
-
   background-color: #006600;
   color: rgb(254, 205, 11);
 }

@@ -12,8 +12,7 @@
 				<br />
 				<br />
 				<br />
-				<!-- <a href="#" class="float-right" data-toggle="collapse" data-target="#filters">Toggle filters</a>
-			<br /> -->
+			<br /> 
 				<hr />
 				<br />
 				<br />
@@ -96,7 +95,7 @@
 										</div>
 										<div class="col-md-4 text-center">
 											<br />
-											<a href="/add" class="btn btn-primary btn-lg">Start your project
+											<a href="/add" class="btn btn-primary btn-lg btn">Start your project
 												<i class="fa fa-chevron-right" aria-hidden="true"></i>
 											</a>
 										</div>
@@ -112,133 +111,126 @@
 	</div>
 </template>
 <script>
-	export default {
-		name: 'Explorer',
-		data() {
-			return {
-				alias: '',
-				city: '',
-				created: '',
-				email: '',
-				firstname: '',
-				fund: '',
-				gender: '',
-				image: '',
-				lastname: '',
-				party: '',
-				position: '',
-				facebook: '',
-				twitter: '',
-				state: '',
-				story: '',
-				updated: '',
-				user_id: '',
-				video: '',
-				vision: '',
-				_id: '',
-				items: [],
-				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
-			};
-		},
-		mounted() {
-			this.axios.get(this.api).then(response => {
-				// console.log("===================");
-				// console.log(response.data);
-				// console.log("===================");
-				this.items = response.data.aspirants;
-				console.log(this.items);
-				this.alias = this.items.alias;
-				this.city = this.items.city;
-				this.created = this.items.created;
-				this.email = this.items.email;
-				this.firstname = this.items.firstname;
-				this.fund = this.items.fund;
-				this.gender = this.items.gender;
-				this.image = this.items.image;
-				this.lastname = this.items.lastname;
-				this.party = this.items.party;
-				this.position = this.items.position;
-				this.state = this.items.state;
-				this.story = this.items.story;
-				this.updated = this.items.updated;
-				this.user_id = this.items.user_id;
-				this.vision = this.items.vision;
-				this._id = this.items._id
-				console.log("===================");
-				console.log(this.$refs);
-				console.log("===================");
-				// console.log(this.image)
-				// this.$refs.imgg.src = this.image;
-				// this.$refs.candidate_img2.src = this.image;
-				// console.log(this.$refs);
-
-				// this.$refs.candidate_img2.src = this.image;
-			});
-		},
-		created() {
-			// this.axios.get(this.api).then(response => {
-			// 	// console.log("===================");
-			// 	// console.log(response.data);
-			// 	// console.log("===================");
-			// 	this.items = response.data.aspirants;
-			// 	console.log(this.items);
-			// 	this.alias = this.items.alias;
-			// 	this.city = this.items.city;
-			// 	this.created = this.items.created;
-			// 	this.email = this.items.email;
-			// 	this.firstname = this.items.firstname;
-			// 	this.fund = this.items.fund;
-			// 	this.gender = this.items.gender;
-			// 	this.image = this.items.image;
-			// 	this.lastname = this.items.lastname;
-			// 	this.party = this.items.party;
-			// 	this.position = this.items.position;
-			// 	this.state = this.items.state;
-			// 	this.story = this.items.story;
-			// 	this.updated = this.items.updated;
-			// 	this.user_id = this.items.user_id;
-			// 	this.vision = this.items.vision;
-			// 	this._id = this.items._id
-			// 	console.log("===================");
-			// 	console.log(this.$refs);
-			// 	console.log("===================");
-			// 	// console.log(this.image)
-			// 	// this.$refs.imgg.src = this.image;
-			// 	// this.$refs.candidate_img2.src = this.image;
-			// 	// console.log(this.$refs);
-
-			// 	// this.$refs.candidate_img2.src = this.image;
-			// });
-		}
-	}
+export default {
+  name: "Explorer",
+  data() {
+    return {
+      alias: "",
+      city: "",
+      created: "",
+      email: "",
+      firstname: "",
+      fund: "",
+      gender: "",
+      image: "",
+      lastname: "",
+      party: "",
+      position: "",
+      facebook: "",
+      twitter: "",
+      state: "",
+      story: "",
+      updated: "",
+      user_id: "",
+      video: "",
+      vision: "",
+      _id: "",
+      items: [],
+      api: "https://onepercent-crowdfund.herokuapp.com/aspirants"
+    };
+  },
+  mounted() {
+    this.axios.get(this.api).then(response => {
+      this.items = response.data.aspirants;
+      console.log(this.items);
+      this.alias = this.items.alias;
+      this.city = this.items.city;
+      this.created = this.items.created;
+      this.email = this.items.email;
+      this.firstname = this.items.firstname;
+      this.fund = this.items.fund;
+      this.gender = this.items.gender;
+      this.image = this.items.image;
+      this.lastname = this.items.lastname;
+      this.party = this.items.party;
+      this.position = this.items.position;
+      this.state = this.items.state;
+      this.story = this.items.story;
+      this.updated = this.items.updated;
+      this.user_id = this.items.user_id;
+      this.vision = this.items.vision;
+      this._id = this.items._id;
+    });
+  },
+  created() {
+    this.axios.get(this.api).then(response => {
+      this.items = response.data.aspirants;
+      console.log(this.items);
+      this.alias = this.items.alias;
+      this.city = this.items.city;
+      this.created = this.items.created;
+      this.email = this.items.email;
+      this.firstname = this.items.firstname;
+      this.fund = this.items.fund;
+      this.gender = this.items.gender;
+      this.image = this.items.image;
+      this.lastname = this.items.lastname;
+      this.party = this.items.party;
+      this.position = this.items.position;
+      this.state = this.items.state;
+      this.story = this.items.story;
+      this.updated = this.items.updated;
+      this.user_id = this.items.user_id;
+      this.vision = this.items.vision;
+      this._id = this.items._id;
+    });
+  }
+};
 </script>
 
-<style>
+<style scoped>
 img {
-    width: 100%; /* or any custom size */
-    min-height: 100%; 
-    object-fit: contain;
+  width: 100%; /* or any custom size */
+  min-height: 100%;
+  object-fit: contain;
 }
 
 .card-img-top {
-    width: 100%;
-    height: 13vw;
-    object-fit: cover;
+  width: 100%;
+  height: 13vw;
+  object-fit: cover;
 }
 
-.limited-text-vision{
-	  display: block;
+.limited-text-vision {
+  display: block;
   width: 200px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-
-.limited-text-story{
-  word-break: break-all; 
+.limited-text-story {
+  word-break: break-all;
 }
-/* .size-up > img {
-	min-height:500px;
-} */
+
+.progress {
+  background-color: #ffe795;
+}
+
+.progress-bar {
+  background-color: #006600;
+}
+
+.btn {
+  border: 2px solid rgb(254, 205, 11);
+  border-radius: 0.25rem;
+  background-color: #006600;
+  color: #ddd;
+}
+
+a:focus,
+a:hover {
+  color: rgb(254, 205, 11);
+  text-decoration: underline;
+}
 </style>

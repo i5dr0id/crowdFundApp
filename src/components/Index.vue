@@ -100,15 +100,15 @@
 											<div class="col-12">
 												<div class="row">
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Backers</p>
+														<p class="mt-0 mb-0">Donator</p>
 														<h6 class="mt-0 mb-0">
 															<strong>117</strong>
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Pledged</p>
+														<h6 class="mt-0 mb-0">Target</h6>
 														<h6 class="mt-0 mb-0">
-															<strong>&dollar;50,000</strong>
+															<strong>&#8358;{{ item.fund }}</strong>
 														</h6>
 													</div>
 													<div class="col-4 text-center">
@@ -189,15 +189,15 @@
 											<div class="col-12">
 												<div class="row">
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Backers</p>
+														<p class="mt-0 mb-0">Donator</p>
 														<h6 class="mt-0 mb-0">
 															<strong>30</strong>
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Pledged</p>
+														<p class="mt-0 mb-0">Target</p>
 														<h6 class="mt-0 mb-0">
-															<strong>&dollar;50,000</strong>
+															<strong>&#8358;{{ cand.fund }}</strong>
 														</h6>
 													</div>
 													<div class="col-4 text-center">
@@ -262,6 +262,7 @@
 											</strong>
 										</p>
 										<p class="desc">{{ item.vison}}</p>
+										
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 51%" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100"></div>
@@ -275,15 +276,15 @@
 											<div class="col-12">
 												<div class="row">
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Backers</p>
+														<p class="mt-0 mb-0">Donator</p>
 														<h6 class="mt-0 mb-0">
 															<strong>143</strong>
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Pledged</p>
+														<p class="mt-0 mb-0">Target</p>
 														<h6 class="mt-0 mb-0">
-															<strong>&dollar;50,000</strong>
+															<strong>&#8358;{{ item.fund }}</strong>
 														</h6>
 													</div>
 													<div class="col-4 text-center">
@@ -367,11 +368,11 @@
 												<div class="col-sm-12">
 													<div class="row ">
 														<div class="col">
-															<p class="mt-0 mb-0">Pledged</p>
+															<p class="mt-0 mb-0">Target</p>
 															<h5 class="mt-0 mb-0">&dollar;50,000</h5>
 														</div>
 														<div class="col">
-															<p class="mt-0 mb-0">Backers</p>
+															<p class="mt-0 mb-0">Donators</p>
 															<h5 class="mt-0 mb-0">250</h5>
 														</div>
 														<div class="col">
@@ -600,106 +601,100 @@
 	</div>
 </template>
 <script>
-	export default {
-		name: "Index",
-		data() {
-			return {
-				items: [],
-				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
-				org_link : 'https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/',
-				revs: [],
-			};
-		},
-		computed: {
-			latest: function() {
-				return this.revs.sort(function(left, right){
-					return moment.utc(right.created).diff(moment.utc(left.created))
-				});
-			}
-		},
+export default {
+  name: "Index",
+  data() {
+    return {
+      items: [],
+      api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
+      org_link:
+        "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
+      revs: []
+    };
+  },
+  computed: {
+    latest: function() {
+      return this.revs.sort(function(left, right) {
+        return moment.utc(right.created).diff(moment.utc(left.created));
+      });
+    }
+  },
 
-		methods: {
-			imageUri: function(imgUri){
-				var splitted = imgUri.split("/");
-				// console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
-				return this.org_link+splitted[splitted.length-1].split('.')[0]+'.png';
-				return imgUri
-			}
-		},
-		mounted() {
-			console.time('Fetching Data');
-			this.axios.get(this.api).then(response => {
-				console.log("===================");
-				console.log(response.data);
-				console.log("===================");
-				this.items = response.data.aspirants;
-				// console.log(this.items);
-				// this.alias = this.items.alias;
-				// this.city = this.items.city;
-				// this.created = this.items.created;
-				// this.email = this.items.email;
-				// this.firstname = this.items.firstname;
-				// this.fund = this.items.fund;
-				// this.gender = this.items.gender;
-				// this.image = this.items.image;
-				// this.lastname = this.items.lastname;
-				// this.party = this.items.party;
-				// this.position = this.items.position;
-				// this.state = this.items.state;
-				// this.story = this.items.story;
-				// this.updated = this.items.updated;
-				// this.user_id = this.items.user_id;
-				// this.vision = this.items.vision;
-				// this._id = this.items._id;
-				// this.revs = response.data.aspirants;
-				this.revs = JSON.parse(JSON.stringify(this.items));
-				// console.log("===================");
-				// console.log(this.$refs);
-				// console.log("===================");
-
-			});
-			console.timeEnd('Fetching Data');
-			}
-	};
+  methods: {
+    imageUri: function(imgUri) {
+      var splitted = imgUri.split("/");
+      // console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
+      return (
+        this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png"
+      );
+      return imgUri;
+    }
+  },
+  mounted() {
+    console.time("Fetching Data");
+    this.axios.get(this.api).then(response => {
+      console.log("===================");
+      console.log(response.data);
+      console.log("===================");
+      this.items = response.data.aspirants;
+      this.revs = JSON.parse(JSON.stringify(this.items));
+    });
+    console.timeEnd("Fetching Data");
+  }
+};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.light-green{
-	background-color: #e6fde6;
+.light-green {
+  background-color: #e6fde6;
 }
 
 .card-img-top {
-    width: 100%;
-    height: 13vw;
-    object-fit: cover;
+  width: 100%;
+  height: 13vw;
+  object-fit: cover;
 }
 
 .btn-primary {
-	background-color:#006600 !important;
+  background-color: #006600 !important;
 }
-
 
 .card {
-    border: 1px solid rgb(254,205,11);
+  border: 1px solid rgb(254, 205, 11);
 }
-.limited-text-vision{
-	  display: block;
+.limited-text-vision {
+  display: block;
   width: 200px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-
-.limited-text-story{
-  word-break: break-all; 
+.limited-text-story {
+  word-break: break-all;
 }
 
 .btn {
-    border: 2px solid rgb(254,205,11);
-    border-radius: 0.25rem;
-    background-color: #006600;
-    color: #ddd;
+  border: 2px solid rgb(254, 205, 11);
+  border-radius: 0.25rem;
+  background-color: #006600;
+  color: #ddd;
+}
+.progress {
+  background-color: #ffe795;
+}
+
+.progress-bar {
+  background-color: #006600;
+}
+
+a:focus,
+a:hover {
+  color: rgb(254, 205, 11);
+  text-decoration: underline;
+}
+
+a {
+	color:  #006600;
 }
 </style>

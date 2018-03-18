@@ -345,7 +345,8 @@
 										placeholder="Full Name" readonly>
 										<div class="form-element span12 ">
 											<label class="checkbox-public label-extrasmall m-medium m-top-tiny">
-												<input type="checkbox" v-model="toggle" @click="check($event)" true-value="yes" false-value="no"name="public" value="1"> Show my name in "Donators box" </label>
+												<input type="checkbox" v-model="toggle" @click="check($event)" true-value="yes" false-value="no" name="public"
+												value="1"> Show my name in "Donators box" </label>
 										</div>
 									</div>
 									<div class="col-6">
@@ -481,342 +482,291 @@
 	</div>
 </template>
 <script>
-export default {
-  name: "Login",
-  data() {
-    return {
-      alias: "",
-      city: "",
-      created: "",
-      email: "",
-      firstname: "",
-      fund: "",
-      gender: "",
-      image: "",
-      lastname: "",
-      party: "",
-      position: "",
-      facebook: "",
-      twitter: "",
-      state: "",
-      story: "",
-      updated: "",
-      user_id: "",
-      video: "",
-      vision: "",
-      _id: "",
-      api:
-        "https://onepercent-crowdfund.herokuapp.com/aspirants/5a932b6e875f590014c49814",
-      items: [],
-      candidate_ID: "",
-      fullname: "",
-      message: "",
-      api_endrosment: "https://onepercent-crowdfund.herokuapp.com/endorsements",
-      endorse_data: {},
-      users: [],
-      endorLenght: "",
-      tokken: "",
-      userAddress: "",
-      userFund: "",
-      userOccupation: "",
-      userExpir: "",
-      userCSC: "",
-      userCCN: "",
-      userState: "",
-      userCity: "",
-      donators: [],
-      numDonator: 0,
-      perNum: 0,
-      tAmount: "",
-      toggle: false,
-      userFullname: ""
-      // percentAmount: ''
-    };
-  },
-  methods: {
-    post_endorsme() {
-      this.endorse_data = {
-        voter_id: localStorage.getItem("id"),
-        id: this.candidate_ID,
-        message: this.message,
-        username: localStorage.getItem("fullname")
-      };
-      console.log(this.endorse_data);
-      this.axios.post(this.api_endrosment, this.endorse_data).then(
-        response => {
-          console.log(response.data);
-          this.get_endorsme();
-        },
-        function(err) {
-          console.log("ERROR!");
-          console.log(err);
-        }
-      );
-      this.message = "";
-    },
-    get_endorsme() {
-      this.get_endorsme_api =
-        "https://onepercent-crowdfund.herokuapp.com/endorsements/all/" +
-        this.candidate_ID;
-      this.axios.get(this.get_endorsme_api).then(response => {
-        this.users = response.data.endorsement.slice().reverse();
-        this.endorLenght = this.users.length;
-      });
-    },
-    addDonation(e) {
-      this.candidate_ID = window.location.pathname.split("/")[2];
-      this.tokken = localStorage.getItem("token");
-    //   this.userFullname = localStorage.getItem("fullname");
-    //   this.userEmail = localStorage.getItem("email");
-      this.userID = localStorage.getItem("id");
-      this.dataDonate = {
-        donator: this.userFullname,
-        id: this.candidate_ID,
-        address: this.userAddress,
-        aspirant: this.alias,
-        fund: this.userFund,
-        expected_fund: this.fund,
-        ocupation: this.userOccupation,
-        email: this.userEmail,
-        card_details: [
-          {
-            card_type: "VERVE"
-          }
-        ]
-      };
-      // console.log(this.dataDonate);
-      this.axios
-        .post(
-          "https://onepercent-crowdfund.herokuapp.com/donations",
-          this.dataDonate
-        )
-        .then(response => {
-          //   console.log(response.data)
-          if (response.data.responseCode == "00") {
-            // swal("Successfully added a new campaign", "", "success");
-			console.log(response);
-			window.location = '/aspirant/'+this.candidate_ID;
-          } else if (response.data.responseCode == "03") {
-            // swal("Campaign exists already", "", "error");
-            console.log(response);
-          } else {
-            // swal("Error adding campaign", "", "error");
-            console.log(response);
-          }
-        })
-        .catch(error => {
-          // this.loading = false;
-          //   console.log(error)
-          // swal("Adding new campaign failed. Please check your network", "", "error")
-          console.log(response);
-		});
-		
-	  e.preventDefault();
-	//   this.$router.push('/aspirant/'+this.userID);
-	//    window.location = '/aspirant/'+this.candidate_ID;
-    },
-    comPer() {
-      // console.log('COMPARADC');
-      // 	console.log(this.tAmount);
-      console.log(this.$refs.perpro.style.width);
-      // this.$refs.perpro.style.width = String(this.per) + '%'
-      this.perNum = parseInt(
-        parseInt(this.tAmount) / parseInt(this.fund) * 100
-      );
-      console.log("This PER: " + this.perNum);
-      this.$refs.perpro.style.width =
-        String(parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100)) +
-        "%";
-    },
-    somefunction() {
-      console.log("chehck box xhekx");
-    },
-    check(e) {
-      if (e.target.checked) {
-        console.log(e.target.value);
-        this.userFullname = "Anonymous";
-        this.userEmail = "Anonymous";
-      } else {
-        this.userFullname = localStorage.getItem("fullname");
-        this.userEmail = localStorage.getItem("email");
-      }
-    }
-  },
-  computed: {
-    reverseItems() {
-      return this.items.slice().reverse();
-    }
-  },
-  watch: {},
-  mounted() {
-    this.api =
-      "https://onepercent-crowdfund.herokuapp.com/aspirants/" +
-      this.candidate_ID;
-       this.axios.get(this.api).then(response => {
-      this.item = response.data.aspirant;
-      this.alias = this.item.alias;
-      this.city = this.item.city;
-      this.created = this.item.created;
-      this.email = this.item.email;
-      this.firstname = this.item.firstname;
-      this.fund = this.item.fund;
-      this.gender = this.item.gender;
-      this.image = this.item.image;
-      this.lastname = this.item.lastname;
-      this.party = this.item.party;
-      this.position = this.item.position;
-      this.state = this.item.state;
-      this.story = this.item.story;
-      this.updated = this.item.updated;
-      this.user_id = this.item.user_id;
-      this.vision = this.item.vision;
-      this._id = this.item._id;
-    });
-    this.get_endorsme();
-    this.axios
-      .get(
-        "https://onepercent-crowdfund.herokuapp.com/donations/all/" +
-          this.candidate_ID
-      )
-      .then(response => {
-        // this.item = response.data.aspirant;
-        // this.alias = this.item.alias
-        // console.log(response.data.total);
-        // console.log(response.data.donation);
-        this.donators = response.data.donation;
-        // this.tAmount = response.data.total;
-        this.tAmount = response.data.total;
-        console.log(this.fund);
-        this.numDonator = response.data.donation.length;
-        this.comPer();
-      });
-  },
-  created() {
-    this.candidate_ID = window.location.pathname.split("/")[2];
-    this.tokken = localStorage.getItem("token");
-    this.userFullname = localStorage.getItem("fullname");
-    this.userEmail = localStorage.getItem("email");
-    this.userID = localStorage.getItem("id");
-  }
-};
+	export default {
+		name: "Login",
+		data() {
+			return {
+				alias: "",
+				city: "",
+				created: "",
+				email: "",
+				firstname: "",
+				fund: "",
+				gender: "",
+				image: "",
+				lastname: "",
+				party: "",
+				position: "",
+				facebook: "",
+				twitter: "",
+				state: "",
+				story: "",
+				updated: "",
+				user_id: "",
+				video: "",
+				vision: "",
+				_id: "",
+				api: "https://onepercent-crowdfund.herokuapp.com/aspirants/5a932b6e875f590014c49814",
+				items: [],
+				candidate_ID: "",
+				fullname: "",
+				message: "",
+				api_endrosment: "https://onepercent-crowdfund.herokuapp.com/endorsements",
+				endorse_data: {},
+				users: [],
+				endorLenght: "",
+				tokken: "",
+				userAddress: "",
+				userFund: "",
+				userOccupation: "",
+				userExpir: "",
+				userCSC: "",
+				userCCN: "",
+				userState: "",
+				userCity: "",
+				donators: [],
+				numDonator: 0,
+				perNum: 0,
+				tAmount: "",
+				toggle: false,
+				userFullname: ""
+			};
+		},
+		methods: {
+			post_endorsme() {
+				this.endorse_data = {
+					voter_id: localStorage.getItem("id"),
+					id: this.candidate_ID,
+					message: this.message,
+					username: localStorage.getItem("fullname")
+				};
+				console.log(this.endorse_data);
+				this.axios.post(this.api_endrosment, this.endorse_data).then(response => {
+					console.log(response.data);
+					this.get_endorsme();
+				}, function (err) {
+					console.log("ERROR!");
+					console.log(err);
+				});
+				this.message = "";
+			},
+			get_endorsme() {
+				this.get_endorsme_api = "https://onepercent-crowdfund.herokuapp.com/endorsements/all/" + this.candidate_ID;
+				this.axios.get(this.get_endorsme_api).then(response => {
+					this.users = response.data.endorsement.slice().reverse();
+					this.endorLenght = this.users.length;
+				});
+			},
+			addDonation(e) {
+				this.candidate_ID = window.location.pathname.split("/")[2];
+				this.tokken = localStorage.getItem("token");
+				this.userID = localStorage.getItem("id");
+				this.dataDonate = {
+					donator: this.userFullname,
+					id: this.candidate_ID,
+					address: this.userAddress,
+					aspirant: this.alias,
+					fund: this.userFund,
+					expected_fund: this.fund,
+					ocupation: this.userOccupation,
+					email: this.userEmail,
+					card_details: [{
+						card_type: "VERVE"
+					}]
+				};
+				this.axios.post("https://onepercent-crowdfund.herokuapp.com/donations", this.dataDonate).then(response => {
+					if (response.data.responseCode == "00") {
+						console.log(response);
+						window.location = '/aspirant/' + this.candidate_ID;
+					} else if (response.data.responseCode == "03") {
+						console.log(response);
+					} else {
+						console.log(response);
+					}
+				}).catch(error => {
+					console.log(response);
+				});
+				e.preventDefault();
+			},
+			comPer() {
+				this.perNum = parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100);
+				this.$refs.perpro.style.width = String(parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100)) + "%";
+			},
+			somefunction() {
+				console.log("chehck box xhekx");
+			},
+			check(e) {
+				if (e.target.checked) {
+					console.log(e.target.value);
+					this.userFullname = "Anonymous";
+					this.userEmail = "Anonymous";
+				} else {
+					this.userFullname = localStorage.getItem("fullname");
+					this.userEmail = localStorage.getItem("email");
+				}
+			}
+		},
+		computed: {
+			reverseItems() {
+				return this.items.slice().reverse();
+			}
+		},
+		watch: {},
+		mounted() {
+			this.api = "https://onepercent-crowdfund.herokuapp.com/aspirants/" + this.candidate_ID;
+			this.axios.get(this.api).then(response => {
+				this.item = response.data.aspirant;
+				this.alias = this.item.alias;
+				this.city = this.item.city;
+				this.created = this.item.created;
+				this.email = this.item.email;
+				this.firstname = this.item.firstname;
+				this.fund = this.item.fund;
+				this.gender = this.item.gender;
+				this.image = this.item.image;
+				this.lastname = this.item.lastname;
+				this.party = this.item.party;
+				this.position = this.item.position;
+				this.state = this.item.state;
+				this.story = this.item.story;
+				this.updated = this.item.updated;
+				this.user_id = this.item.user_id;
+				this.vision = this.item.vision;
+				this._id = this.item._id;
+			});
+			this.get_endorsme();
+			this.axios.get("https://onepercent-crowdfund.herokuapp.com/donations/all/" + this.candidate_ID).then(response => {
+				this.donators = response.data.donation;
+				this.tAmount = response.data.total;
+				this.numDonator = response.data.donation.length;
+				this.comPer();
+			});
+		},
+		created() {
+			this.candidate_ID = window.location.pathname.split("/")[2];
+			this.tokken = localStorage.getItem("token");
+			this.userFullname = localStorage.getItem("fullname");
+			this.userEmail = localStorage.getItem("email");
+			this.userID = localStorage.getItem("id");
+		}
+	};
 </script>
 <style>
-.campImg {
-  height: 350px;
-  width: 100%;
-  background-color: powderblue;
-}
+	.campImg {
+		height: 350px;
+		width: 100%;
+		background-color: powderblue;
+	}
 
-.campImg > img {
-  width: 100%;
-  height: 100%;
-}
+	.campImg>img {
+		width: 100%;
+		height: 100%;
+	}
 
-.card {
-  border: 1px solid rgb(254, 205, 11);
-}
+	.card {
+		border: 1px solid rgb(254, 205, 11);
+	}
 
-.card-header {
-  background-color: #ffffff;
-  border-bottom: none;
-  color: green;
-}
+	.card-header {
+		background-color: #ffffff;
+		border-bottom: none;
+		color: green;
+	}
 
-.card-header:hover {
-  background-color: #006600;
-  border-bottom: none;
-  color: rgb(254, 205, 11);
-}
+	.card-header:hover {
+		background-color: #006600;
+		border-bottom: none;
+		color: rgb(254, 205, 11);
+	}
 
-a:focus,
-a:hover {
-  color: rgb(254, 205, 11);
-  text-decoration: underline;
-}
+	a:focus,
+	a:hover {
+		color: rgb(254, 205, 11);
+		text-decoration: underline;
+	}
 
-hr {
-  border-color: rgb(254, 205, 11);
-}
+	hr {
+		border-color: rgb(254, 205, 11);
+	}
 
-.btn-pri {
-  color: rgb(254, 205, 11);
-  background-color: #006600;
-  border-color: rgb(254, 205, 11) !important;
-}
+	.btn-pri {
+		color: rgb(254, 205, 11);
+		background-color: #006600;
+		border-color: rgb(254, 205, 11) !important;
+	}
 
-.btn-pri:hover {
-  background-color: rgb(254, 205, 11);
-  color: #006600;
-  border-color: #006600 !important;
-}
+	.btn-pri:hover {
+		background-color: rgb(254, 205, 11);
+		color: #006600;
+		border-color: #006600 !important;
+	}
 
-.progress {
-  background-color: #ffe795;
-}
+	.progress {
+		background-color: #ffe795;
+	}
 
-.progress-bar {
-  background-color: #006600;
-  /* width: 10%; */
-}
+	.progress-bar {
+		background-color: #006600;
+	}
 
-.nav-tabs {
-  border-bottom: 1px solid #ffe795;
-}
+	.nav-tabs {
+		border-bottom: 1px solid #ffe795;
+	}
 
-.img-thumbnail {
-  border-color: #ffe795;
-}
+	.img-thumbnail {
+		border-color: #ffe795;
+	}
 
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-  color: #006600;
-  background-color: #fff;
-  border-color: #ffe795 #ffe795 #fff;
-}
+	.nav-tabs .nav-link.active,
+	.nav-tabs .nav-item.show .nav-link {
+		color: #006600;
+		background-color: #fff;
+		border-color: #ffe795 #ffe795 #fff;
+	}
 
-.nav-tabs > li > a {
-  color: #818a91;
-}
+	.nav-tabs>li>a {
+		color: #818a91;
+	}
 
-.nav-tabs .nav-link:focus,
-.nav-tabs .nav-link:hover {
-  border-color: #ffe795 #ffe795 #ffe795;
-}
+	.nav-tabs .nav-link:focus,
+	.nav-tabs .nav-link:hover {
+		border-color: #ffe795 #ffe795 #ffe795;
+	}
 
-.btn-donate {
-  width: 50%;
-  color: rgb(254, 205, 11);
-  background-color: #006600;
-}
+	.btn-donate {
+		width: 50%;
+		color: rgb(254, 205, 11);
+		background-color: #006600;
+	}
 
-.btn-donate:hover {
-  color: #006600;
-  background-color: rgb(254, 205, 11);
-}
+	.btn-donate:hover {
+		color: #006600;
+		background-color: rgb(254, 205, 11);
+	}
 
-.centered-modal .modal-dialog {
-  /* top: 30%;
+	.centered-modal .modal-dialog {
+		/* top: 30%;
   margin: 0 auto; */
-}
+	}
 
-.donate-amount-3 {
-  border-color: #ff4814;
-  border-radius: 0;
-  width: 70%;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  color: green;
-}
+	.donate-amount-3 {
+		border-color: #ff4814;
+		border-radius: 0;
+		width: 70%;
+		padding: 1.5rem;
+		background-color: #ffffff;
+		color: green;
+	}
 
-.donate-amount-3:hover {
-  border-radius: 0;
-  width: 70%;
-  padding: 1.5rem;
-  background-color: #006600;
-  color: rgb(254, 205, 11);
-}
+	.donate-amount-3:hover {
+		border-radius: 0;
+		width: 70%;
+		padding: 1.5rem;
+		background-color: #006600;
+		color: rgb(254, 205, 11);
+	}
 
-.modal-header2 {
-  border-bottom: none;
-}
+	.modal-header2 {
+		border-bottom: none;
+	}
 </style>

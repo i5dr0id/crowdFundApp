@@ -63,45 +63,37 @@ export default {
   },
   methods: {
     btnRegister(e) {
-    //   console.log(this.register.username);
-    //   console.log(this.register.password);
-    //   console.log(this.register.fullname);
-    //   console.log(this.register.email);
-      if(this.register.username == "" || this.register.password == "" || this.register.fullname == "" || this.register.email == "" ){
+		  console.log(this.register.username);
+		  console.log(this.register.password);
+		  console.log(this.register.fullname);
+		  console.log(this.register.email);
+			if(this.register.username == "" || this.register.password == "" || this.register.fullname == "" || this.register.email == "" ){
         swal("Please fill all fields","","error");
-        return;
-      }
-      this.loading = true;
-      this.axios.post(this.api,this.register)
-      .then(response => {
-        // console.log(response.data);
-        if (response.data.responseCode === "00") {
-        this.axios.post("https://onepercent-crowdfund.herokuapp.com/users/authenticate",
-        {
-          username: this.register.username,
-          password: this.register.password
-        })
-        .then(response => {
-        //   console.log(response.data);
-          if (response.data.responseCode === "00") {
-            // console.log("LOGIN SUCESSESFULE");
-            swal("Registration Successful !!!","","success")
-            localStorage.setItem("id", response.data.user._id);
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem("username", response.data.user.username);
-            localStorage.setItem("email", response.data.user.email);
-
-            this.$router.push('/');
-           }else if(response.data.responseCode == "02"){
-              swal("User already exists","","error")
-            }else{
-              swal("Error adding User","","error")
-          }
-        })
-        }
-      });
-      e.preventDefault();
-    }
+				return;
+		  }
+		  this.loading = true;
+		  this.axios.post(this.api,this.register).then(response => {
+				this.loading = false;
+			  console.log(response.data);
+				if (response.data.responseCode === "00") {
+						console.log("LOGIN SUCESSESFUL");
+					 swal("Registration Successful. Please Go to your mail and Activate this account","","success")
+					}else if(response.data.responseCode == "02"){
+							swal("User already exists","","error")
+					}else{
+              console.log(response.data.responseCode);
+							swal("Error adding User","","error")
+				}
+				 this.emptyFields();
+			  })
+		  e.preventDefault();
+	  },
+		emptyFields(){
+			this.register.username = "";
+			this.register.password = "";
+			this.register.fullname = "";
+			this.register.email = "";
+		}
   }
 };
 </script>

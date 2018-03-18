@@ -47,15 +47,12 @@ export default {
 			  username: '',
 			  password: ''
 		  },
-		  api: "https://onepercent-crowdfund.herokuapp.com/users/authenticate",
+		  api: "https://onepercent-crowdfund.herokuapp.com/authenticate",
 		   loading:false
 	  }
   },
   methods: {
 	   btnLogin(e) {
-		//   console.log(this.login.username);
-		//   console.log(this.login.password);
-		//   console.log(this.login);
 		  if(this.login.username == "" || this.login.password == ""){
              swal("Please fill all fields","","error");
 			 return;

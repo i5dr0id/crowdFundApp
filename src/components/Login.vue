@@ -47,8 +47,8 @@ export default {
 			  username: '',
 			  password: ''
 		  },
-		  api: "https://onepercent-crowdfund.herokuapp.com/authenticate",
-		   loading:false
+		  api: "https://onepercent-crowdfund.herokuapp.com/users/authenticate",
+		  loading:false
 	  }
   },
   methods: {
@@ -58,7 +58,7 @@ export default {
 			 return;
 		  }
 		  this.loading = true;
-		  this.axios.post(this.api,this.login).then(response => {
+		  this.axios.post(this.api,this.login).then((response) => {
 			  console.log(response.data);
 			  this.loading = false;
 			  if (response.data.responseCode == "00") {
@@ -72,15 +72,18 @@ export default {
 					this.$router.push('/');
 			  }else if(response.data.responseCode == "02"){
 				   swal("Authentication failed. User not found","","error")
+				   console.log('Authentication failed. User not found')
 			  }else if(response.data.responseCode == "05"){
 				  swal("Authentication failed. You need to verify your mail","","error")
+				  console.log('Authentication failed. You need to verify your mail')
 			  }else {
+				  console.log('Authentication failed. Password not found')
 				  swal("Authentication failed. Password not found","","error")
 			  }
 			  
-		  },function(err){
+		  },(err) => {
 			  this.loading = false;
-			//   console.log(err)
+			  console.log(err)
 			  swal("Authentication failed. Please check your network","","error")
 		  });
 		  e.preventDefault();

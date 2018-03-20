@@ -75,7 +75,7 @@ export default {
 		  this.axios.post(this.api,this.register).then(response => {
 				this.loading = false;
 			  console.log(response.data);
-				if (response.data.responseCode === "00") {
+				if (response.data.responseCode == "00") {
 						console.log("LOGIN SUCESSESFUL");
 					 swal("Registration Successful. Please Go to your mail and Activate this account","","success")
 					}else if(response.data.responseCode == "02"){

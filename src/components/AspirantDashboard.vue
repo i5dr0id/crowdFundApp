@@ -362,7 +362,7 @@
 									<div class="col-12">
 										<label for="">Street Address</label>
 										<input type="text" v-model="userAddress" class="form-control form-control-lg" id="exampleInputFirstname"
-										placeholder="Address"> </div>
+										placeholder="Address"> </div>	
 								</div>
 							</div>
 							<div class="form-group">

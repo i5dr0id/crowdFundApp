@@ -72,9 +72,12 @@ export default {
 					this.$router.push('/');
 			  }else if(response.data.responseCode == "02"){
 				   swal("Authentication failed. User not found","","error")
-			  }else{
+			  }else if(response.data.responseCode == "05"){
+				  swal("Authentication failed. You need to verify your mail","","error")
+			  }else {
 				  swal("Authentication failed. Password not found","","error")
 			  }
+			  
 		  },function(err){
 			  this.loading = false;
 			//   console.log(err)

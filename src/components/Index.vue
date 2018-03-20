@@ -25,14 +25,14 @@
 										<!-- <span class="text-primary">Art</span> -->
 									</h2>
 									<br />
-									<!-- <div class="card embed-responsive embed-responsive-1by1">
+									<div class="card embed-responsive embed-responsive-16by9">
 										<iframe  class=" card embed-responsive-item"  src="https://www.youtube.com/embed/cXoZRv3ywMo" frameborder="0"
 									allowfullscreen></iframe>
 									
-									</div> -->
-									<div class="embed-responsive embed-responsive-16by9">
+									</div>
+									<!-- <div class="embed-responsive embed-responsive-16by9">
   <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-</div>
+</div> -->
 								</div>
 							</div>
 						</div>

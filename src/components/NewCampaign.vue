@@ -158,8 +158,8 @@
 									<div class="card-picture thumbnail">
 										<img ref="camimg" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
 										id="img-preview" class="img-thumbnail" />
-										<label class="file-upload-container" for="file-upload">
-											<input v-on:change="uploadFile" id="file-upload" type="file" style="display:none;" accept=".png, .jpg, .jpeg"> Select an Image </label>
+										<label class="file-upload-container create" for="file-upload">
+											<input v-on:change="uploadFile"  id="file-upload" type="file" style="display:none;" accept=".png, .jpg, .jpeg"> Select an Image </label>
 									</div>
 								</div>
 							</div>
@@ -172,7 +172,7 @@
 					 <el-button type="primary">Primary</el-button> -->
 					<!--  -->
 					<!--  -->
-					<button type="submit" v-on:click="addCampaign" class="btn btn-success ">CREATE</button>
+					<button type="submit" v-on:click="addCampaign" class="btn btn-success create ">CREATE</button>
 					<p style="text-align:center">
 						<i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i>
 					</p>
@@ -446,5 +446,46 @@
 
 	.light-green {
     background-color: #e6fde6;
+	    outline: none !important;
+    /* border-color: #006600; */
+    box-shadow: 10px 10px 10px #006600;
+	 /* box-shadow: 0 0 10px #006600; */
+}
+
+.create {
+  border: 2px solid rgb(254, 205, 11);
+  border-radius: 0.25rem;
+  background-color: #006600;
+  color: #ddd;
+}
+
+.create:hover {
+  border: 2px solid  #006600;
+  border-radius: 0.25rem;
+  background-color:rgb(254, 205, 11);
+  color: #006600;
+}
+
+form input[type=text]:focus {
+/* border:1px solid  #006600; */
+    outline: none !important;
+    border-color: #006600;
+    box-shadow: 0 0 10px #006600;
+}
+form input[type=email]:focus {
+/* border:1px solid  #006600; */
+    outline: none !important;
+    border-color: #006600;
+    box-shadow: 0 0 10px #006600;
+}
+
+textarea:focus { 
+    outline: none !important;
+    border-color: #006600;
+    box-shadow: 0 0 10px #006600;
+}
+
+form label {
+	color:#006600;
 }
 </style>

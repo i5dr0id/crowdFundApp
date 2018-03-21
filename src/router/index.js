@@ -15,6 +15,7 @@ import AspirantDashboard from '@/components/AspirantDashboard'
 import cp from '@/components/cp'
 import Explore from '@/components/Explore'
 import NotFound from '@/components/NotFound'
+import About from '@/components/About'
 
 Vue.use(Router)
 
@@ -93,6 +94,11 @@ export default new Router({
 			path: "*",
 			name: NotFound,
 			component: NotFound
+		},
+		{
+			path: "/about",
+			name: About,
+			component: About
 		},
 	],
 	mode: 'history',

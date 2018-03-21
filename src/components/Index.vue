@@ -117,7 +117,7 @@
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Days&nbsp;Left</p>
+														<p class="mt-0 mb-0">Endorsed</p>
 														<h6 class="mt-0 mb-0">
 															<strong>4</strong>
 														</h6>
@@ -205,7 +205,7 @@
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Days&nbsp;Left</p>
+														<p class="mt-0 mb-0">Endorsed</p>
 														<h6 class="mt-0 mb-0">
 															<strong>14</strong>
 														</h6>
@@ -292,7 +292,7 @@
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Days&nbsp;Left</p>
+														<p class="mt-0 mb-0">Endorsed</p>
 														<h6 class="mt-0 mb-0">
 															<strong>15</strong>
 														</h6>
@@ -380,7 +380,7 @@
 															<h5 class="mt-0 mb-0">250</h5>
 														</div>
 														<div class="col">
-															<p class="mt-0 mb-0">Days Left</p>
+															<p class="mt-0 mb-0">Endorsed</p>
 															<h5 class="mt-0 mb-0">27</h5>
 														</div>
 														<div class="col">

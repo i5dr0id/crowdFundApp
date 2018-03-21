@@ -233,4 +233,7 @@ a:hover {
   color: rgb(254, 205, 11);
   text-decoration: underline;
 }
+.card{
+    border: 1px solid rgb(254, 205, 11);
+}
 </style>

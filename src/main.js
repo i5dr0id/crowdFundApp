@@ -12,20 +12,20 @@ import VeeValidate from 'vee-validate'
 import moment from 'moment'
 Vue.prototype.moment = moment
 
-import { Button, Select, Loading } from 'element-ui';
+// import { Button, Select, Loading } from 'element-ui';
 
 // import Element from 'element-ui';
 
-Vue.component(Button.name, Button);
-Vue.component(Select.name, Select);
+// Vue.component(Button.name, Button);
+// Vue.component(Select.name, Select);
 
-import Element from 'element-ui';
-Vue.use(Element, { size: 'small' });
+// import Element from 'element-ui';
+// Vue.use(Element, { size: 'small' });
 
 // import {Button,Select} from 'element-ui';
 
-Vue.use(Button);
-Vue.use(Select);
+// Vue.use(Button);
+// Vue.use(Select);
 
 
 Vue.use(VeeValidate);

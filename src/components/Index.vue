@@ -121,7 +121,7 @@
 													<div class="col-4 text-center">
 														<p class="mt-0 mb-0">Endorsed</p>
 														<h6 class="mt-0 mb-0">
-															<strong>4</strong>
+															<strong>500</strong>
 														</h6>
 													</div>
 												</div>
@@ -212,7 +212,7 @@
 													<div class="col-4 text-center">
 														<p class="mt-0 mb-0">Endorsed</p>
 														<h6 class="mt-0 mb-0">
-															<strong>14</strong>
+															<strong>500</strong>
 														</h6>
 													</div>
 												</div>
@@ -302,7 +302,7 @@
 													<div class="col-4 text-center">
 														<p class="mt-0 mb-0">Endorsed</p>
 														<h6 class="mt-0 mb-0">
-															<strong>15</strong>
+															<strong>500</strong>
 														</h6>
 													</div>
 												</div>

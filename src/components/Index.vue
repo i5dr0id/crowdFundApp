@@ -113,7 +113,7 @@
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Target</p>
+														<p class="mt-0 mb-0">Raised</p>
 														<h6 class="mt-0 mb-0">
 															<strong>&#8358;{{ cand.fund }}</strong>
 														</h6>
@@ -204,7 +204,7 @@
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<h6 class="mt-0 mb-0">Target</h6>
+														<h6 class="mt-0 mb-0">Raised</h6>
 														<h6 class="mt-0 mb-0">
 															<strong>&#8358;{{ item.fund }}</strong>
 														</h6>
@@ -294,7 +294,7 @@
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Target</p>
+														<p class="mt-0 mb-0">Raised</p>
 														<h6 class="mt-0 mb-0">
 															<strong>&#8358;{{ item.fund }}</strong>
 														</h6>
@@ -381,7 +381,7 @@
 												<div class="col-sm-12">
 													<div class="row ">
 														<div class="col">
-															<p class="mt-0 mb-0">Target</p>
+															<p class="mt-0 mb-0">Raised</p>
 															<h5 class="mt-0 mb-0">&dollar;50,000</h5>
 														</div>
 														<div class="col">

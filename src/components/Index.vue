@@ -8,46 +8,42 @@
 		<!--  -->
 		<!--  -->
 		<!-- <div class="container-fluid inner hidden-xs-down" style="height: 560px;"> -->
-			<!-- <br />
+		<!-- <br />
 			<br /> -->
-			<div class="row mt-5">
-				<div class="col-2 carousel-list">
-					<div class="row">
-						<div class="col-sm-10"> </div>
-					</div>
+		<div class="row mt-5">
+			<div class="col-2 carousel-list">
+				<div class="row">
+					<div class="col-sm-10"> </div>
 				</div>
-				<div class="col-lg-8 col-sm-12">
-					<div id="home-swiper" class="swiper-container">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide" data-hash="art">
-								<div>
-									<h2 class="text-center">Crowdfunding for politics
-										<!-- <span class="text-primary">Art</span> -->
-									</h2>
-									<br />
-									<div class="card embed-responsive embed-responsive-16by9">
-										<iframe  class=" card embed-responsive-item"  src="https://www.youtube.com/embed/cXoZRv3ywMo" frameborder="0"
-									allowfullscreen></iframe>
-									
-									</div>
-									<!-- <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-</div> -->
+			</div>
+			<div class="col-lg-8 col-sm-12">
+				<div id="home-swiper" class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide" data-hash="art">
+							<div>
+								<h2 class="text-center">Crowdfunding for political campaigns
+									<!-- <span class="text-primary">Art</span> -->
+								</h2>
+								<br />
+								<div class="card embed-responsive embed-responsive-16by9">
+									<iframe class=" card embed-responsive-item" src="https://www.youtube.com/embed/cXoZRv3ywMo" frameborder="0" allowfullscreen></iframe>
 								</div>
-							</div>
+								<!-- <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+</div> --></div>
 						</div>
 					</div>
 				</div>
-				
-				<div class="col-2 carousel-list">
-					<div class="row">
-						<div class="col-sm-10"> </div>
-					</div>
+			</div>
+			<div class="col-2 carousel-list">
+				<div class="row">
+					<div class="col-sm-10"> </div>
 				</div>
 			</div>
-			<br>
-			<br>
-			<br>
+		</div>
+		<br>
+		<br>
+		<br>
 		<!-- </div> -->
 		<!--  -->
 		<!--  -->
@@ -57,7 +53,6 @@
 		<!--  -->
 		<!--  -->
 		<div class=" light-green  mt-3 pt-5 pb-5">
-		
 			<div class="container-fluid inner">
 				<div class="row">
 					<div class="col-8">
@@ -74,24 +69,31 @@
 								<div class="card box">
 									<a href="#">
 										<router-link :to="/aspirant/ + cand._id">
-										<img v-if="cand.image" ref="imgg" :src="cand.image" class="card-img-top img-fluid">
-										<div v-else>
-										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=51" class="img-fluid hidden-xs-down" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=51" class="img-fluid hidden-sm-up" /> 
-										</div>
+											<img v-if="cand.image" ref="imgg" :src="cand.image" class="card-img-top img-fluid">
+											<div v-else>
+												<img src="http://i.expresspixel.com/unsplash.it/310/210?image=51" class="img-fluid hidden-xs-down" />
+												<img src="http://i.expresspixel.com/unsplash.it/610/210?image=51" class="img-fluid hidden-sm-up" /> </div>
 										</router-link>
 									</a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="#" class="limited-text-vision"><router-link :to="/aspirant/ + cand._id"> {{ cand.firstname +' '+ cand.lastname }}</router-link></a>
+											<a href="#" class="limited-text-vision">
+												<router-link :to="/aspirant/ + cand._id"> {{ cand.firstname +' '+ cand.lastname }}</router-link>
+											</a>
 										</h6>
 										<p class="text-muted limited-text-vision">
 											<strong>
-												<a href="#" class="text-muted"><router-link :to="/aspirant/ + cand._id">{{ cand.vision }}</router-link></a>
+												<a href="#" class="text-muted">
+													<router-link :to="/aspirant/ + cand._id">{{ cand.vision }}</router-link>
+												</a>
 											</strong>
 										</p>
 										<p class="desc limited-text-story">{{ cand.story }}</p>
-										<a href="#"><router-link :to="/aspirant/ + cand._id"><span>read more</span></router-link></a>
+										<a href="#">
+											<router-link :to="/aspirant/ + cand._id">
+												<span>read more</span>
+											</router-link>
+										</a>
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
@@ -147,7 +149,7 @@
 		<!--  -->
 		<!--  -->
 		<div class="mt-5">
-				<div class="container-fluid inner">
+			<div class="container-fluid inner">
 				<div class="row">
 					<div class="col-8">
 						<h3>Trending Campaigns</h3>
@@ -163,20 +165,23 @@
 								<div class="card box">
 									<a href="#">
 										<router-link :to="/aspirant/ + item._id">
-										<img v-if="item.image" ref="imgg" :src="imageUri(item.image)" class="card-img-top img-fluid">
-										<div v-else>
-										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up" />
-										</div>
-										</router-link> 
-										</a> 
+											<img v-if="item.image" ref="imgg" :src="imageUri(item.image)" class="card-img-top img-fluid">
+											<div v-else>
+												<img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down" />
+												<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up" /> </div>
+										</router-link>
+									</a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="#" class="limited-text-vision"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
+											<a href="#" class="limited-text-vision">
+												<router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link>
+											</a>
 										</h6>
 										<p class="text-muted">By
 											<strong>
-												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
+												<a href="#" class="text-muted">
+													<router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link>
+												</a>
 											</strong>
 										</p>
 										<p class="desc limited-text-story">{{ item.story }}</p>
@@ -215,8 +220,7 @@
 										</div>
 									</div>
 								</div>
-							</div>>
-						</div>
+							</div>> </div>
 						<div class="swiper-button-next hidden-lg-up">
 							<i class="fa fa-chevron-right" aria-hidden="true"></i>
 						</div>
@@ -249,24 +253,28 @@
 						<div class="row mt-2 swiper-wrapper">
 							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
-									<a href=""><router-link :to="/aspirant/ + item._id">
-										<img v-if="item.image" ref="imgg" :src="item.image" class="card-img-top img-fluid">
-										<div v-else>
-										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=91" class="img-fluid hidden-xs-down" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=91" class="img-fluid hidden-sm-up" /> 
-										</div>
-										</router-link></a>
+									<a href="">
+										<router-link :to="/aspirant/ + item._id">
+											<img v-if="item.image" ref="imgg" :src="item.image" class="card-img-top img-fluid">
+											<div v-else>
+												<img src="http://i.expresspixel.com/unsplash.it/310/210?image=91" class="img-fluid hidden-xs-down" />
+												<img src="http://i.expresspixel.com/unsplash.it/610/210?image=91" class="img-fluid hidden-sm-up" /> </div>
+										</router-link>
+									</a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="#"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
+											<a href="#">
+												<router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link>
+											</a>
 										</h6>
 										<p class="text-muted">By
 											<strong>
-												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
+												<a href="#" class="text-muted">
+													<router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link>
+												</a>
 											</strong>
 										</p>
 										<p class="desc">{{ item.vison}}</p>
-										
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
 												<div class="progress-bar" role="progressbar" style="width: 51%" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100"></div>
@@ -335,7 +343,7 @@
 						<div class="swiper-wrapper">
 							<div class="swiper-slide" data-hash="art">
 								<div>
-									<h2 class="text-center">Fund This Campaign 
+									<h2 class="text-center">Fund This Campaign
 										<!-- <span class="text-primary">Art</span> -->
 									</h2>
 									<br />
@@ -345,7 +353,8 @@
 												<div class="col-sm-6">
 													<!-- <a href="" class="thumbnail"><img class="img-fluid img-thumbnail" src="images/eat-1892990_1920.jpg" /></a> -->
 													<a href="#" class="thumbnaidl">
-														<img class="card-img-top img-fluid" src="http://4.bp.blogspot.com/-I9ONC-6Ckck/VBH-XDorysI/AAAAAAADhSM/Ft6hMjrX-Fg/s1600/01.jpg" /> </a>
+														<img class="card-img-top img-fluid" src="http://4.bp.blogspot.com/-I9ONC-6Ckck/VBH-XDorysI/AAAAAAADhSM/Ft6hMjrX-Fg/s1600/01.jpg"
+														/> </a>
 												</div>
 												<div class="col-sm-6">
 													<h4 class="display-8">
@@ -354,7 +363,7 @@
 													<p class="text-muted">
 														<strong>
 															<a href="http://templates.expresspixel.com/project" class="text-muted">Israel Benoni</a>
-														</strong> for 
+														</strong> for
 														<strong>Chairman, Yaba</strong>
 													</p>
 													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vulputate et odio eu tempus. Donec turpis
@@ -423,16 +432,16 @@
 						</div>
 						<div class="row mt-3">
 							<div class="col-5  offset-1">
-								<p>Quam pellentesque, mollis arcu tincidunt, fauc, ipad, laptop. Lorem ipsum dolor sit amet,
-									consectetur adipiscing elit.</p>
+								<p>Quam pellentesque, mollis arcu tincidunt, fauc, ipad, laptop. Lorem ipsum dolor sit amet, consectetur adipiscing
+									elit.</p>
 							</div>
 							<div class="col-5  offset-1">
-								<p>Create yolor sit amet consectetur adipire trends immediately. Donec nec tortor lorem. Integer
-									nulla quam, convallis ut consectetur vel, dignissim et ex.</p>
+								<p>Create yolor sit amet consectetur adipire trends immediately. Donec nec tortor lorem. Integer nulla quam, convallis
+									ut consectetur vel, dignissim et ex.</p>
 							</div>
 							<div class="col-5  offset-1">
-								<p>Ideal f quam pellentesque, mollis arcu tincidunt, faucure you find our what your best products are, what
-									products you could sell.</p>
+								<p>Ideal f quam pellentesque, mollis arcu tincidunt, faucure you find our what your best products are, what products
+									you could sell.</p>
 							</div>
 							<div class="col-5  offset-1">
 								<p> Nam porttitor quam pellentesque, mollis arcu tincidunt, faucibus tellus. Fusce nec sem ut risus auctor iaculis id
@@ -454,10 +463,10 @@
 										<h4 class="card-title">We crowdfund Political Campaigns</h4>
 										<p class="card-text">Build your own crowdfunding or fundraising website. Raise money online or through your Facebook profile. Get started
 											today.</p>
-									</div>
 									<div class="col-sm-4 text-center">
+									</div>
 										<br />
-										<a href="/add" class="btn btn-primary btn-lg">Crowdfund your campaign
+										<a href="/add" class="btn btn-primary btn-lg"> Crowdfund your campaign
 											<i class="fa fa-chevron-right" aria-hidden="true"></i>
 										</a>
 									</div>
@@ -605,122 +614,120 @@
 	</div>
 </template>
 <script>
-export default {
-  name: "Index",
-  data() {
-    return {
-      items: [],
-      api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
-      org_link:
-        "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
-      revs: []
-    };
-  },
-  computed: {
-    latest: function() {
-      return this.revs.sort(function(left, right) {
-        return moment.utc(right.created).diff(moment.utc(left.created));
-      });
-    }
-  },
-
-  methods: {
-    imageUri: function(imgUri) {
-      var splitted = imgUri.split("/");
-      // console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
-      return (
-        this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png"
-      );
-      return imgUri;
-    }
-  },
-  mounted() {
-    console.time("Fetching Data");
-    this.axios.get(this.api).then(response => {
-      console.log("===================");
-      console.log(response.data);
-      console.log("===================");
-      this.items = response.data.aspirants;
-      this.revs = JSON.parse(JSON.stringify(this.items));
-    });
-    console.timeEnd("Fetching Data");
-  }
-};
+	export default {
+		name: "Index",
+		data() {
+			return {
+				items: [],
+				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
+				org_link: "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
+				revs: []
+			};
+		},
+		computed: {
+			latest: function () {
+				return this.revs.sort(function (left, right) {
+					return moment.utc(right.created).diff(moment.utc(left.created));
+				});
+			}
+		},
+		methods: {
+			imageUri: function (imgUri) {
+				var splitted = imgUri.split("/");
+				// console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
+				return (this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png");
+				return imgUri;
+			}
+		},
+		mounted() {
+			console.time("Fetching Data");
+			this.axios.get(this.api).then(response => {
+				console.log("===================");
+				console.log(response.data);
+				console.log("===================");
+				this.items = response.data.aspirants;
+				this.revs = JSON.parse(JSON.stringify(this.items));
+			});
+			console.timeEnd("Fetching Data");
+		}
+	};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.light-green {
-  background-color: #e6fde6;
-}
+	.light-green {
+		background-color: #e6fde6;
+	}
 
-.card-img-top {
-  width: 100%;
-  height: 13vw;
-  object-fit: cover;
-}
+	.card-img-top {
+		width: 100%;
+		height: 13vw;
+		object-fit: cover;
+	}
 
-.btn-primary {
-  background-color: #006600 !important;
-}
+	.btn-primary {
+		background-color: #006600 !important;
+	}
 
-.card {
-  border: 1px solid rgb(254, 205, 11);
-}
-.limited-text-vision {
-  display: block;
-  width: 200px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+	.card {
+		border: 1px solid rgb(254, 205, 11);
+	}
 
-.limited-text-story {
-  word-break: break-all;
-}
+	.limited-text-vision {
+		display: block;
+		width: 200px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
 
-.btn {
-  border: 2px solid rgb(254, 205, 11);
-  border-radius: 0.25rem;
-  background-color: #006600;
-  color: #ddd;
-}
-.progress {
-  background-color: #ffe795;
-}
+	.limited-text-story {
+		word-break: break-all;
+	}
 
-.progress-bar {
-  background-color: #006600;
-}
+	.btn {
+		border: 2px solid rgb(254, 205, 11);
+		border-radius: 0.25rem;
+		background-color: #006600;
+		color: #ddd;
+	}
 
-a:focus,
-a:hover {
-  color: rgb(254, 205, 11);
-  text-decoration: underline;
-}
+	.progress {
+		background-color: #ffe795;
+	}
 
-a {
-  color: #006600;
-}
+	.progress-bar {
+		background-color: #006600;
+	}
 
-/* MEDIA QUERY */
+	a:focus,
+	a:hover {
+		color: rgb(254, 205, 11);
+		text-decoration: underline;
+	}
 
-@media only screen and (min-width: 320px) {
-  /* Mobile Small: */
-}
+	a {
+		color: #006600;
+	}
 
-@media only screen and (min-width: 375px) {
-  /* Mobile medium: */
-}
+	/* MEDIA QUERY */
 
-@media only screen and (min-width: 425px) {
-  /* Mobile Large: */
-}
+	@media only screen and (min-width: 320px) {
+		/* Mobile Small: */
+	}
 
-@media only screen and (min-width: 768px) {
-  /* Tablet: */
-}
+	@media only screen and (min-width: 375px) {
+		/* Mobile medium: */
+	}
 
-@media only screen and (min-width: 1024px) {
-  /* laptop */
-}
+	@media only screen and (min-width: 425px) {
+		/* Mobile Large: */
+	}
+
+	@media only screen and (min-width: 768px) {
+		/* Tablet: */
+	}
+
+	@media only screen and (min-width: 1024px) {
+		/* laptop */
+	}
 </style>

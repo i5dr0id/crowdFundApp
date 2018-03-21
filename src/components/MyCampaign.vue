@@ -6,7 +6,7 @@
       <h4 class="page-header text-center" v-if="!items"> you have no active campaigns</h4>
 
       <div class="text-center btn-cnc">
-        <a href="/add" class="btn btn-primary">Create New Campaign</a>
+        <a href="/add" class="btn btn-primary btn-create">Create New Campaign</a>
       </div><br>
       <p style="text-align:center"><i class="fa fa-spinner fa-spin" v-show="loading" style="font-size:60px;"></i></p>
       <br><br>
@@ -141,5 +141,15 @@ export default {
 .btn-cnc {
   padding-top: 3%;
 }
+	.btn-create {
+		/* width: 50%; */
+		color: rgb(254, 205, 11);
+		background-color: #006600;
+	}
+
+	.btn-create:hover {
+		color: #006600;
+		background-color: rgb(254, 205, 11);
+	}
 </style>
  

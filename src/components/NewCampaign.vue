@@ -6,10 +6,10 @@
 			<div>
 				<form v-on:submit="addCampaign">
 					<!-- First name Last Name -->
-					<div class="card card-body bg-light">
+					<div class="card card-body bg-light ">
 						<h4>Basic Info</h4>
 						<br>
-						<div class="form-group light-blue">
+						<div class="form-group light-blue light-green">
 							<div class="row">
 								<div class="col-6">
 									<!-- Alias Frist and last name row -->
@@ -61,7 +61,7 @@
 					<div class="card card-body bg-light">
 						<h4>Social Info</h4>
 						<br>
-						<div class="form-group light-blue">
+						<div class="form-group light-blue light-green">
 							<div class="row">
 								<div class="col-md-6 mb-6">
 									<label for="">Facebook</label>
@@ -85,7 +85,7 @@
 					<div class="card card-body bg-light">
 						<h4> Campaign Info </h4>
 						<br>
-						<div class="form-group light-blue">
+						<div class="form-group light-blue light-green">
 							<div class="row">
 								<div class="col-md-6 mb-6">
 									<label for="">State</label>
@@ -124,7 +124,7 @@
 					<div class="card card-body bg-light">
 						<h4> More Info</h4>
 						<br>
-						<div class="form-group light-blue">
+						<div class="form-group light-blue light-green">
 							<div class="row">
 								<div class="col-md-6 mb-6">
 									<label for="">Vision</label>
@@ -152,7 +152,7 @@
 					<div class="card card-body bg-light">
 						<h4>Upload Photo</h4>
 						<br>
-						<div class="form-group light-blue">
+						<div class="form-group light-blue light-green">
 							<div class="card-picture card-body ">
 								<div class="row">
 									<div class="card-picture thumbnail">
@@ -443,4 +443,8 @@
 			background-position: center;
 		}
 	}
+
+	.light-green {
+    background-color: #e6fde6;
+}
 </style>

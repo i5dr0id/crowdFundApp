@@ -57,94 +57,7 @@
 		<!--  -->
 		<!--  -->
 		<div class=" light-green  mt-3 pt-5 pb-5">
-			<div class="container-fluid inner">
-				<div class="row">
-					<div class="col-8">
-						<h3>Trending Campaigns</h3>
-					</div>
-					<div v class="col-4">
-						<a href="/explore" class="btn btn-secondary pull-right">View all</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="boxes swiper-container">
-						<div class="row mt-2 swiper-wrapper">
-							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
-								<div class="card box">
-									<a href="#">
-										<router-link :to="/aspirant/ + item._id">
-										<img v-if="item.image" ref="imgg" :src="imageUri(item.image)" class="card-img-top img-fluid">
-										<div v-else>
-										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down" />
-										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up" />
-										</div>
-										</router-link> 
-										</a> 
-									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
-										<h6>
-											<a href="#" class="limited-text-vision"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
-										</h6>
-										<p class="text-muted">By
-											<strong>
-												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
-											</strong>
-										</p>
-										<p class="desc limited-text-story">{{ item.story }}</p>
-										<div style="position: absolute; bottom: 10px; width: 86%; ">
-											<div class="progress">
-												<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
-											</div>
-											<p class="mb-1">76% funded</p>
-										</div>
-									</div>
-									<div class="card-footer text-muted">
-										<div class="row ">
-											<div class="col-12"> </div>
-											<div class="col-12">
-												<div class="row">
-													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Donator</p>
-														<h6 class="mt-0 mb-0">
-															<strong>117</strong>
-														</h6>
-													</div>
-													<div class="col-4 text-center">
-														<h6 class="mt-0 mb-0">Target</h6>
-														<h6 class="mt-0 mb-0">
-															<strong>&#8358;{{ item.fund }}</strong>
-														</h6>
-													</div>
-													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Days&nbsp;Left</p>
-														<h6 class="mt-0 mb-0">
-															<strong>14</strong>
-														</h6>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>>
-						</div>
-						<div class="swiper-button-next hidden-lg-up">
-							<i class="fa fa-chevron-right" aria-hidden="true"></i>
-						</div>
-						<div class="swiper-button-prev hidden-lg-up">
-							<i class="fa fa-chevron-left" aria-hidden="true"></i>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--  -->
-		<!--  -->
-		<!--  -->
-		<!--  -->
-		<!--  -->
-		<!--  -->
-		<!--  -->
-		<div class="mt-5">
+		
 			<div class="container-fluid inner">
 				<div class="row">
 					<div class="col-8">
@@ -215,6 +128,94 @@
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="swiper-button-next hidden-lg-up">
+							<i class="fa fa-chevron-right" aria-hidden="true"></i>
+						</div>
+						<div class="swiper-button-prev hidden-lg-up">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<div class="mt-5">
+				<div class="container-fluid inner">
+				<div class="row">
+					<div class="col-8">
+						<h3>Trending Campaigns</h3>
+					</div>
+					<div v class="col-4">
+						<a href="/explore" class="btn btn-secondary pull-right">View all</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="boxes swiper-container">
+						<div class="row mt-2 swiper-wrapper">
+							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
+								<div class="card box">
+									<a href="#">
+										<router-link :to="/aspirant/ + item._id">
+										<img v-if="item.image" ref="imgg" :src="imageUri(item.image)" class="card-img-top img-fluid">
+										<div v-else>
+										<img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down" />
+										<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up" />
+										</div>
+										</router-link> 
+										</a> 
+									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
+										<h6>
+											<a href="#" class="limited-text-vision"><router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link></a>
+										</h6>
+										<p class="text-muted">By
+											<strong>
+												<a href="#" class="text-muted"><router-link :to="/aspirant/ + item._id">{{ item.firstname +' '+ item.lastname }}</router-link></a>
+											</strong>
+										</p>
+										<p class="desc limited-text-story">{{ item.story }}</p>
+										<div style="position: absolute; bottom: 10px; width: 86%; ">
+											<div class="progress">
+												<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
+											</div>
+											<p class="mb-1">76% funded</p>
+										</div>
+									</div>
+									<div class="card-footer text-muted">
+										<div class="row ">
+											<div class="col-12"> </div>
+											<div class="col-12">
+												<div class="row">
+													<div class="col-4 text-center">
+														<p class="mt-0 mb-0">Donator</p>
+														<h6 class="mt-0 mb-0">
+															<strong>117</strong>
+														</h6>
+													</div>
+													<div class="col-4 text-center">
+														<h6 class="mt-0 mb-0">Target</h6>
+														<h6 class="mt-0 mb-0">
+															<strong>&#8358;{{ item.fund }}</strong>
+														</h6>
+													</div>
+													<div class="col-4 text-center">
+														<p class="mt-0 mb-0">Days&nbsp;Left</p>
+														<h6 class="mt-0 mb-0">
+															<strong>14</strong>
+														</h6>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>>
 						</div>
 						<div class="swiper-button-next hidden-lg-up">
 							<i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -344,7 +345,7 @@
 												<div class="col-sm-6">
 													<!-- <a href="" class="thumbnail"><img class="img-fluid img-thumbnail" src="images/eat-1892990_1920.jpg" /></a> -->
 													<a href="#" class="thumbnaidl">
-														<img class="card-img-top img-fluid" src="https://unsplash.it/310/210?image=1081" /> </a>
+														<img class="card-img-top img-fluid" src="http://4.bp.blogspot.com/-I9ONC-6Ckck/VBH-XDorysI/AAAAAAADhSM/Ft6hMjrX-Fg/s1600/01.jpg" /> </a>
 												</div>
 												<div class="col-sm-6">
 													<h4 class="display-8">
@@ -417,20 +418,20 @@
 						<div class="row">
 							<div class="col-sm-10 offset-sm-1">
 								<h3 class="display-6 text-center">How does it work?</h3>
-								<p class="text-center text-muted">Access your data anywhere from any device</p>
+								<p class="text-center text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit!</p>
 							</div>
 						</div>
 						<div class="row mt-3">
 							<div class="col-5  offset-1">
-								<p>Access your data from absolutely anywhere and on any device your phone, ipad, laptop. Lorem ipsum dolor sit amet,
+								<p>Quam pellentesque, mollis arcu tincidunt, fauc, ipad, laptop. Lorem ipsum dolor sit amet,
 									consectetur adipiscing elit.</p>
 							</div>
 							<div class="col-5  offset-1">
-								<p>Create your own graphs and visualizztions to you can capture trends immediately. Donec nec tortor lorem. Integer
+								<p>Create yolor sit amet consectetur adipire trends immediately. Donec nec tortor lorem. Integer
 									nulla quam, convallis ut consectetur vel, dignissim et ex.</p>
 							</div>
 							<div class="col-5  offset-1">
-								<p>Ideal for shop owners selling over 100 products a day. We make sure you find our what your best products are, what
+								<p>Ideal f quam pellentesque, mollis arcu tincidunt, faucure you find our what your best products are, what
 									products you could sell.</p>
 							</div>
 							<div class="col-5  offset-1">

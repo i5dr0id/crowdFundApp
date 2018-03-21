@@ -72,7 +72,7 @@ export default {
 				return;
 		  }
 		  this.loading = true;
-		  this.axios.post(this.api,this.register).then(response => {
+		  this.axios.post(this.api,this.register).then((response) => {
 				this.loading = false;
 			  console.log(response.data);
 				if (response.data.responseCode == "00") {

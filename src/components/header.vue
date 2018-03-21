@@ -6,7 +6,7 @@
 			    aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand white" href="/index" ><h3 class="nvb-brand">CrowdFundApp</h3></a>
+			<a class="navbar-brand white" href="/index" ><h3 class="nvb-brand">GreenFund</h3></a>
 			<div class="collapse navbar-collapse" id="navbarColor01">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
@@ -17,8 +17,11 @@
 					<li class="nav-item ">
 						<a class="nav-link white" href="/explore">Explore</a>
 					</li>
-					<li class="nav-item ">
-						<a class="nav-link white" href="/add">Start a project</a>
+					<li v-if="username" class="nav-item ">
+						<a class="nav-link white" href="/add">Create Campaing</a>
+					</li>
+							<li v-else class="nav-item ">
+						<a class="nav-link white" href="/login">Create Campaing</a>
 					</li>
 					<li class="nav-item ">
 						<a class="nav-link white" href="/about">About us</a>

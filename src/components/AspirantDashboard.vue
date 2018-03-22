@@ -450,7 +450,7 @@
 						<!-- </div> -->
 					</div>
 					<div class="text-center">Choose an amount to donate
-						<hr style="width:50%; border-color:#000;"> </div>
+						<hr style="width:100%; border-color:#000;"> </div>
 					<div class="modal-body">
 						<div class="row justify-content-center">
 							<div class="col-3">

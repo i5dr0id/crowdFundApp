@@ -158,8 +158,10 @@
 									<div class="card-picture thumbnail">
 										<img ref="camimg" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
 										id="img-preview" class="img-thumbnail" />
+										<span v-if="spinloading" class="loadersmall centered"></span>
 										<label class="file-upload-container create" for="file-upload">
 											<input v-on:change="uploadFile"  id="file-upload" type="file" style="display:none;" accept=".png, .jpg, .jpeg"> Select an Image </label>
+											
 									</div>
 								</div>
 							</div>
@@ -212,7 +214,8 @@
 				customer: {},
 				cloudinary_url: "https://api.cloudinary.com/v1_1/dmdvs9djh/upload/",
 				cloudinary_upload_preset: "kn1frgui",
-				loading: false
+				loading: false,
+				spinloading: false
 				// fD: {}
 			};
 		},
@@ -272,6 +275,7 @@
 				e.preventDefault();
 			},
 			uploadFile(file) {
+
 				this.imgFile = file.target.files[0];
 				let fD = new FormData();
 				fD.append("file", this.imgFile);
@@ -282,13 +286,18 @@
 					},
 					// onUploadProgress
 				};
+				this.spinloading = true;
 				this.axios.post(this.cloudinary_url, fD, config).then(response => {
 					this.image = response.data.secure_url;
 					this.$refs.camimg.src = response.data.secure_url;
+					this.spinloading = false
+					
 				}, error => {
 					  console.log("ERRORRORORORORO");
 					  console.log(error);
 				});
+
+			
 			}
 		},
 		mounted() {
@@ -487,5 +496,36 @@ textarea:focus {
 
 form label {
 	color:#006600;
+}
+
+.loadersmall {
+  border: 5px solid #f3f3f3;
+  -webkit-animation: spin 0.4s linear infinite;
+  animation: spin 0.4s linear infinite;
+  border-top: 5px solid #555;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  /* margin-top: 3px;
+  margin-left: 5px; */
+z-index: 1;
+
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.centered {
+    position: absolute;
+    /* top: 50%;
+    left: 50%; */
+    transform: translate(-50%, -50%);
 }
 </style>

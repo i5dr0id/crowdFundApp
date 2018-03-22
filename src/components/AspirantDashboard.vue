@@ -842,8 +842,9 @@ hr {
 }
 
 .btn-sub:hover {
-  background-color:rgb(254, 205, 11);
+  background-color: rgb(254, 205, 11);
   color: #006600;
   border-color: #006600 !important;
 }
+
 </style>

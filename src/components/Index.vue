@@ -382,7 +382,7 @@
 													<div class="row ">
 														<div class="col">
 															<p class="mt-0 mb-0">Raised</p>
-															<h5 class="mt-0 mb-0">&dollar;50,000</h5>
+															<h5 class="mt-0 mb-0">&#8358;50,000</h5>
 														</div>
 														<div class="col">
 															<p class="mt-0 mb-0">Donators</p>
@@ -393,8 +393,8 @@
 															<h5 class="mt-0 mb-0">27</h5>
 														</div>
 														<div class="col">
-															<p class="mt-0 mb-0">Funding goal</p>
-															<h5 class="mt-0 mb-0">&dollar;175,000</h5>
+															<p class="mt-0 mb-0">Target</p>
+															<h5 class="mt-0 mb-0">&#8358;175,000</h5>
 														</div>
 													</div>
 												</div>
@@ -452,8 +452,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="mt-5 pt-2 pb-2">
-			<div class="container-fluid">
+		<!-- <div class="mt-5 pt-2 pb-2">
+			<div class="container">
 				<div class="row">
 					<div class="col-12 col-md-10 offset-md-1">
 						<div class="card ">
@@ -466,7 +466,7 @@
 									<div class="col-sm-4 text-center">
 									</div>
 										<br />
-										<a href="/add" class="btn btn-primary btn-lg"> Crowdfund your campaign
+										<a href="/add" class="btn btn-primary btn-lg"> Start your project
 											<i class="fa fa-chevron-right" aria-hidden="true"></i>
 										</a>
 									</div>
@@ -476,7 +476,31 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
+			<div class="mt-5 pt-2 pb-2">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 offset-md-1  col--sm-12">
+							<div class="card ">
+								<div class="card-block">
+									<div class="row">
+										<div class="col-md-8">
+											<h4 class="card-title">We crowdfund political campaigns</h4>
+											<p class="card-text">Build your own crowdfunding profile. Raise money online or through our plateform. Get started today.</p>
+										</div>
+										<div class="col-md-4 text-center">
+											<br />
+											<a href="/add" class="btn btn-primary btn-lg btn">Create your campaign 
+												<i class="fa fa-chevron-right" aria-hidden="true"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
 		<!--  -->
 		<!--  -->
 		<!--  -->
@@ -614,120 +638,123 @@
 	</div>
 </template>
 <script>
-	export default {
-		name: "Index",
-		data() {
-			return {
-				items: [],
-				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
-				org_link: "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
-				revs: []
-			};
-		},
-		computed: {
-			latest: function () {
-				return this.revs.sort(function (left, right) {
-					return moment.utc(right.created).diff(moment.utc(left.created));
-				});
-			}
-		},
-		methods: {
-			imageUri: function (imgUri) {
-				var splitted = imgUri.split("/");
-				// console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
-				return (this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png");
-				return imgUri;
-			}
-		},
-		mounted() {
-			console.time("Fetching Data");
-			this.axios.get(this.api).then(response => {
-				console.log("===================");
-				console.log(response.data);
-				console.log("===================");
-				this.items = response.data.aspirants;
-				this.revs = JSON.parse(JSON.stringify(this.items));
-			});
-			console.timeEnd("Fetching Data");
-		}
-	};
+export default {
+  name: "Index",
+  data() {
+    return {
+      items: [],
+      api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
+      org_link:
+        "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
+      revs: []
+    };
+  },
+  computed: {
+    latest: function() {
+      return this.revs.sort(function(left, right) {
+        return moment.utc(right.created).diff(moment.utc(left.created));
+      });
+    }
+  },
+  methods: {
+    imageUri: function(imgUri) {
+      var splitted = imgUri.split("/");
+      // console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
+      return (
+        this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png"
+      );
+      return imgUri;
+    }
+  },
+  mounted() {
+    console.time("Fetching Data");
+    this.axios.get(this.api).then(response => {
+      console.log("===================");
+      console.log(response.data);
+      console.log("===================");
+      this.items = response.data.aspirants;
+      this.revs = JSON.parse(JSON.stringify(this.items));
+    });
+    console.timeEnd("Fetching Data");
+  }
+};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.light-green {
-		background-color: #e6fde6;
-	}
+.light-green {
+  background-color: #e6fde6;
+}
 
-	.card-img-top {
-		width: 100%;
-		height: 13vw;
-		object-fit: cover;
-	}
+.card-img-top {
+  width: 100%;
+  height: 13vw;
+  object-fit: cover;
+}
 
-	.btn-primary {
-		background-color: #006600 !important;
-	}
+.btn-primary {
+  background-color: #006600 !important;
+}
 
-	.card {
-		border: 1px solid rgb(254, 205, 11);
-	}
+.card {
+  border: 1px solid rgb(254, 205, 11);
+}
 
-	.limited-text-vision {
-		display: block;
-		width: 200px;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
+.limited-text-vision {
+  display: block;
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
-	.limited-text-story {
-		word-break: break-all;
-	}
+.limited-text-story {
+  word-break: break-all;
+}
 
-	.btn {
-		border: 2px solid rgb(254, 205, 11);
-		border-radius: 0.25rem;
-		background-color: #006600;
-		color: #ddd;
-	}
+.btn {
+  border: 2px solid rgb(254, 205, 11);
+  border-radius: 0.25rem;
+  background-color: #006600;
+  color: #ddd;
+}
 
-	.progress {
-		background-color: #ffe795;
-	}
+.progress {
+  background-color: #ffe795;
+}
 
-	.progress-bar {
-		background-color: #006600;
-	}
+.progress-bar {
+  background-color: #006600;
+}
 
-	a:focus,
-	a:hover {
-		color: rgb(254, 205, 11);
-		text-decoration: underline;
-	}
+a:focus,
+a:hover {
+  color: rgb(254, 205, 11);
+  text-decoration: underline;
+}
 
-	a {
-		color: #006600;
-	}
+a {
+  color: #006600;
+}
 
-	/* MEDIA QUERY */
+/* MEDIA QUERY */
 
-	@media only screen and (min-width: 320px) {
-		/* Mobile Small: */
-	}
+@media only screen and (min-width: 320px) {
+  /* Mobile Small: */
+}
 
-	@media only screen and (min-width: 375px) {
-		/* Mobile medium: */
-	}
+@media only screen and (min-width: 375px) {
+  /* Mobile medium: */
+}
 
-	@media only screen and (min-width: 425px) {
-		/* Mobile Large: */
-	}
+@media only screen and (min-width: 425px) {
+  /* Mobile Large: */
+}
 
-	@media only screen and (min-width: 768px) {
-		/* Tablet: */
-	}
+@media only screen and (min-width: 768px) {
+  /* Tablet: */
+}
 
-	@media only screen and (min-width: 1024px) {
-		/* laptop */
-	}
+@media only screen and (min-width: 1024px) {
+  /* laptop */
+}
 </style>

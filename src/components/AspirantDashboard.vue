@@ -16,7 +16,7 @@
 								</div> --></div>
 								<div class="col-sm-10">
 									<!-- <h3>{{alias}}</h3> -->
-									<h3> Vote for {{alias}} to get the change you deserved </h3>
+									<h3> Vote for {{alias|capitalize}} to get the change you deserved </h3>
 									<br />
 									<p class="mb-1">{{perNum}}% funded</p>
 									<div class="progress">
@@ -26,12 +26,13 @@
 									<div class="row">
 										<div class="col-sm-6">
 											<h3>&#8358;{{ tAmount }}</h3>
-											<p class="mb-1">Donation from {{ numDonator }} people</p>
+											<p v-if="numDonator == '1'" class="mb-1">Donation from {{ numDonator }} person</p>
+											<p v-else class="mb-1">Donation from {{ numDonator }} people</p>
 										</div>
 										<div class="col-sm-6 text-right">
 											<!-- <h3>$2,947</h3> -->
 											<h3>&#8358;{{fund}}</h3>
-											<p class="mb-1">Funding goal</p>
+											<p class="mb-1">Target</p>
 										</div>
 									</div>
 									<br />
@@ -122,7 +123,7 @@
 										formed libidos, not 2 young men playing grab-ass in the shower. Boy, I sure feel like a Mary without a Peter and
 										a Paul. And although the intervention didn't work, it turned into one of the Bluth family's better parties. I'm
 										tired of trying to find happiness through lies and self-medicating. If you need me, I'll be at the bar. </p> -->
-									<h3>{{story}}</h3>
+									<h6 style="line-height: 150%;">{{story|capitalize}}</h6>
 								</div>
 								<!-- UPDATE CORNER -->
 								<!-- <div class="tab-pane" id="updates" role="tabpanel" aria-expanded="false">
@@ -144,14 +145,14 @@
 										<li v-for="user in users " class="comment user-comment">
 											<!-- <div class="info"> -->
 											<h6 href="#" class="float-left">
-												<strong>{{ user.username }}</strong>
+												<strong>{{ user.username|capitalize }}</strong>
 											</h6>
 											<!-- <span>4 hours ago</span> -->
 											<!-- </div> -->
 											<a class="avatar" href="#">
 												<!-- <img src="images/team/pixeliris.jpg" width="35" alt="Profile Avatar" title="Anie Silverston">  -->
 											</a>
-											<p class="float-right">{{ user.endorsement}}</p>
+											<p class="float-right">{{ user.endorsement|capitalize}}</p>
 										</li>
 										<li class="write-new">
 											<form v-on:submit="post_endorsme">
@@ -203,7 +204,7 @@
 												<div class="col-sm-7 ">
 													<!-- WORK ON THIS LATER -->
 													<h3 class="mb-0 ">
-														<strong>{{firstname +' '+ lastname }}</strong>
+														<strong>{{firstname|capitalize}}  {{' '}} {{lastname|capitalize }}</strong>
 													</h3>
 													<h4 class="mt-0 mb-0 ">{{ city }}, {{ state }}</h4>
 													<p class="mt-0 mb-0 ">OFFICE:
@@ -227,56 +228,56 @@
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading2 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#" value="5000"> Donante &#8358;5000 </a>
+											<a v-on:click="showModal('5000',$event)" data-toggle="modal" data-target="#exampleModalLong" href="#"  value="5000"> Donante &#8358;5000 </a>
 										</h6>
 									</div>
 								</div>
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading3 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#" value="10000"> Donate &#8358;10,000 </a>
+											<a v-on:click="showModal('10000',$event)" data-toggle="modal" data-target="#exampleModalLong" href="#" value="10000"> Donate &#8358;10,000 </a>
 										</h6>
 									</div>
 								</div>
 								<div class="card ">
 									<div class="card-header text-center " role="tab " id="heading4 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;20,000 </a>
+											<a v-on:click="showModal('20000',$event)" data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;20,000 </a>
 										</h6>
 									</div>
 								</div>
 								<div class="card ">
 									<div class="card-header text-center " role="tab " id="heading5 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;50,000 </a>
+											<a v-on:click="showModal('50000',$event)" data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;50,000 </a>
 										</h6>
 									</div>
 								</div>
 								<div class="card ">
 									<div class="card-header text-center " role="tab " id="heading6 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;100,000 </a>
+											<a v-on:click="showModal('100000',$event)" data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;100,000 </a>
 										</h6>
 									</div>
 								</div>
 								<div class="card ">
 									<div class="card-header  text-center" role="tab " id="heading7 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;200,000 </a>
+											<a v-on:click="showModal('200000',$event)" data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;200,000 </a>
 										</h6>
 									</div>
 								</div>
 								<div class="card ">
 									<div class="card-header  text-center" role="tab " id="heading7 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;500,000 </a>
+											<a v-on:click="showModal('500000',$event)" data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;500,000 </a>
 										</h6>
 									</div>
 								</div>
 								<div class="card ">
 									<div class="card-header text-center" role="tab " id="heading8 ">
 										<h6 class="mb-0 ">
-											<a data-toggle="modal" data-target="#exampleModalLong" href="#"> Donate &#8358;1,000,000 </a>
+											<a v-on:click="showModal('1000000',$event)" data-toggle="modal" data-target="#exampleModalLong" href="#" value="1000000"> Donate &#8358;1,000,000 </a>
 										</h6>
 									</div>
 								</div>
@@ -305,7 +306,7 @@
 												<!-- LOOP FROM HERE -->
 												<div class="clearfix">
 													<div class="pull-left donation-list-left">
-														<h4 class="header-label m-none"> {{ donator.donator }} </h4>
+														<h4 class="header-label m-none"> {{ donator.donator|capitalize }} </h4>
 														<!-- <p class="label-small m-none">1 day ago</p> -->
 													</div>
 													<div class="pull-right align-right">
@@ -330,7 +331,9 @@
 					<div class="modal-header" style="margin: 0 auto">
 						<h3 class="text-center" style="margin-top: 20px;margin-bottom: 10px;font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;">Donate to
 							<span style="display: inline-block;">
-								<a href="index"> {{ alias }} </a>
+								<!-- <a href="index"> {{ alias|capitalize }} </a> -->
+								<a href="index"> {{firstname|capitalize}}  {{' '}} {{lastname|capitalize }} </a>
+								
 							</span>
 						</h3>
 					</div>
@@ -346,7 +349,7 @@
 										<div class="form-element span12 ">
 											<label class="checkbox-public label-extrasmall m-medium m-top-tiny">
 												<input type="checkbox" v-model="toggle" @click="check($event)" true-value="yes" false-value="no" name="public"
-												value="1"> Show my name in "Donators box" </label>
+												value="1">Do not show my name in "Donators box" </label>
 										</div>
 									</div>
 									<div class="col-6">
@@ -376,9 +379,9 @@
 										<input type="text" v-model="userState" class="form-control form-control-lg" id="exampleInputFirstname"
 										placeholder="State"> </div>
 									<div class="col-3">
-										<label for="">Donation Amount</label>
+										<label for="">Donation Amount (&#8358;)</label>
 										<input type="text" v-model="userFund" class="form-control form-control-lg" id="exampleInputFirstname"
-										placeholder="Amount"> </div>
+										placeholder="Amount" readonly="readonly"> </div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -411,8 +414,11 @@
 							<div class="form-group mx-auto">
 								<div class="row">
 									<div class="col-12 d-flex justify-content-center">
-										<button type="submit" v-on:click="addDonation" value="donate" name="donate" class="btn btn-block btn-lg btn-donate"
+										<button v-if="userFullname" type="submit" v-on:click="addDonation" value="donate" name="donate" class="btn btn-block btn-lg btn-donate"
 										style="">Donate</button>
+										<a v-else class="btn btn-pri" href="/login">Login to Donate</a>
+										<!-- <button v-else type="submit" v-on:click="addDonation" value="donate" name="donate" class="btn btn-block btn-lg btn-donate"
+										style="">Donate</button> -->
 									</div>
 								</div>
 							</div>
@@ -448,31 +454,39 @@
 					<div class="modal-body">
 						<div class="row justify-content-center">
 							<div class="col-3">
-								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#donationbox,#exampleModalLong"
-								class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦5000</a>
+								<a v-on:click="showModal('7000',$event)" data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#donationbox,#exampleModalLong"
+								class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦7000</a>
 							</div>
 							<div class="col-3">
-								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦10,000</a>
+								<a v-on:click="showModal('15000',$event)" data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦15,000</a>
 							</div>
 							<div class="col-3">
-								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦50,000</a>
+								<a v-on:click="showModal('30000',$event)" data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦30,000</a>
 							</div>
 						</div>
 						<br>
 						<br>
 						<div class="row justify-content-center">
 							<div class="col-3">
-								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦100,000</a>
+								<a v-on:click="showModal('70000',$event)"  href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦70,000</a>
 							</div>
 							<div class="col-3">
-								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦500,000</a>
+								<a v-on:click="showModal('150000',$event)"  href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦150,000</a>
 							</div>
 							<div class="col-3">
-								<a data-amount="$3" href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦1,000,000</a>
+								<a v-on:click="showModal('1000000',$event)"  href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong" class=" btn-contribute-amount js-btn-contribute-amount btn btn-block btn-large donate-amount-3">₦1,000,000</a>
 							</div>
 						</div>
 						<br>
 						<br>
+						<div class="row text-center">
+							<div class="col-12 text-center">
+								<label>
+									Enter Amount: </label>
+								<input class="amt" v-model="userFund"  type="text" placeholder="amount here">  
+								<button class="btn-sub" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLong">Submit</button>
+								</div>
+						</div>
 						<br> </div>
 				</div>
 			</div>
@@ -482,291 +496,354 @@
 	</div>
 </template>
 <script>
-	export default {
-		name: "Login",
-		data() {
-			return {
-				alias: "",
-				city: "",
-				created: "",
-				email: "",
-				firstname: "",
-				fund: "",
-				gender: "",
-				image: "",
-				lastname: "",
-				party: "",
-				position: "",
-				facebook: "",
-				twitter: "",
-				state: "",
-				story: "",
-				updated: "",
-				user_id: "",
-				video: "",
-				vision: "",
-				_id: "",
-				api: "https://onepercent-crowdfund.herokuapp.com/aspirants/5a932b6e875f590014c49814",
-				items: [],
-				candidate_ID: "",
-				fullname: "",
-				message: "",
-				api_endrosment: "https://onepercent-crowdfund.herokuapp.com/endorsements",
-				endorse_data: {},
-				users: [],
-				endorLenght: "",
-				tokken: "",
-				userAddress: "",
-				userFund: "",
-				userOccupation: "",
-				userExpir: "",
-				userCSC: "",
-				userCCN: "",
-				userState: "",
-				userCity: "",
-				donators: [],
-				numDonator: 0,
-				perNum: 0,
-				tAmount: "",
-				toggle: false,
-				userFullname: ""
-			};
-		},
-		methods: {
-			post_endorsme() {
-				this.endorse_data = {
-					voter_id: localStorage.getItem("id"),
-					id: this.candidate_ID,
-					message: this.message,
-					username: localStorage.getItem("fullname")
-				};
-				console.log(this.endorse_data);
-				this.axios.post(this.api_endrosment, this.endorse_data).then(response => {
-					console.log(response.data);
-					this.get_endorsme();
-				}, function (err) {
-					console.log("ERROR!");
-					console.log(err);
-				});
-				this.message = "";
-			},
-			get_endorsme() {
-				this.get_endorsme_api = "https://onepercent-crowdfund.herokuapp.com/endorsements/all/" + this.candidate_ID;
-				this.axios.get(this.get_endorsme_api).then(response => {
-					this.users = response.data.endorsement.slice().reverse();
-					this.endorLenght = this.users.length;
-				});
-			},
-			addDonation(e) {
-				this.candidate_ID = window.location.pathname.split("/")[2];
-				this.tokken = localStorage.getItem("token");
-				this.userID = localStorage.getItem("id");
-				this.dataDonate = {
-					donator: this.userFullname,
-					id: this.candidate_ID,
-					address: this.userAddress,
-					aspirant: this.alias,
-					fund: this.userFund,
-					expected_fund: this.fund,
-					ocupation: this.userOccupation,
-					email: this.userEmail,
-					card_details: [{
-						card_type: "VERVE"
-					}]
-				};
-				this.axios.post("https://onepercent-crowdfund.herokuapp.com/donations", this.dataDonate).then(response => {
-					if (response.data.responseCode == "00") {
-						console.log(response);
-						window.location = '/aspirant/' + this.candidate_ID;
-					} else if (response.data.responseCode == "03") {
-						console.log(response);
-					} else {
-						console.log(response);
-					}
-				}).catch(error => {
-					console.log(response);
-				});
-				e.preventDefault();
-			},
-			comPer() {
-				this.perNum = parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100);
-				this.$refs.perpro.style.width = String(parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100)) + "%";
-			},
-			somefunction() {
-				console.log("chehck box xhekx");
-			},
-			check(e) {
-				if (e.target.checked) {
-					console.log(e.target.value);
-					this.userFullname = "Anonymous";
-					this.userEmail = "Anonymous";
-				} else {
-					this.userFullname = localStorage.getItem("fullname");
-					this.userEmail = localStorage.getItem("email");
-				}
-			}
-		},
-		computed: {
-			reverseItems() {
-				return this.items.slice().reverse();
-			}
-		},
-		watch: {},
-		mounted() {
-			this.api = "https://onepercent-crowdfund.herokuapp.com/aspirants/" + this.candidate_ID;
-			this.axios.get(this.api).then(response => {
-				this.item = response.data.aspirant;
-				this.alias = this.item.alias;
-				this.city = this.item.city;
-				this.created = this.item.created;
-				this.email = this.item.email;
-				this.firstname = this.item.firstname;
-				this.fund = this.item.fund;
-				this.gender = this.item.gender;
-				this.image = this.item.image;
-				this.lastname = this.item.lastname;
-				this.party = this.item.party;
-				this.position = this.item.position;
-				this.state = this.item.state;
-				this.story = this.item.story;
-				this.updated = this.item.updated;
-				this.user_id = this.item.user_id;
-				this.vision = this.item.vision;
-				this._id = this.item._id;
-			});
-			this.get_endorsme();
-			this.axios.get("https://onepercent-crowdfund.herokuapp.com/donations/all/" + this.candidate_ID).then(response => {
-				this.donators = response.data.donation;
-				this.tAmount = response.data.total;
-				this.numDonator = response.data.donation.length;
-				this.comPer();
-			});
-		},
-		created() {
-			this.candidate_ID = window.location.pathname.split("/")[2];
-			this.tokken = localStorage.getItem("token");
-			this.userFullname = localStorage.getItem("fullname");
-			this.userEmail = localStorage.getItem("email");
-			this.userID = localStorage.getItem("id");
-		}
-	};
+export default {
+  name: "Login",
+  data() {
+    return {
+      alias: "",
+      city: "",
+      created: "",
+      email: "",
+      firstname: "",
+      fund: "",
+      gender: "",
+      image: "",
+      lastname: "",
+      party: "",
+      position: "",
+      facebook: "",
+      twitter: "",
+      state: "",
+      story: "",
+      updated: "",
+      user_id: "",
+      video: "",
+      vision: "",
+      _id: "",
+      api:
+        "https://onepercent-crowdfund.herokuapp.com/aspirants/5a932b6e875f590014c49814",
+      items: [],
+      candidate_ID: "",
+      fullname: "",
+      message: "",
+      api_endrosment: "https://onepercent-crowdfund.herokuapp.com/endorsements",
+      endorse_data: {},
+      users: [],
+      endorLenght: "",
+      tokken: "",
+      userAddress: "",
+      userFund: "",
+      userOccupation: "",
+      userExpir: "",
+      userCSC: "",
+      userCCN: "",
+      userState: "",
+      userCity: "",
+      donators: [],
+      numDonator: 0,
+      perNum: 0,
+      tAmount: "",
+      toggle: false,
+      userFullname: ""
+    };
+  },
+  methods: {
+    post_endorsme() {
+      this.endorse_data = {
+        voter_id: localStorage.getItem("id"),
+        id: this.candidate_ID,
+        message: this.message,
+        username: localStorage.getItem("fullname")
+      };
+      console.log(this.endorse_data);
+      this.axios.post(this.api_endrosment, this.endorse_data).then(
+        response => {
+          console.log(response.data);
+          this.get_endorsme();
+        },
+        function(err) {
+          console.log("ERROR!");
+          console.log(err);
+        }
+      );
+      this.message = "";
+    },
+    get_endorsme() {
+      this.get_endorsme_api =
+        "https://onepercent-crowdfund.herokuapp.com/endorsements/all/" +
+        this.candidate_ID;
+      this.axios.get(this.get_endorsme_api).then(response => {
+        this.users = response.data.endorsement.slice().reverse();
+        this.endorLenght = this.users.length;
+      });
+    },
+    addDonation(e) {
+      this.candidate_ID = window.location.pathname.split("/")[2];
+      this.tokken = localStorage.getItem("token");
+      this.userID = localStorage.getItem("id");
+      this.dataDonate = {
+        donator: this.userFullname,
+        id: this.candidate_ID,
+        address: this.userAddress,
+        aspirant: this.alias,
+        fund: this.userFund,
+        expected_fund: this.fund,
+        ocupation: this.userOccupation,
+        email: this.userEmail,
+        card_details: [
+          {
+            card_type: "VERVE"
+          }
+        ]
+      };
+      this.axios
+        .post(
+          "https://onepercent-crowdfund.herokuapp.com/donations",
+          this.dataDonate
+        )
+        .then(response => {
+          if (response.data.responseCode == "00") {
+            console.log(response);
+            window.location = "/aspirant/" + this.candidate_ID;
+          } else if (response.data.responseCode == "03") {
+            console.log(response);
+          } else {
+            console.log(response);
+          }
+        })
+        .catch(error => {
+          console.log(response);
+        });
+      e.preventDefault();
+    },
+    comPer() {
+      this.perNum = parseInt(
+        parseInt(this.tAmount) / parseInt(this.fund) * 100
+      );
+      this.$refs.perpro.style.width =
+        String(parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100)) +
+        "%";
+    },
+    somefunction() {
+      console.log("chehck box xhekx");
+    },
+    check(e) {
+      if (e.target.checked) {
+        console.log(e.target.value);
+        this.userFullname = "Anonymous";
+        this.userEmail = "Anonymous";
+      } else {
+        this.userFullname =
+          localStorage
+            .getItem("fullname")
+            .charAt(0)
+            .toUpperCase() + localStorage.getItem("fullname").slice(1);
+        this.userEmail = localStorage.getItem("email");
+      }
+    },
+
+    dntcheck(e) {
+      // console.log(this.$refs.btndnt.attributes['value'].value);
+      console.log(this.$refs.btndnt);
+    },
+
+    showModal(text, event) {
+      console.log(text, event.target.id);
+      this.userFund = text;
+    }
+  },
+  computed: {
+    reverseItems() {
+      return this.items.slice().reverse();
+    }
+  },
+  watch: {},
+  mounted() {
+    this.api =
+      "https://onepercent-crowdfund.herokuapp.com/aspirants/" +
+      this.candidate_ID;
+    this.axios.get(this.api).then(response => {
+      this.item = response.data.aspirant;
+      this.alias = this.item.alias;
+      this.city = this.item.city;
+      this.created = this.item.created;
+      this.email = this.item.email;
+      this.firstname = this.item.firstname;
+      this.fund = this.item.fund;
+      this.gender = this.item.gender;
+      this.image = this.item.image;
+      this.lastname = this.item.lastname;
+      this.party = this.item.party;
+      this.position = this.item.position;
+      this.state = this.item.state;
+      this.story = this.item.story;
+      this.updated = this.item.updated;
+      this.user_id = this.item.user_id;
+      this.vision = this.item.vision;
+      this._id = this.item._id;
+    });
+    this.get_endorsme();
+    this.axios
+      .get(
+        "https://onepercent-crowdfund.herokuapp.com/donations/all/" +
+          this.candidate_ID
+      )
+      .then(response => {
+        this.donators = response.data.donation;
+        this.tAmount = response.data.total;
+        this.numDonator = response.data.donation.length;
+        this.comPer();
+      });
+  },
+  created() {
+    this.candidate_ID = window.location.pathname.split("/")[2];
+    this.tokken = localStorage.getItem("token");
+    this.userFullname =
+      localStorage
+        .getItem("fullname")
+        .charAt(0)
+        .toUpperCase() + localStorage.getItem("fullname").slice(1);
+    this.userEmail = localStorage.getItem("email");
+    this.userID = localStorage.getItem("id");
+  }
+};
 </script>
 <style>
-	.campImg {
-		height: 350px;
-		width: 100%;
-		background-color: powderblue;
-	}
+.campImg {
+  height: 350px;
+  width: 100%;
+  background-color: powderblue;
+}
 
-	.campImg>img {
-		width: 100%;
-		height: 100%;
-	}
+.campImg > img {
+  width: 100%;
+  height: 100%;
+}
 
-	.card {
-		border: 1px solid rgb(254, 205, 11);
-	}
+.card {
+  border: 1px solid rgb(254, 205, 11);
+}
 
-	.card-header {
-		background-color: #ffffff;
-		border-bottom: none;
-		color: green;
-	}
+.card-header {
+  background-color: #ffffff;
+  border-bottom: none;
+  color: green;
+}
 
-	.card-header:hover {
-		background-color: #006600;
-		border-bottom: none;
-		color: rgb(254, 205, 11);
-	}
+.card-header:hover {
+  background-color: #006600;
+  border-bottom: none;
+  color: rgb(254, 205, 11);
+}
 
-	a:focus,
-	a:hover {
-		color: rgb(254, 205, 11);
-		text-decoration: underline;
-	}
+a:focus,
+a:hover {
+  color: rgb(254, 205, 11);
+  text-decoration: underline;
+}
 
-	hr {
-		border-color: rgb(254, 205, 11);
-	}
+hr {
+  border-color: rgb(254, 205, 11);
+}
 
-	.btn-pri {
-		color: rgb(254, 205, 11);
-		background-color: #006600;
-		border-color: rgb(254, 205, 11) !important;
-	}
+.btn-pri {
+  color: rgb(254, 205, 11);
+  background-color: #006600;
+  border-color: rgb(254, 205, 11) !important;
+}
 
-	.btn-pri:hover {
-		background-color: rgb(254, 205, 11);
-		color: #006600;
-		border-color: #006600 !important;
-	}
+.btn-pri:hover {
+  background-color: rgb(254, 205, 11);
+  color: #006600;
+  border-color: #006600 !important;
+}
 
-	.progress {
-		background-color: #ffe795;
-	}
+.progress {
+  background-color: #ffe795;
+}
 
-	.progress-bar {
-		background-color: #006600;
-	}
+.progress-bar {
+  background-color: #006600;
+}
 
-	.nav-tabs {
-		border-bottom: 1px solid #ffe795;
-	}
+.nav-tabs {
+  border-bottom: 1px solid #ffe795;
+}
 
-	.img-thumbnail {
-		border-color: #ffe795;
-	}
+.img-thumbnail {
+  border-color: #ffe795;
+}
 
-	.nav-tabs .nav-link.active,
-	.nav-tabs .nav-item.show .nav-link {
-		color: #006600;
-		background-color: #fff;
-		border-color: #ffe795 #ffe795 #fff;
-	}
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #006600;
+  background-color: #fff;
+  border-color: #ffe795 #ffe795 #fff;
+}
 
-	.nav-tabs>li>a {
-		color: #818a91;
-	}
+.nav-tabs > li > a {
+  color: #818a91;
+}
 
-	.nav-tabs .nav-link:focus,
-	.nav-tabs .nav-link:hover {
-		border-color: #ffe795 #ffe795 #ffe795;
-	}
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+  border-color: #ffe795 #ffe795 #ffe795;
+}
 
-	.btn-donate {
-		width: 50%;
-		color: rgb(254, 205, 11);
-		background-color: #006600;
-	}
+.btn-donate {
+  width: 50%;
+  color: rgb(254, 205, 11);
+  background-color: #006600;
+}
 
-	.btn-donate:hover {
-		color: #006600;
-		background-color: rgb(254, 205, 11);
-	}
+.btn-donate:hover {
+  color: #006600;
+  background-color: rgb(254, 205, 11);
+}
 
-	.centered-modal .modal-dialog {
-		/* top: 30%;
+.centered-modal .modal-dialog {
+  /* top: 30%;
   margin: 0 auto; */
-	}
+}
 
-	.donate-amount-3 {
-		border-color: #ff4814;
-		border-radius: 0;
-		width: 70%;
-		padding: 1.5rem;
-		background-color: #ffffff;
-		color: green;
-	}
+.donate-amount-3 {
+  border-color: #ff4814;
+  border-radius: 0;
+  width: 70%;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  color: green;
+}
 
-	.donate-amount-3:hover {
-		border-radius: 0;
-		width: 70%;
-		padding: 1.5rem;
-		background-color: #006600;
-		color: rgb(254, 205, 11);
-	}
+.donate-amount-3:hover {
+  border-radius: 0;
+  width: 70%;
+  padding: 1.5rem;
+  background-color: #006600;
+  color: rgb(254, 205, 11);
+}
 
-	.modal-header2 {
-		border-bottom: none;
-	}
+.modal-header2 {
+  border-bottom: none;
+}
+
+.amt {
+  outline: none;
+  font-size: 16px;
+  height: 2.5rem;
+  padding: 10px;
+  width: 15%;
+}
+
+.btn-sub {
+  color: rgb(254, 205, 11);
+  background-color: #006600;
+  border-color: #006600 !important;
+}
+
+.btn-sub:hover {
+  background-color:rgb(254, 205, 11);
+  color: #006600;
+  border-color: #006600 !important;
+}
 </style>

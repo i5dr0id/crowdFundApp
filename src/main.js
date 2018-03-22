@@ -27,6 +27,11 @@ Vue.prototype.moment = moment
 // Vue.use(Button);
 // Vue.use(Select);
 
+Vue.filter('capitalize', function (value) {
+	if (!value) return ''
+	value = value.toString()
+	return value.charAt(0).toUpperCase() + value.slice(1)
+  })
 
 Vue.use(VeeValidate);
 Vue.use(VueAxios, axios)

@@ -95,7 +95,7 @@
 										</div>
 										<div class="col-md-4 text-center">
 											<br />
-											<a href="/add" class="btn btn-primary btn-lg btn">Start your project
+											<a href="/add" class="btn btn-primary btn-lg btn">Create your campaign
 												<i class="fa fa-chevron-right" aria-hidden="true"></i>
 											</a>
 										</div>

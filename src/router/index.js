@@ -16,6 +16,7 @@ import cp from '@/components/cp'
 import Explore from '@/components/Explore'
 import NotFound from '@/components/NotFound'
 import About from '@/components/About'
+import Update from '@/components/UpdateCampaign'
 
 Vue.use(Router)
 
@@ -41,7 +42,7 @@ export default new Router({
 			component: Register
 		},
 		{
-			path: '/edit',
+			path: '/edit/:id',
 			name: 'Edit',
 			component: Edit
 		},
@@ -99,7 +100,11 @@ export default new Router({
 			path: "/about",
 			name: About,
 			component: About
-		},
+		},{
+			path: "/update/:id",
+			name: Update,
+			component: Update
+		}
 	],
 	mode: 'history',
 	scrollBehavior (to, from, savedPosition) {

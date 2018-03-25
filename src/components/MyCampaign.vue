@@ -16,21 +16,25 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Amount Raised</th>
-                <th scope="col">Number of Contributions</th>
-                <th scope="col">Number of Endorsements</th>
-                <th scope="col">Office</th>
+				<th scope="col">Candidate</th>
+                <th scope="col">Target</th>
+				 <th scope="col">Raised</th>
+                <th scope="col">Contributions</th>
+                <th scope="col">Endorsements</th>
+               
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>${{ item.fund }}</td>
+				<td><a href="#" style="color:green"><router-link :to="/aspirant/ + item._id">{{ item.firstname }} {{ item.lastname }}</router-link></a></td>
+                <td>&#8358;{{ item.fund }}</td>
+				<td>0</td>
                 <td>0</td>
                 <!-- <td>{{ items[0].aspirant_endorsements.length }}</td> -->
                 <td>0</td>
-                <td>{{ item.position }}</td>
-                <td><button v-on:click="deleteCampaign(item._id)" class="btn btn-danger ">Delete Campaign</button></td>
-                <td><button v-on:click="editCampaign" class="btn btn-warning ">Edit Campaign</button></td>
+                
+                <td><a v-on:click="deleteCampaign(item._id)" class="btn btn-danger ">Delete Campaign</a></td>
+                <td><a href="#" class="btn btn-warning "><router-link :to="/update/ + item._id">Edit Campaign</router-link></a></td>
               </tr>
             </tbody>
           </table>
@@ -59,79 +63,89 @@ export default {
       loading: true
     };
   },
-   methods: {
-      refresh(){
-        this.id = localStorage.getItem("id")
-        this.token = localStorage.getItem("token");
-        console.log("TOKEN RE")
-        console.log({"TOKEN":this.token});
-        this.api = 'https://onepercent-crowdfund.herokuapp.com/aspirants/all/'+this.id;
-        let config = {
-          "x-access-token": this.token ,
-          "Content-Type": "application/json"
-        }
-        this.axios.get(this.api, {headers: {
-          "x-access-token" : this.token,
-          "Content-Type" : "application/json"
-        }}).then(response => {
-          this.loading = false;
-          this.items = response.data.aspirant;
-          this.index = this.items.length;
-        },function(err){
-          console.log(err);
-          this.loading = false
-        });
-      },
-      deleteCampaign(id){
-        console.log(id);
-        let deleteurl = 'https://onepercent-crowdfund.herokuapp.com/aspirants/'+id;
-        swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result === true) {
-                  this.axios.delete(deleteurl).then(response => {
-                     this.refresh();
-                     console.log(response.data)
-                      if(response.data.responseCode === "00") {
-                          swal('Deleted!','Campaign deleted.','success')
-                      }
-                  }).catch(error => {
-                     console.log(error);
-                  });           
-            }
+  methods: {
+    refresh() {
+      this.id = localStorage.getItem("id");
+      this.token = localStorage.getItem("token");
+      // console.log("TOKEN RE")
+      // console.log({"TOKEN":this.token});
+      this.api =
+        "https://onepercent-crowdfund.herokuapp.com/aspirants/all/" + this.id;
+      let config = {
+        "x-access-token": this.token,
+        "Content-Type": "application/json"
+      };
+      this.axios
+        .get(this.api, {
+          headers: {
+            "x-access-token": this.token,
+            "Content-Type": "application/json"
+          }
         })
-       
-      } 
+        .then(
+          response => {
+            this.loading = false;
+            this.items = response.data.aspirant;
+            console.log(this.items);
+            this.index = this.items.length;
+          },
+          function(err) {
+            console.log(err);
+            this.loading = false;
+          }
+        );
     },
-    created: function () {
-      this.refresh();
+    deleteCampaign(id) {
+      console.log(id);
+      let deleteurl =
+        "https://onepercent-crowdfund.herokuapp.com/aspirants/" + id;
+      swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(result => {
+        if (result === true) {
+          this.axios
+            .delete(deleteurl)
+            .then(response => {
+              this.refresh();
+              console.log(response.data);
+              if (response.data.responseCode === "00") {
+                swal("Deleted!", "Campaign deleted.", "success");
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
+      });
     }
+  },
+  created: function() {
+    this.refresh();
+  }
 };
 </script>
 <style scoped>
+.main {
+}
 
- .main {
-    
-  }
+a {
+  color: #ff4814;
+}
 
-  a {
-    color: #ff4814;
-  }
+router-link {
+  color: #ff4814;
+}
 
-  router-link {
-    color: #ff4814;
-  }
-
-  #campaigns {
-    padding-top: 5%;
-    padding-bottom: 10%;
-  }
+#campaigns {
+  padding-top: 5%;
+  padding-bottom: 10%;
+}
 
 .al {
   color: #787878;
@@ -141,15 +155,15 @@ export default {
 .btn-cnc {
   padding-top: 3%;
 }
-	.btn-create {
-		/* width: 50%; */
-		color: rgb(254, 205, 11);
-		background-color: #006600;
-	}
+.btn-create {
+  /* width: 50%; */
+  color: rgb(254, 205, 11);
+  background-color: #006600;
+}
 
-	.btn-create:hover {
-		color: #006600;
-		background-color: rgb(254, 205, 11);
-	}
+.btn-create:hover {
+  color: #006600;
+  background-color: rgb(254, 205, 11);
+}
 </style>
  

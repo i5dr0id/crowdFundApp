@@ -10,7 +10,7 @@
 					<li>
 						<a href="/edit">Basics</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="/editstory">Story</a>
 					</li>
 					<li>
@@ -21,7 +21,7 @@
 					</li>
 					<li>
 						<a href="/editaccount">Account</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<div class="col-sm-8">
@@ -221,14 +221,33 @@
 		<br />
 		<br />
 	</div>
+	  <nav class="navbar fixed-bottom navbar-light bg-faded" style="background: #fff; border-top: 1px solid #eee">
+		<div class="container">
+			<a href="edit.html" class="btn btn-primary btn-lg float-right">Save campaign</a>
+			<a href="edit.html" class="btn btn-link btn-lg float-right">Discard changes</a>
+		</div>
+	</nav>
 
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Edit'
-}
+  name: "Edit",
+
+    beforeCreate() {
+	this.candidate_ID = window.location.pathname.split("/")[2];
+	console.log(this.candidate_ID)
+    this.tokken = localStorage.getItem("token");
+    this.userFullname =
+      localStorage
+        .getItem("fullname")
+        .charAt(0)
+        .toUpperCase() + localStorage.getItem("fullname").slice(1);
+    this.userEmail = localStorage.getItem("email");
+    this.userID = localStorage.getItem("id");
+  }
+};
 </script>
 
 <style>

@@ -184,126 +184,138 @@
 	</div>
 </template>
 <script>
-	export default {
-		name: "createCam",
-		data() {
-			return {
-				id: '',
-				content: '',
-				fname: '',
-				lname: '',
-				alias: '',
-				email: '',
-				gender: '',
-				address: '',
-				twitter: '',
-				facebook: '',
-				website: '',
-				state: '',
-				city: '',
-				polparty: '',
-				office: '',
-				fund: '',
-				video: '',
-				story: '',
-				image: '',
-				vision: '',
-				mission: '',
-				camData: {},
-				imgFile: "",
-				customer: {},
-				cloudinary_url: "https://api.cloudinary.com/v1_1/dmdvs9djh/upload/",
-				cloudinary_upload_preset: "kn1frgui",
-				loading: false,
-				spinloading: false,
-				candidate_ID: ''
-				// fD: {}
-			};
-		},
-		methods: {
-			open() {
-				this.$message('This is a message.');
-			},
-			// console.log(),
-			onInput(e) {
-				console.log(this.story);
-			},
-			updateCampaign(e) {
-				this.id = localStorage.getItem("id");
-				this.dataCam = {
-					'id': this.id,
-					'story': this.story,
-					'firstname': this.fname,
-					'lastname': this.lname,
-					'email': this.email,
-					'gender': this.gender,
-					'state': this.state,
-					'city': this.city,
-					'social': [this.facebook, this.twitter. this.website],
-					'vision': this.vision,
-					'video': this.video,
-					'alias': this.alias,
-					'party': this.polparty,
-					'fund': this.fund,
-					'image': this.image,
-					'position': this.office
-				}
-				// if (this.email == "" || this.story == "" || this.fname == "" || this.lname == "" || this.gender == "" || this.city ==
-				// 	"" || this.state == "" || this.facebook == "" || this.twitter == "" || this.vision == "" || this.video == "" ||
-				// 	this.alias == "" || this.polparty == "" || this.fund == "" || this.image == "" || this.position == "") {
-				// 	swal("Please fill all fields", "", "error");
-				// 	return;
-				// }
-				this.loading = true;
-				this.axios.post('https://onepercent-crowdfund.herokuapp.com/update', this.dataCam).then(response => {
-					this.loading = false;
-					if (response.data.responseCode == "00") {
-						swal("Successfully updated a new campaign", "", "success");
-						this.$router.push('/campaign');
-					} else if (response.data.responseCode == "03") {
-						swal("Campaign exists already", "", "error");
-					} else {
-						swal("Error updating campaign", "", "error");
-					}
-				}).catch(error => {
-					this.loading = false;
-					swal("Updating campaign failed. Please check your network", "", "error")
-				});
-				e.preventDefault();
-			},
-			uploadFile(file) {
-
-				this.imgFile = file.target.files[0];
-				let fD = new FormData();
-				fD.append("file", this.imgFile);
-				fD.append("upload_preset", this.cloudinary_upload_preset);
-				const config = {
-					headers: {
-						"X-Requested-With": "XMLHttpRequest"
-					},
-					// onUploadProgress
-				};
-				this.spinloading = true;
-				this.axios.post(this.cloudinary_url, fD, config).then(response => {
-					this.image = response.data.secure_url;
-					this.$refs.camimg.src = response.data.secure_url;
-					this.spinloading = false
-					
-				}, error => {
-					  console.log("ERRORRORORORORO");
-					  console.log(error);
-				});
-
-			
-			}
-		},
-		mounted() {
-		    this.api =
+export default {
+  name: "createCam",
+  data() {
+    return {
+      id: "",
+      content: "",
+      fname: "",
+      lname: "",
+      alias: "",
+      email: "",
+      gender: "",
+      address: "",
+      twitter: "",
+      facebook: "",
+      website: "",
+      state: "",
+      city: "",
+      polparty: "",
+      office: "",
+      fund: "",
+      video: "",
+      story: "",
+      image: "",
+      vision: "",
+      mission: "",
+      camData: {},
+      imgFile: "",
+      customer: {},
+      cloudinary_url: "https://api.cloudinary.com/v1_1/dmdvs9djh/upload/",
+      cloudinary_upload_preset: "kn1frgui",
+      loading: false,
+      spinloading: false,
+      candidate_ID: ""
+      // fD: {}
+    };
+  },
+  methods: {
+    open() {
+      this.$message("This is a message.");
+    },
+    // console.log(),
+    onInput(e) {
+      // console.log(this.story);
+    },
+    updateCampaign(e) {
+      this.id = localStorage.getItem("id");
+      this.dataCam = {
+        _id: this.candidate_ID,
+		user_id: this.id,
+        story: this.story,
+        firstname: this.fname,
+        lastname: this.lname,
+        email: this.email,
+        gender: this.gender,
+        state: this.state,
+        city: this.city,
+        social: [this.facebook, this.twitter, this.website],
+        vision: this.vision,
+        video: this.video,
+        alias: this.alias,
+        party: this.polparty,
+        fund: this.fund,
+        image: this.image,
+        position: this.office
+      };
+      // if (this.email == "" || this.story == "" || this.fname == "" || this.lname == "" || this.gender == "" || this.city ==
+      // 	"" || this.state == "" || this.facebook == "" || this.twitter == "" || this.vision == "" || this.video == "" ||
+      // 	this.alias == "" || this.polparty == "" || this.fund == "" || this.image == "" || this.position == "") {
+      // 	swal("Please fill all fields", "", "error");
+      // 	return;
+      // }
+      this.loading = true;
+      this.axios
+        .post(
+          "https://onepercent-crowdfund.herokuapp.com/aspirants/update",
+          this.dataCam
+        )
+        .then(response => {
+          this.loading = false;
+          console.log("Response after update");
+          console.log(response);
+          if (response.data.responseCode == "00") {
+            swal("Successfully updated a new campaign", "", "success");
+            // this.$router.push('/campaign');
+          } else if (response.data.responseCode == "03") {
+            swal("Campaign exists already", "", "error");
+          } else {
+            swal("Error updating campaign", "", "error");
+          }
+        })
+        .catch(error => {
+          this.loading = false;
+          swal(
+            "Updating campaign failed. Please check your network",
+            "",
+            "error"
+          );
+        });
+      e.preventDefault();
+    },
+    uploadFile(file) {
+      this.imgFile = file.target.files[0];
+      let fD = new FormData();
+      fD.append("file", this.imgFile);
+      fD.append("upload_preset", this.cloudinary_upload_preset);
+      const config = {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest"
+        }
+        // onUploadProgress
+      };
+      this.spinloading = true;
+      this.axios.post(this.cloudinary_url, fD, config).then(
+        response => {
+          this.image = response.data.secure_url;
+          this.$refs.camimg.src = response.data.secure_url;
+          this.spinloading = false;
+        },
+        error => {
+          console.log("ERRORRORORORORO");
+          console.log(error);
+        }
+      );
+    }
+  },
+  mounted() {
+    this.api =
       "https://onepercent-crowdfund.herokuapp.com/aspirants/" +
       this.candidate_ID;
     this.axios.get(this.api).then(response => {
-	  this.item = response.data.aspirant;
-	  console.log(this.item)
+      this.item = response.data.aspirant;
+      //   console.log(this.item)
       this.alias = this.item.alias;
       this.city = this.item.city;
       this.created = this.item.created;
@@ -319,170 +331,170 @@
       this.story = this.item.story;
       this.updated = this.item.updated;
       this.user_id = this.item.user_id;
-	  this.vision = this.item.vision;
-	  this.facebook = this.item.social[0]
-	  this.twitter = this.item.social[1]
+      this.vision = this.item.vision;
+      this.facebook = this.item.social[0];
+      this.twitter = this.item.social[1];
       this._id = this.item._id;
     });
-		},
-		created() {
-			 this.candidate_ID = window.location.pathname.split("/")[2];
-		}
-	};
+  },
+  created() {
+    this.candidate_ID = window.location.pathname.split("/")[2];
+  }
+};
 </script>
 <style scoped>
-	.main {
-		/* padding-top: 4%; */
-	}
+.main {
+  /* padding-top: 4%; */
+}
 
-	#campaigns {
-		/* padding-top: 10%;
+#campaigns {
+  /* padding-top: 10%;
     padding-bottom: 10%; */
-		/* background-color: #787878; */
-	}
+  /* background-color: #787878; */
+}
 
-	.card {
-		margin-bottom: 20px;
-	}
+.card {
+  margin-bottom: 20px;
+}
 
-	.page-header {
-		border-bottom: 1px solid #eee;
-		padding-bottom: 9px;
-		margin: 40px 0 20px;
-	}
+.page-header {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+}
 
-	.btn-success {
-		background-color: #28a745;
-	}
+.btn-success {
+  background-color: #28a745;
+}
 
-	.card-picture {
-		/* background: white; */
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		/* box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px; */
-	}
+.card-picture {
+  /* background: white; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px; */
+}
 
-	.file-upload-container {
-		width: 100%;
-		height: 50px;
-		overflow: hidden;
-		background: #3f51b5;
-		user-select: none;
-		transition: all 150ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-		text-align: center;
-		color: white;
-		line-height: 50px;
-		font-weight: 300;
-		font-size: 20px;
-	}
+.file-upload-container {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  background: #3f51b5;
+  user-select: none;
+  transition: all 150ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  text-align: center;
+  color: white;
+  line-height: 50px;
+  font-weight: 300;
+  font-size: 20px;
+}
 
-	.file-upload-container:hover {
-		cursor: pointer;
-		background: #3949ab;
-	}
+.file-upload-container:hover {
+  cursor: pointer;
+  background: #3949ab;
+}
 
-	.thumbnail img {
-		height: 370px;
-		width: 370px;
-	}
+.thumbnail img {
+  height: 370px;
+  width: 370px;
+}
 
-	#amount {
-		font-size: 50px;
-	}
+#amount {
+  font-size: 50px;
+}
 
-	.card {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		background-color: #fff;
-		border: none;
-		border-radius: 0.25rem;
-	}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+}
 
-	img {
-		min-height: auto;
-	}
+img {
+  min-height: auto;
+}
 
-	.img-thumbnail {
-		background-color: transparent;
-		border: none;
-	}
+.img-thumbnail {
+  background-color: transparent;
+  border: none;
+}
 
-	/*  */
+/*  */
 
-	/*  */
+/*  */
 
-	/*  */
+/*  */
 
-	/*  */
+/*  */
 
-	.avatar-upload {
-		position: relative;
-		max-width: 205px;
-		margin: 50px auto;
-		.avatar-edit {
-			position: absolute;
-			right: 12px;
-			z-index: 1;
-			top: 10px;
-			input {
-				display: none;
-				+label {
-					display: inline-block;
-					width: 34px;
-					height: 34px;
-					margin-bottom: 0;
-					border-radius: 100%;
-					background: #FFFFFF;
-					border: 1px solid transparent;
-					box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-					cursor: pointer;
-					font-weight: normal;
-					transition: all .2s ease-in-out;
-					&:hover {
-						background: #f1f1f1;
-						border-color: #d6d6d6;
-					}
-					&:after {
-						content: "\f040";
-						font-family: 'FontAwesome';
-						color: #757575;
-						position: absolute;
-						top: 10px;
-						left: 0;
-						right: 0;
-						text-align: center;
-						margin: auto;
-					}
-				}
-			}
-		}
-		.avatar-preview {
-			width: 192px;
-			height: 192px;
-			position: relative;
-			border-radius: 100%;
-			border: 6px solid #F8F8F8;
-			box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-		}
-		.avatar-preview>div {
-			width: 100%;
-			height: 100%;
-			border-radius: 100%;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
-		}
-	}
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 50px auto;
+  .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+    input {
+      display: none;
+      + label {
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        margin-bottom: 0;
+        border-radius: 100%;
+        background: #ffffff;
+        border: 1px solid transparent;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        font-weight: normal;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background: #f1f1f1;
+          border-color: #d6d6d6;
+        }
+        &:after {
+          content: "\f040";
+          font-family: "FontAwesome";
+          color: #757575;
+          position: absolute;
+          top: 10px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          margin: auto;
+        }
+      }
+    }
+  }
+  .avatar-preview {
+    width: 192px;
+    height: 192px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #f8f8f8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
 
-	.light-green {
-    background-color: #e6fde6;
-	    outline: none !important;
-    /* border-color: #006600; */
-    box-shadow: 10px 10px 10px #006600;
-	 /* box-shadow: 0 0 10px #006600; */
+.light-green {
+  background-color: #e6fde6;
+  outline: none !important;
+  /* border-color: #006600; */
+  box-shadow: 10px 10px 10px #006600;
+  /* box-shadow: 0 0 10px #006600; */
 }
 
 .create {
@@ -493,33 +505,33 @@
 }
 
 .create:hover {
-  border: 2px solid  #006600;
+  border: 2px solid #006600;
   border-radius: 0.25rem;
-  background-color:rgb(254, 205, 11);
+  background-color: rgb(254, 205, 11);
   color: #006600;
 }
 
-form input[type=text]:focus {
-/* border:1px solid  #006600; */
-    outline: none !important;
-    border-color: #006600;
-    box-shadow: 0 0 10px #006600;
+form input[type="text"]:focus {
+  /* border:1px solid  #006600; */
+  outline: none !important;
+  border-color: #006600;
+  box-shadow: 0 0 10px #006600;
 }
-form input[type=email]:focus {
-/* border:1px solid  #006600; */
-    outline: none !important;
-    border-color: #006600;
-    box-shadow: 0 0 10px #006600;
+form input[type="email"]:focus {
+  /* border:1px solid  #006600; */
+  outline: none !important;
+  border-color: #006600;
+  box-shadow: 0 0 10px #006600;
 }
 
-textarea:focus { 
-    outline: none !important;
-    border-color: #006600;
-    box-shadow: 0 0 10px #006600;
+textarea:focus {
+  outline: none !important;
+  border-color: #006600;
+  box-shadow: 0 0 10px #006600;
 }
 
 form label {
-	color:#006600;
+  color: #006600;
 }
 
 .loadersmall {
@@ -533,8 +545,7 @@ form label {
   text-align: center;
   /* margin-top: 3px;
   margin-left: 5px; */
-z-index: 1;
-
+  z-index: 1;
 }
 
 @keyframes spin {
@@ -547,9 +558,9 @@ z-index: 1;
 }
 
 .centered {
-    position: absolute;
-    /* top: 50%;
+  position: absolute;
+  /* top: 50%;
     left: 50%; */
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 </style>

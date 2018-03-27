@@ -139,10 +139,17 @@ export default {
       api: "https://onepercent-crowdfund.herokuapp.com/aspirants"
     };
   },
+  methods: {
+
+	  getNumberDonantion() {
+
+	  }
+
+  },
   mounted() {
     this.axios.get(this.api).then(response => {
       this.items = response.data.aspirants;
-      console.log(this.items);
+    //   console.log(this.items);
       this.alias = this.items.alias;
       this.city = this.items.city;
       this.created = this.items.created;
@@ -160,12 +167,19 @@ export default {
       this.user_id = this.items.user_id;
       this.vision = this.items.vision;
       this._id = this.items._id;
-    });
+	});
+	
+	this.axios.get('https://onepercent-crowdfund.herokuapp.com/aspirants/').then(res => {
+		var result = res.data.donations_array[0].donations;
+		console.log(result);
+		// result.forEach
+
+	})
   },
   created() {
     this.axios.get(this.api).then(response => {
       this.items = response.data.aspirants;
-      console.log(this.items);
+    //   console.log(this.items);
       this.alias = this.items.alias;
       this.city = this.items.city;
       this.created = this.items.created;

@@ -7,10 +7,9 @@
 		<!--  -->
 		<!--  -->
 		<!--  -->
-		<!-- <div class="container-fluid inner hidden-xs-down" style="height: 560px;"> -->
 		<!-- <br />
 			<br /> -->
-		<div class="row mt-5">
+		<!-- <div class="row mt-5">
 			<div class="col-2 carousel-list">
 				<div class="row">
 					<div class="col-sm-10"> </div>
@@ -21,16 +20,12 @@
 					<div class="swiper-wrapper">
 						<div class="swiper-slide" data-hash="art">
 							<div>
-								<h2 class="text-center">Crowdfunding for political campaigns
-									<!-- <span class="text-primary">Art</span> -->
-								</h2>
+								<h2 class="text-center">Crowdfunding for political campaigns</h2>
 								<br />
 								<div class="card embed-responsive embed-responsive-16by9">
 									<iframe class=" card embed-responsive-item" src="https://www.youtube.com/embed/cXoZRv3ywMo" frameborder="0" allowfullscreen></iframe>
 								</div>
-								<!-- <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
-</div> --></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -40,9 +35,24 @@
 					<div class="col-sm-10"> </div>
 				</div>
 			</div>
-		</div>
-		<br>
-		<br>
+		</div> -->
+		<section class="banner-area relative">
+			<div class="overlay overlay-bg"></div>
+			<div class="container">
+				<div class="row fullscreen align-items-center justify-content-between" style="height: 750px;">
+					<div class="col-lg-6 col-md-7 col-sm-8">
+						<div class="banner-content">
+							<h1>Raise Money for political campaigns</h1>
+							<p>Living in today’s metropolitan world of cellular phones, mobile computers and other high-tech gadgets.</p>
+							<a href="#" class="primary-btn">Get Started<span class="lnr lnr-arrow-right"></span></a>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-5 col-sm-4">
+						<img src="https://www.sec.gov/files/crowdfunding-v5b-2016.jpg" alt="" class="img-fluid" style="height: 500px;">
+					</div>
+				</div>
+			</div>
+		</section>
 		<br>
 		<!-- </div> -->
 		<!--  -->
@@ -220,7 +230,8 @@
 										</div>
 									</div>
 								</div>
-							</div>> </div>
+							</div>
+						</div>
 						<div class="swiper-button-next hidden-lg-up">
 							<i class="fa fa-chevron-right" aria-hidden="true"></i>
 						</div>
@@ -253,17 +264,17 @@
 						<div class="row mt-2 swiper-wrapper">
 							<div v-for="item,index in items" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
-									<a href="">
+									<a href="#">
 										<router-link :to="/aspirant/ + item._id">
-											<img v-if="item.image" ref="imgg" :src="item.image" class="card-img-top img-fluid">
+											<img v-if="item.image" ref="imgg" :src="imageUri(item.image)" class="card-img-top img-fluid">
 											<div v-else>
-												<img src="http://i.expresspixel.com/unsplash.it/310/210?image=91" class="img-fluid hidden-xs-down" />
-												<img src="http://i.expresspixel.com/unsplash.it/610/210?image=91" class="img-fluid hidden-sm-up" /> </div>
+												<img src="http://i.expresspixel.com/unsplash.it/310/210?image=11" class="img-fluid hidden-xs-down" />
+												<img src="http://i.expresspixel.com/unsplash.it/610/210?image=11" class="img-fluid hidden-sm-up" /> </div>
 										</router-link>
 									</a>
 									<div class="card-block pb-1" style="position: relative; padding-bottom: 60px; min-height: 250px;">
 										<h6>
-											<a href="#">
+											<a href="#" class="limited-text-vision">
 												<router-link :to="/aspirant/ + item._id">{{ item.vision }}</router-link>
 											</a>
 										</h6>
@@ -274,12 +285,12 @@
 												</a>
 											</strong>
 										</p>
-										<p class="desc">{{ item.vison}}</p>
+										<p class="desc limited-text-story">{{ item.story }}</p>
 										<div style="position: absolute; bottom: 10px; width: 86%; ">
 											<div class="progress">
-												<div class="progress-bar" role="progressbar" style="width: 51%" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100"></div>
+												<div class="progress-bar" role="progressbar" style="width: 76%" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></div>
 											</div>
-											<p class="mb-1">51% funded</p>
+											<p class="mb-1">76% funded</p>
 										</div>
 									</div>
 									<div class="card-footer text-muted">
@@ -290,11 +301,11 @@
 													<div class="col-4 text-center">
 														<p class="mt-0 mb-0">Donator</p>
 														<h6 class="mt-0 mb-0">
-															<strong>143</strong>
+															<strong>117</strong>
 														</h6>
 													</div>
 													<div class="col-4 text-center">
-														<p class="mt-0 mb-0">Raised</p>
+														<h6 class="mt-0 mb-0">Raised</h6>
 														<h6 class="mt-0 mb-0">
 															<strong>&#8358;{{ item.fund }}</strong>
 														</h6>
@@ -477,30 +488,30 @@
 				</div>
 			</div>
 		</div> -->
-			<div class="mt-5 pt-2 pb-2">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-10 offset-md-1  col--sm-12">
-							<div class="card ">
-								<div class="card-block">
-									<div class="row">
-										<div class="col-md-8">
-											<h4 class="card-title">We crowdfund political campaigns</h4>
-											<p class="card-text">Build your own crowdfunding profile. Raise money online or through our plateform. Get started today.</p>
-										</div>
-										<div class="col-md-4 text-center">
-											<br />
-											<a href="/add" class="btn btn-primary btn-lg btn">Create your campaign 
-												<i class="fa fa-chevron-right" aria-hidden="true"></i>
-											</a>
-										</div>
+		<div class="mt-5 pt-2 pb-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 offset-md-1  col--sm-12">
+						<div class="card ">
+							<div class="card-block">
+								<div class="row">
+									<div class="col-md-8">
+										<h4 class="card-title">We crowdfund political campaigns</h4>
+										<p class="card-text">Build your own crowdfunding profile. Raise money online or through our plateform. Get started today.</p>
+									</div>
+									<div class="col-md-4 text-center">
+										<br />
+										<a href="/add" class="btn btn-primary btn-lg btn">Create your campaign
+											<i class="fa fa-chevron-right" aria-hidden="true"></i>
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
+		</div>
 		<!--  -->
 		<!--  -->
 		<!--  -->
@@ -638,123 +649,120 @@
 	</div>
 </template>
 <script>
-export default {
-  name: "Index",
-  data() {
-    return {
-      items: [],
-      api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
-      org_link:
-        "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
-      revs: []
-    };
-  },
-  computed: {
-    latest: function() {
-      return this.revs.sort(function(left, right) {
-        return moment.utc(right.created).diff(moment.utc(left.created));
-      });
-    }
-  },
-  methods: {
-    imageUri: function(imgUri) {
-      var splitted = imgUri.split("/");
-      // console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
-      return (
-        this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png"
-      );
-      return imgUri;
-    }
-  },
-  mounted() {
-    console.time("Fetching Data");
-    this.axios.get(this.api).then(response => {
-      console.log("===================");
-      console.log(response.data);
-      console.log("===================");
-      this.items = response.data.aspirants;
-      this.revs = JSON.parse(JSON.stringify(this.items));
-    });
-    console.timeEnd("Fetching Data");
-  }
-};
+	export default {
+		name: "Index",
+		data() {
+			return {
+				items: [],
+				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
+				org_link: "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
+				revs: []
+			};
+		},
+		computed: {
+			latest: function () {
+				return this.revs.sort(function (left, right) {
+					return moment.utc(right.created).diff(moment.utc(left.created));
+				});
+			}
+		},
+		methods: {
+			imageUri: function (imgUri) {
+				var splitted = imgUri.split("/");
+				// console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
+				return (this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png");
+				return imgUri;
+			}
+		},
+		mounted() {
+			console.time("Fetching Data");
+			this.axios.get(this.api).then(response => {
+				console.log("===================");
+				console.log(response.data);
+				console.log("===================");
+				this.items = response.data.aspirants;
+				this.revs = JSON.parse(JSON.stringify(this.items));
+			});
+			console.timeEnd("Fetching Data");
+		}
+	};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.light-green {
-  background-color: #e6fde6;
-}
+	.light-green {
+		background-color: #e6fde6;
+	}
 
-.card-img-top {
-  width: 100%;
-  height: 13vw;
-  object-fit: cover;
-}
+	.card-img-top {
+		width: 100%;
+		height: 13vw;
+		object-fit: cover;
+	}
 
-.btn-primary {
-  background-color: #006600 !important;
-}
+	.btn-primary {
+		background-color: #006600 !important;
+	}
 
-.card {
-  border: 1px solid rgb(254, 205, 11);
-}
+	.card {
+		border: 1px solid rgb(254, 205, 11);
+	}
 
-.limited-text-vision {
-  display: block;
-  width: 200px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+	.limited-text-vision {
+		display: block;
+		width: 200px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
 
-.limited-text-story {
-  word-break: break-all;
-}
+	.limited-text-story {
+		word-break: break-all;
+	}
 
-.btn {
-  border: 2px solid rgb(254, 205, 11);
-  border-radius: 0.25rem;
-  background-color: #006600;
-  color: #ddd;
-}
+	.btn {
+		border: 2px solid rgb(254, 205, 11);
+		border-radius: 0.25rem;
+		background-color: #006600;
+		color: #ddd;
+	}
 
-.progress {
-  background-color: #ffe795;
-}
+	.progress {
+		background-color: #ffe795;
+	}
 
-.progress-bar {
-  background-color: #006600;
-}
+	.progress-bar {
+		background-color: #006600;
+	}
 
-a:focus,
-a:hover {
-  color: rgb(254, 205, 11);
-  text-decoration: underline;
-}
+	a:focus,
+	a:hover {
+		color: rgb(254, 205, 11);
+		text-decoration: underline;
+	}
 
-a {
-  color: #006600;
-}
+	a {
+		color: #006600;
+	}
 
-/* MEDIA QUERY */
+	/* MEDIA QUERY */
 
-@media only screen and (min-width: 320px) {
-  /* Mobile Small: */
-}
+	@media only screen and (min-width: 320px) {
+		/* Mobile Small: */
+	}
 
-@media only screen and (min-width: 375px) {
-  /* Mobile medium: */
-}
+	@media only screen and (min-width: 375px) {
+		/* Mobile medium: */
+	}
 
-@media only screen and (min-width: 425px) {
-  /* Mobile Large: */
-}
+	@media only screen and (min-width: 425px) {
+		/* Mobile Large: */
+	}
 
-@media only screen and (min-width: 768px) {
-  /* Tablet: */
-}
+	@media only screen and (min-width: 768px) {
+		/* Tablet: */
+	}
 
-@media only screen and (min-width: 1024px) {
-  /* laptop */
-}
+	@media only screen and (min-width: 1024px) {
+		/* laptop */
+	}
 </style>

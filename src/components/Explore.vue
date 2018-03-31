@@ -2,20 +2,14 @@
 	<div id="explorer">
 		<div class="mt-5">
 			<div class="container inner">
-				<br />
-				<br />
 				<div class="row">
 					<div class="col-sm-12 text-center">
 						<h3>Fund campaigns you love.</h3>
 					</div>
 				</div>
-				<br />
-				<br />
-				<br />
-			<br /> 
+
 				<hr />
-				<br />
-				<br />
+		
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="row mt-2">
@@ -140,16 +134,12 @@ export default {
     };
   },
   methods: {
-
-	  getNumberDonantion() {
-
-	  }
-
+    getNumberDonantion() {}
   },
   mounted() {
     this.axios.get(this.api).then(response => {
       this.items = response.data.aspirants;
-    //   console.log(this.items);
+      //   console.log(this.items);
       this.alias = this.items.alias;
       this.city = this.items.city;
       this.created = this.items.created;
@@ -167,19 +157,20 @@ export default {
       this.user_id = this.items.user_id;
       this.vision = this.items.vision;
       this._id = this.items._id;
-	});
-	
-	this.axios.get('https://onepercent-crowdfund.herokuapp.com/aspirants/').then(res => {
-		var result = res.data.donations_array[0].donations;
-		console.log(result);
-		// result.forEach
+    });
 
-	})
+    this.axios
+      .get("https://onepercent-crowdfund.herokuapp.com/aspirants/")
+      .then(res => {
+        var result = res.data.donations_array[0].donations;
+        console.log(result);
+        // result.forEach
+      });
   },
   created() {
     this.axios.get(this.api).then(response => {
       this.items = response.data.aspirants;
-    //   console.log(this.items);
+      //   console.log(this.items);
       this.alias = this.items.alias;
       this.city = this.items.city;
       this.created = this.items.created;
@@ -247,7 +238,55 @@ a:hover {
   color: rgb(254, 205, 11);
   text-decoration: underline;
 }
-.card{
-    border: 1px solid rgb(254, 205, 11);
+.card {
+  border: 1px solid rgb(254, 205, 11);
+}
+
+/* MEDIA QUERY */
+
+@media only screen and (min-width: 320px) {
+  /* Mobile Small: */
+  .fullscreen {
+    padding-top: 10%;
+  }
+  h1 {
+    /* font-size: 20px; */
+    padding: 5%;
+  }
+  .card {
+    /* height: 457px; */
+    /* margin-left: 15%;
+			left: -3%; */
+  }
+  .card-img-top {
+    /* width: 100%; */
+    height: 50vw;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  /* Mobile medium: */
+}
+
+@media only screen and (min-width: 425px) {
+  /* Mobile Large: */
+}
+
+@media only screen and (min-width: 768px) {
+  /* Tablet: */
+}
+
+@media only screen and (min-width: 1024px) {
+  /* laptop */
+  .fullscreen {
+    padding-top: 0;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .card-img-top {
+    /* width: 100%; */
+    height: 13vw;
+  }
 }
 </style>

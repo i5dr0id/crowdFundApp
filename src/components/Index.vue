@@ -4,57 +4,20 @@
 		<!--  -->
 		<!--  -->
 		<!--  -->
-		<!--  -->
-		<!--  -->
-		<!--  -->
-		<!-- <br />
-			<br /> -->
-		<!-- <div class="row mt-5">
-			<div class="col-2 carousel-list">
-				<div class="row">
-					<div class="col-sm-10"> </div>
-				</div>
-			</div>
-			<div class="col-lg-8 col-sm-12">
-				<div id="home-swiper" class="swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide" data-hash="art">
-							<div>
-								<h2 class="text-center">Crowdfunding for political campaigns</h2>
-								<br />
-								<div class="card embed-responsive embed-responsive-16by9">
-									<iframe class=" card embed-responsive-item" src="https://www.youtube.com/embed/cXoZRv3ywMo" frameborder="0" allowfullscreen></iframe>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-2 carousel-list">
-				<div class="row">
-					<div class="col-sm-10"> </div>
-				</div>
-			</div>
-		</div> -->
-		<section class="banner-area relative">
-			<div class="overlay overlay-bg"></div>
+
+		<!-- <div class="overlay overlay-bg"></div>
+
 			<div class="container">
-				<div class="row fullscreen align-items-center justify-content-between" style="height: 750px;">
-					<div class="col-lg-6 col-md-7 col-sm-8">
-						<div class="banner-content">
-							<h1>Raise Money for political campaigns</h1>
-							<p>Living in today’s metropolitan world of cellular phones, mobile computers and other high-tech gadgets.</p>
-							<a href="#" class="primary-btn">Get Started<span class="lnr lnr-arrow-right"></span></a>
+				<div class="row">
+					<div class="col-6 avg left">	
 						</div>
-					</div>
-					<div class="col-lg-6 col-md-5 col-sm-4">
-						<img src="https://www.sec.gov/files/crowdfunding-v5b-2016.jpg" alt="" class="img-fluid" style="height: 500px;">
+					<div class="col-5 avg right offset-sm-1">
 					</div>
 				</div>
-			</div>
-		</section>
-		<br>
-		<!-- </div> -->
+			</div> -->
+		<!--  -->
+		<!--  -->
+<section data-v-57b01f48="" class="banner-area relative"><div data-v-57b01f48="" class="overlay overlay-bg"></div> <div data-v-57b01f48="" class="container"><div data-v-57b01f48="" class="row fullscreen align-items-center justify-content-between" style="height: 750px;"><div data-v-57b01f48="" class="col-lg-6 col-md-7 col-sm-8"><div data-v-57b01f48="" class="banner-content"><h1 data-v-57b01f48="">Raise Money for political campaigns</h1> <p data-v-57b01f48="">Living in today’s metropolitan world of cellular phones, mobile computers and other high-tech gadgets.</p> <a data-v-57b01f48="" href="#" class="primary-btn">Get Started<span data-v-57b01f48="" class="lnr lnr-arrow-right"></span></a></div></div> <div data-v-57b01f48="" class="col-lg-6 col-md-5 col-sm-4"><img data-v-57b01f48="" src="https://www.sec.gov/files/crowdfunding-v5b-2016.jpg" alt="" class="img-fluid" style="height: 500px;"></div></div></div></section>
 		<!--  -->
 		<!--  -->
 		<!--  -->
@@ -77,7 +40,7 @@
 						<div class="row mt-2 swiper-wrapper">
 							<div v-for="cand,index in latest" class="col-md-4 col-lg-3 col-sm-6 col-xs-3  col-12 swiper-slide">
 								<div class="card box">
-									<a href="#">
+									<a class="greena" href="#">
 										<router-link :to="/aspirant/ + cand._id">
 											<img v-if="cand.image" ref="imgg" :src="cand.image" class="card-img-top img-fluid">
 											<div v-else>
@@ -93,14 +56,14 @@
 										</h6>
 										<p class="text-muted limited-text-vision">
 											<strong>
-												<a href="#" class="text-muted">
-													<router-link :to="/aspirant/ + cand._id">{{ cand.vision }}</router-link>
+												<a href="#" class="text-muted greena">
+													<router-link class="greena" :to="/aspirant/ + cand._id">{{ cand.vision }}</router-link>
 												</a>
 											</strong>
 										</p>
 										<p class="desc limited-text-story">{{ cand.story }}</p>
-										<a href="#">
-											<router-link :to="/aspirant/ + cand._id">
+										<a class="greena" href="#">
+											<router-link class="greena" :to="/aspirant/ + cand._id">
 												<span>read more</span>
 											</router-link>
 										</a>
@@ -354,22 +317,19 @@
 						<div class="swiper-wrapper">
 							<div class="swiper-slide" data-hash="art">
 								<div>
-									<h2 class="text-center">Fund This Campaign
-										<!-- <span class="text-primary">Art</span> -->
-									</h2>
+									<h2 class="text-center">Fund This Campaign </h2>
 									<br />
 									<div class="cardd ">
 										<div class="card-blocks">
 											<div class="row ">
 												<div class="col-sm-6">
-													<!-- <a href="" class="thumbnail"><img class="img-fluid img-thumbnail" src="images/eat-1892990_1920.jpg" /></a> -->
 													<a href="#" class="thumbnaidl">
 														<img class="card-img-top img-fluid" src="http://4.bp.blogspot.com/-I9ONC-6Ckck/VBH-XDorysI/AAAAAAADhSM/Ft6hMjrX-Fg/s1600/01.jpg"
 														/> </a>
 												</div>
 												<div class="col-sm-6">
 													<h4 class="display-8">
-														<a href="#">Goverment for the people</a>
+														<a class="greena" href="#">Goverment for the people</a>
 													</h4>
 													<p class="text-muted">
 														<strong>
@@ -463,31 +423,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="mt-5 pt-2 pb-2">
-			<div class="container">
-				<div class="row">
-					<div class="col-12 col-md-10 offset-md-1">
-						<div class="card ">
-							<div class="card-block">
-								<div class="row">
-									<div class="col-sm-8">
-										<h4 class="card-title">We crowdfund Political Campaigns</h4>
-										<p class="card-text">Build your own crowdfunding or fundraising website. Raise money online or through your Facebook profile. Get started
-											today.</p>
-									<div class="col-sm-4 text-center">
-									</div>
-										<br />
-										<a href="/add" class="btn btn-primary btn-lg"> Start your project
-											<i class="fa fa-chevron-right" aria-hidden="true"></i>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
 		<div class="mt-5 pt-2 pb-2">
 			<div class="container">
 				<div class="row">
@@ -649,120 +584,200 @@
 	</div>
 </template>
 <script>
-	export default {
-		name: "Index",
-		data() {
-			return {
-				items: [],
-				api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
-				org_link: "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
-				revs: []
-			};
-		},
-		computed: {
-			latest: function () {
-				return this.revs.sort(function (left, right) {
-					return moment.utc(right.created).diff(moment.utc(left.created));
-				});
-			}
-		},
-		methods: {
-			imageUri: function (imgUri) {
-				var splitted = imgUri.split("/");
-				// console.log(this.org_link+splitted[splitted.length-1].split('.')[0]+'.png');
-				return (this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png");
-				return imgUri;
-			}
-		},
-		mounted() {
-			console.time("Fetching Data");
-			this.axios.get(this.api).then(response => {
-				console.log("===================");
-				console.log(response.data);
-				console.log("===================");
-				this.items = response.data.aspirants;
-				this.revs = JSON.parse(JSON.stringify(this.items));
-			});
-			console.timeEnd("Fetching Data");
-		}
-	};
+export default {
+  name: "Index",
+  data() {
+    return {
+      items: [],
+      api: "https://onepercent-crowdfund.herokuapp.com/aspirants",
+      org_link:
+        "https://res.cloudinary.com/dmdvs9djh/image/upload/c_limit,h_310,w_210/v1519818069/",
+      revs: []
+    };
+  },
+  computed: {
+    latest: function() {
+      return this.revs.sort(function(left, right) {
+        return moment.utc(right.created).diff(moment.utc(left.created));
+      });
+    }
+  },
+  methods: {
+    imageUri: function(imgUri) {
+      var splitted = imgUri.split("/");
+      return (
+        this.org_link + splitted[splitted.length - 1].split(".")[0] + ".png"
+      );
+      return imgUri;
+    }
+  },
+  mounted() {
+    console.time("Fetching Data");
+    this.axios.get(this.api).then(response => {
+      console.log("===================");
+      console.log(response.data);
+      console.log("===================");
+      this.items = response.data.aspirants;
+      this.revs = JSON.parse(JSON.stringify(this.items));
+    });
+    console.timeEnd("Fetching Data");
+  }
+};
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	.light-green {
-		background-color: #e6fde6;
-	}
+.light-green {
+  background-color: #e6fde6;
+}
 
-	.card-img-top {
-		width: 100%;
-		height: 13vw;
-		object-fit: cover;
-	}
+.card-img-top {
+  width: 100%;
+  height: 13vw;
+  object-fit: cover;
+}
 
-	.btn-primary {
-		background-color: #006600 !important;
-	}
+.btn-primary {
+  background-color: #006600 !important;
+}
 
-	.card {
-		border: 1px solid rgb(254, 205, 11);
-	}
+.card {
+  border: 1px solid rgb(254, 205, 11);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), -1px 0 2px rgba(0, 0, 0, 0.05);
+}
 
-	.limited-text-vision {
-		display: block;
-		width: 200px;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
+.cardd {
+  /* border: 1px solid rgb(254, 205, 11); */
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), -1px 0 2px rgba(0, 0, 0, 0.05);
+}
 
-	.limited-text-story {
-		word-break: break-all;
-	}
+.limited-text-vision {
+  display: block;
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
-	.btn {
-		border: 2px solid rgb(254, 205, 11);
-		border-radius: 0.25rem;
-		background-color: #006600;
-		color: #ddd;
-	}
+.limited-text-story {
+  word-break: break-all;
+}
 
-	.progress {
-		background-color: #ffe795;
-	}
+.btn {
+  border: 2px solid rgb(254, 205, 11);
+  border-radius: 0.25rem;
+  background-color: #006600;
+  color: #ddd;
+}
 
-	.progress-bar {
-		background-color: #006600;
-	}
+.progress {
+  background-color: #ffe795;
+}
 
-	a:focus,
+.progress-bar {
+  background-color: #006600;
+}
+
+/* a:focus,
 	a:hover {
-		color: rgb(254, 205, 11);
-		text-decoration: underline;
-	}
-
-	a {
 		color: #006600;
-	}
+		text-decoration: underline;
+	} */
 
-	/* MEDIA QUERY */
+.greena {
+  color: #006600;
+}
 
-	@media only screen and (min-width: 320px) {
-		/* Mobile Small: */
-	}
+section {
+  /* http://res.cloudinary.com/dmdvs9djh/image/upload/v1522368725/didier-weemaels-36055-unsplash_z1avg0.jpg */
+  /* background-image: url("http://res.cloudinary.com/dmdvs9djh/image/upload/v1522368725/didier-weemaels-36055-unsplash_z1avg0.jpg"); */
+  /* background-color: #cccccc;. */
+}
 
-	@media only screen and (min-width: 375px) {
-		/* Mobile medium: */
-	}
+/* MEDIA QUERY */
 
-	@media only screen and (min-width: 425px) {
-		/* Mobile Large: */
-	}
+@media only screen and (min-width: 320px) {
+  /* Mobile Small: */
+  .fullscreen {
+    padding-top: 10%;
+  }
+  h1 {
+    /* font-size: 20px; */
+    padding: 5%;
+  }
+  .card {
+    /* height: 457px; */
+    /* margin-left: 15%;
+			left: -3%; */
+  }
+  .card-img-top {
+    /* width: 100%; */
+    height: 50vw;
+  }
+}
 
-	@media only screen and (min-width: 768px) {
-		/* Tablet: */
-	}
+@media only screen and (min-width: 375px) {
+  /* Mobile medium: */
+}
 
-	@media only screen and (min-width: 1024px) {
-		/* laptop */
-	}
+@media only screen and (min-width: 425px) {
+  /* Mobile Large: */
+}
+
+@media only screen and (min-width: 768px) {
+  /* Tablet: */
+}
+
+@media only screen and (min-width: 1024px) {
+  /* laptop */
+  .fullscreen {
+    padding-top: 0;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .card-img-top {
+    /* width: 100%; */
+    height: 13vw;
+  }
+}
+
+.avg {
+  background: orange;
+  height: 1em;
+  font-size: 42px;
+}
+
+.left,
+.right {
+  width: calc(50% - 1em);
+  position: relative;
+}
+
+.left {
+  float: left;
+}
+
+.left:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  border: 0.5em solid transparent;
+  border-top-color: orange;
+  border-left-color: orange;
+}
+
+.right {
+  float: right;
+}
+
+.right:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 100%;
+  border: 0.5em solid transparent;
+  border-bottom-color: orange;
+  border-right-color: orange;
+}
 </style>

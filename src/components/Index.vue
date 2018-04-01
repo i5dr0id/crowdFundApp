@@ -17,7 +17,23 @@
 			</div> -->
 		<!--  -->
 		<!--  -->
-<section data-v-57b01f48="" class="banner-area relative"><div data-v-57b01f48="" class="overlay overlay-bg"></div> <div data-v-57b01f48="" class="container"><div data-v-57b01f48="" class="row fullscreen align-items-center justify-content-between" style="height: 750px;"><div data-v-57b01f48="" class="col-lg-6 col-md-7 col-sm-8"><div data-v-57b01f48="" class="banner-content"><h1 data-v-57b01f48="">Raise Money for political campaigns</h1> <p data-v-57b01f48="">Living in today’s metropolitan world of cellular phones, mobile computers and other high-tech gadgets.</p> <a data-v-57b01f48="" href="#" class="primary-btn">Get Started<span data-v-57b01f48="" class="lnr lnr-arrow-right"></span></a></div></div> <div data-v-57b01f48="" class="col-lg-6 col-md-5 col-sm-4"><img data-v-57b01f48="" src="https://www.sec.gov/files/crowdfunding-v5b-2016.jpg" alt="" class="img-fluid" style="height: 500px;"></div></div></div></section>
+<section data-v-57b01f48="" class="banner-area relative">
+	
+ 		<div data-v-57b01f48="" class="container">
+ 			<div data-v-57b01f48="" class="row fullscreen align-items-center justify-content-between" style="height: 550px;">
+							<div data-v-57b01f48="" class="col-lg-6 col-md-7 col-sm-8">
+									<div data-v-57b01f48="" class="banner-content">
+											<h1 data-v-57b01f48="">Raise Money for political parties and campaigns you care about</h1> 
+											<p data-v-57b01f48="" style="padding-left:30px">With GreenFund CrowdFunding could be no easier. At GreenFund we care about political parties and campaigns and we demystified the process with our easy to use platform.</p> 		
+											<a href="/explore" style="margin-left:27px" class="btn btn-secondary pull-left">Get Started</a>
+									</div>
+							</div> 
+							<div data-v-57b01f48="" class="col-lg-6 col-md-5 col-sm-4 crowd">
+								<img data-v-57b01f48="" src="https://fthmb.tqn.com/lXPdWmNEzAksZR3vgXWu6hG0q2I=/2190x1369/filters:fill(auto,1)/crowdfunding-678698108-5a7a3af3875db90037cf5315.jpg" alt="" class="img-fluid" style="height: 450px;">
+         		  </div>
+      </div>
+  	</div>
+</section>
 		<!--  -->
 		<!--  -->
 		<!--  -->
@@ -715,8 +731,11 @@ section {
   }
 }
 
-@media only screen and (min-width: 375px) {
+@media only screen and (max-width: 900px) {
   /* Mobile medium: */
+	.crowd img{
+		display:none;
+	}
 }
 
 @media only screen and (min-width: 425px) {

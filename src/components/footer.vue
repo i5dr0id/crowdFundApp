@@ -13,18 +13,7 @@
 								<li>
 									<a href="#">About us</a>
 								</li>
-								<li>
-									<a href="#">Partners</a>
-								</li>
-								<li>
-									<a href="#">Payment methods</a>
-								</li>
-								<li>
-									<a href="#">Glossary</a>
-								</li>
-								<li>
-									<a href="#">Blog</a>
-								</li>
+								
 							</ul>
 						</div>
 						<div class="col-4 col-md-3">
@@ -36,18 +25,7 @@
 								<li>
 									<a class="transition-all navy-400 hover-navy-500" href="#">Typography</a>
 								</li>
-								<li>
-									<a class="transition-all navy-400 hover-navy-500" href="#">Support</a>
-								</li>
-								<li>
-									<a class="transition-all navy-400 hover-navy-500" href="#">Terms of Use</a>
-								</li>
-								<li>
-									<a class="transition-all navy-400 hover-navy-500" href="#">Privacy Policy</a>
-								</li>
-								<li>
-									<a class="transition-all navy-400 hover-navy-500" href="#">Cookie Policy</a>
-								</li>
+								
 							</ul>
 						</div>
 						<div class="col-4 col-md-3">

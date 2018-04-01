@@ -20,7 +20,7 @@
 							<a class="nav-link white" href="/explore">Explore</a>
 						</li>
 						<li v-if="username" class="nav-item ">
-							<a class="nav-link white" href="/add">Create Campaing</a>
+							<a class="nav-link white" href="/add">Create Campaign</a>
 						</li>
 						<li v-else class="nav-item ">
 							<a class="nav-link white" href="/login">Create Campaing</a>

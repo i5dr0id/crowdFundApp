@@ -17,10 +17,11 @@ import Explore from '@/components/Explore'
 import NotFound from '@/components/NotFound'
 import About from '@/components/About'
 import Update from '@/components/UpdateCampaign'
+import Notfound from '@/components/NotFound'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
 	routes: [{
 			path: '/',
 			name: 'Home',
@@ -100,14 +101,36 @@ export default new Router({
 			path: "/about",
 			name: About,
 			component: About
-		},{
+		}, {
 			path: "/update/:id",
 			name: Update,
 			component: Update
+		}, {
+			path: "/notFound",
+			name: Notfound,
+			component: Notfound
 		}
+
 	],
 	mode: 'history',
-	scrollBehavior (to, from, savedPosition) {
-		return { x: 0, y: 0 }
-	  }
+	scrollBehavior(to, from, savedPosition) {
+		return {
+			x: 0,
+			y: 0
+		}
+	}
 })
+
+// const router = new Router;
+
+
+router.beforeEach((to, from, next) => {
+	if (!to.matched.length) {
+		next('/notFound');
+	} else {
+		next();
+	}
+})
+
+
+export default router;

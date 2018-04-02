@@ -544,7 +544,8 @@ export default {
       perNum: 0,
       tAmount: "",
       toggle: false,
-      userFullname: ""
+      userFullname: "",
+      expected_fund: 0
     };
   },
   methods: {
@@ -555,10 +556,10 @@ export default {
         message: this.message,
         username: localStorage.getItem("fullname")
       };
-      console.log(this.endorse_data);
+      //   console.log(this.endorse_data);
       this.axios.post(this.api_endrosment, this.endorse_data).then(
         response => {
-          console.log(response.data);
+          //   console.log(response.data);
           this.get_endorsme();
         },
         function(err) {
@@ -603,33 +604,37 @@ export default {
         )
         .then(response => {
           if (response.data.responseCode == "00") {
-            console.log(response);
+            // console.log(response);
             window.location = "/aspirant/" + this.candidate_ID;
           } else if (response.data.responseCode == "03") {
-            console.log(response);
+            // console.log(response);
           } else {
-            console.log(response);
+            // console.log(response);
           }
         })
         .catch(error => {
-          console.log(response);
+          //   console.log(response);
         });
       e.preventDefault();
     },
     comPer() {
-      this.perNum = parseInt(
-        parseInt(this.tAmount) / parseInt(this.fund) * 100
-      );
+      //   this.perNum = parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100);
+      this.perNum = parseInt(parseInt(this.tAmount) / parseInt(this.expected_fund) * 100);
+      console.log("AMOUNT ARRIVE: ", this.tAmount);
+      console.log("FUND ALSO", this.expected_fund);
+      console.log("PERNUME", this.perNum);
+	  this.perNum = isNaN(this.perNum) ? 0 : this.perNum
       this.$refs.perpro.style.width =
-        String(parseInt(parseInt(this.tAmount) / parseInt(this.fund) * 100)) +
-        "%";
+        String(
+          parseInt(parseInt(this.tAmount) / parseInt(this.expected_fund) * 100)
+        ) + "%";
     },
     somefunction() {
-      console.log("chehck box xhekx");
+      //   console.log("chehck box xhekx");
     },
     check(e) {
       if (e.target.checked) {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         this.userFullname = "Anonymous";
         this.userEmail = "Anonymous";
       } else {
@@ -644,11 +649,11 @@ export default {
 
     dntcheck(e) {
       // console.log(this.$refs.btndnt.attributes['value'].value);
-      console.log(this.$refs.btndnt);
+      //   console.log(this.$refs.btndnt);
     },
 
     showModal(text, event) {
-      console.log(text, event.target.id);
+      //   console.log(text, event.target.id);
       this.userFund = text;
     }
   },
@@ -663,6 +668,7 @@ export default {
       "https://onepercent-crowdfund.herokuapp.com/aspirants/" +
       this.candidate_ID;
     this.axios.get(this.api).then(response => {
+      // console.log('MY RESPONSE',response.data);
       this.item = response.data.aspirant;
       this.alias = this.item.alias;
       this.city = this.item.city;
@@ -683,17 +689,18 @@ export default {
       this._id = this.item._id;
     });
     this.get_endorsme();
-    this.axios
-      .get(
-        "https://onepercent-crowdfund.herokuapp.com/donations/all/" +
-          this.candidate_ID
-      )
-      .then(response => {
-        this.donators = response.data.donation;
-        this.tAmount = response.data.total;
-        this.numDonator = response.data.donation.length;
-        this.comPer();
-      });
+    // this.axios
+    //   .get(
+    //     "https://onepercent-crowdfund.herokuapp.com/donations/all/" +
+    //       this.candidate_ID
+    //   )
+    //   .then(response => {
+    // 	  console.log('FORM the respoense', response.data);
+    //     this.donators = response.data.donation;
+    //     this.tAmount = response.data.total;
+    //     this.numDonator = response.data.donation.length;
+    //     this.comPer();
+    //   });
   },
   created() {
     this.candidate_ID = window.location.pathname.split("/")[2];
@@ -705,6 +712,25 @@ export default {
         .toUpperCase() + localStorage.getItem("fullname").slice(1);
     this.userEmail = localStorage.getItem("email");
     this.userID = localStorage.getItem("id");
+
+    this.axios
+      .get(
+        "https://onepercent-crowdfund.herokuapp.com/donations/all/" +
+          this.candidate_ID
+      )
+      .then(response => {
+        console.log("FORM the respoense", response.data);
+        this.donators = response.data.donation;
+        this.tAmount = response.data.total;
+        this.numDonator = response.data.donation.length;
+        this.expected_fund = response.data.expected_fund;
+        this.comPer();
+
+        console.log(this.donators);
+        console.log(this.tAmount);
+        console.log(this.numDonator);
+        console.log(this.expected_fund);
+      });
   }
 };
 </script>
@@ -846,5 +872,4 @@ hr {
   color: #006600;
   border-color: #006600 !important;
 }
-
 </style>

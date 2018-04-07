@@ -23,7 +23,7 @@
 							<a class="nav-link white" href="/add">Create Campaign</a>
 						</li>
 						<li v-else class="nav-item ">
-							<a class="nav-link white" href="/login">Create Campaing</a>
+							<a class="nav-link white" href="/login">Create Campaign</a>
 						</li>
 						<li class="nav-item ">
 							<a class="nav-link white" href="/about">About us</a>
